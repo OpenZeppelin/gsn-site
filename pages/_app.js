@@ -1,10 +1,6 @@
 import React from 'react';
 import App, { Container } from 'next/app';
 
-import { apollo } from 'lib/apollo'
-
-apollo()
-
 class MyApp extends App {
   static async getInitialProps({ Component, ctx }) {
     let pageProps = {};
