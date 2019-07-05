@@ -1,4 +1,8 @@
 import { DynamicApolloWrapper } from "../lib/components/DynamicApolloWrapper";
+import { Query } from 'react-apollo'
+import { queries } from 'dapp-core'
+
+import { networkIdToName } from 'lib/utils/networkIdToName'
 
 function Home() {
   return (
@@ -8,7 +12,19 @@ function Home() {
       </p>
       <DynamicApolloWrapper>
         <p>
-          This content is dynamically loaded from Ethereum
+          <Query query={queries.networkAccountQuery}>
+            {({ data, loading }) => {
+              console.log(data)
+              var network = 'loading...'
+              if (!loading) {
+                network =  networkIdToName(data.networkId)
+              }
+
+              return <>
+                This content is dynamically loaded from Ethereum network {network}
+              </>
+            }}
+          </Query>
         </p>
       </DynamicApolloWrapper>
     </div>
