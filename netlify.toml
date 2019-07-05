@@ -17,8 +17,18 @@
   status = 200
 
 [[redirects]]
-  from = "/recipients/:address/dashboard"
-  to = '/recipients/[address]/dashboard.html'
+  from = "/recipients/:address"
+  to = '/recipients/[address]/index.html'
+  status = 200
+
+[[redirects]]
+  from = "/relay-hubs/:relayHubAddress"
+  to = '/relay-hubs/[relayHubAddress]/index.html'
+  status = 200
+
+[[redirects]]
+  from = "/relay-hubs/:relayHubAddress/relays/:relayAddress"
+  to = '/relay-hubs/[relayHubAddress]/relays/[relayAddress]/index.html'
   status = 200
 
 [[redirects]]
