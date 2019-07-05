@@ -24,6 +24,7 @@
     "start": "next start",
     "export": "next export",
     "apply-registry": "$(npm bin)/apply-registry -o artifacts",
-    "reset-local": "rm -rf networks/1234.json && rm -rf build/contracts"
+    "reset-local": "rm -rf networks/1234.json && rm -rf build/contracts",
+    "netlify-dist": "next build && next export && cp _redirects out/"
   }
 }
