@@ -1,2 +1,0 @@
-/static/*                         /static/:splat                          200
-/recipients/:address/dashboard    /recipients/[address]/dashboard.html    200
