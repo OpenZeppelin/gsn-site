@@ -1735,9 +1735,10 @@ cyclist@~0.2.2:
   resolved "https://registry.yarnpkg.com/cyclist/-/cyclist-0.2.2.tgz#1b33792e11e914a2fd6d6ed6447464444e5fa640"
   integrity sha1-GzN5LhHpFKL9bW7WRHRkRE5fpkA=
 
-dapp-core@DeltaCamp/dapp-core#master:
+dapp-core@^0.1.0:
   version "0.1.0"
-  resolved "git+ssh://git@github.com/DeltaCamp/dapp-core.git#19e3ca0fd13078b712daff54fe50f77c2bb1abe1"
+  resolved "https://registry.yarnpkg.com/dapp-core/-/dapp-core-0.1.0.tgz#b09b2731f6b5df88172c33c9f429b9bc64b2d80a"
+  integrity sha512-mxn3L+eg6CvcnOPXFGfXUsX4FfnWobGvo44wt6RmmFpjWB+nehs8Xfvy8aKN6/8tZeuZyU6cjBqmU4sqmbMCVw==
   dependencies:
     apollo-cache-inmemory "^1.6.2"
     apollo-client "^2.6.3"
