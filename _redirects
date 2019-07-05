@@ -1,2 +1,2 @@
 /static/*                         /static/:splat                          200
-/recipients/*/dashboard           /recipients/[address]/dashboard.html    200
+/recipients/:address/dashboard    /recipients/[address]/dashboard.html    200
