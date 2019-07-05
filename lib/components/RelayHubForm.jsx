@@ -11,9 +11,12 @@ export const RelayHubForm = withRouter(class _RelayHubForm extends PureComponent
 
   render () {
     return (
-      <AddressLinkForm
-        formatUrl={(address) => `/relay-hubs/${this.props.relayHubAddress}/relays/${address}`}
-        />
+      <>
+        <h2>Access Relay</h2>
+        <AddressLinkForm
+          formatUrl={(address) => `/relay-hubs/${this.props.relayHubAddress}/relays/${address}`}
+          />
+      </>
     )
   }
 })
