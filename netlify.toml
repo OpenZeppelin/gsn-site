@@ -18,7 +18,7 @@
 
 [[redirects]]
   from = "/recipients/:address/dashboard"
-  to = "/index.html"
+  to = "/recipients/\[address\]/dashboard.html"
   status = 200
 
 [[redirects]]
