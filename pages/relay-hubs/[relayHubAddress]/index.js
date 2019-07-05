@@ -1,6 +1,8 @@
 import { useRouter } from 'next/router'
+import { DynamicApolloWrapper } from 'lib/components/DynamicApolloWrapper'
+import { RelayHubForm } from 'lib/components/RelayHubForm'
 
-function Dashboard() {
+function Dashboard () {
   const router = useRouter()
   const { relayHubAddress } = router.query
 
@@ -9,6 +11,10 @@ function Dashboard() {
       <p>
         Relay Hub {relayHubAddress}
       </p>
+
+      <DynamicApolloWrapper>
+        <RelayHubForm relayHubAddress={relayHubAddress} />
+      </DynamicApolloWrapper>
     </div>
   )
 }

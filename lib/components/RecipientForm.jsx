@@ -64,7 +64,7 @@ export const RecipientForm = withSendTransaction(
 
     if (error) {
       console.error(error)
-      return error.message
+      return 'This address is not a valid recipient'
     } else if (loading) {
       return '...'
     } else {

@@ -1,4 +1,5 @@
 import React from 'react';
+import Link from 'next/link';
 import App, { Container } from 'next/app';
 
 class MyApp extends App {
@@ -17,6 +18,7 @@ class MyApp extends App {
 
     return (
       <Container>
+        <Link href='/'>Home</Link>
         <Component {...pageProps} />
       </Container>
     );

@@ -3,6 +3,7 @@ import { Query } from 'react-apollo'
 import { queries } from 'dapp-core'
 
 import { networkIdToName } from 'lib/utils/networkIdToName'
+import { LandingPageForm } from 'lib/components/LandingPageForm'
 
 function Home() {
   return (
@@ -26,6 +27,7 @@ function Home() {
             }}
           </Query>
         </p>
+        <LandingPageForm />
       </DynamicApolloWrapper>
     </div>
   )
