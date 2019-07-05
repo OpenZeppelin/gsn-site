@@ -18,7 +18,9 @@ class MyApp extends App {
 
     return (
       <Container>
-        <Link href='/'>Home</Link>
+        <Link href='/'>
+          Home
+        </Link>
         <Component {...pageProps} />
       </Container>
     );

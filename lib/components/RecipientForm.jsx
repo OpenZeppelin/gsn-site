@@ -1,13 +1,15 @@
 import React, { PureComponent } from 'react'
 import PropTypes from 'prop-types'
-import { graphql } from 'react-apollo'
+import { graphql, withApollo } from 'react-apollo'
 import { ConnectWallet } from 'lib/components/ConnectWallet'
+import { react } from 'dapp-core'
 
 import { recipientQuery } from '../queries/recipientQuery'
 import { withSendTransaction } from './hoc/withSendTransaction'
 import { withEthereumPermissionQuery } from './hoc/withEthereumPermissionQuery';
+import { relayHubTargetSubscription } from '../subscriptions/relayHubTargetSubscription'
 
-export const RecipientForm = withSendTransaction(
+export const RecipientForm = react.withTransactionEe(withApollo(withSendTransaction(
   withEthereumPermissionQuery(
   graphql(recipientQuery, {
     name: 'recipientQuery',
@@ -31,23 +33,63 @@ export const RecipientForm = withSendTransaction(
     }
   }
 
+  componentDidMount () {
+    this.startSubscription()
+  }
+
+  componentDidUpdate () {
+    this.startSubscription()
+  }
+
+  startSubscription() {
+    if (this.subscription) { return }
+    if (this.relayHubAddress()) {
+      this.subscription = this.props.client.subscribe({
+        query: relayHubTargetSubscription,
+        variables: {
+          relayHubAddress: this.relayHubAddress(),
+          targetAddress: this.props.recipientAddress
+        }
+      }).subscribe(() => {
+        this.props.recipientQuery.refetch()
+      })
+    }
+  }
+
+  componentWillUnmount () {
+    if (this.subscription) {
+      this.subscription.unsubscribe()
+    }
+  }
+
   handleSubmitDeposit = (e) => {
     e.preventDefault()
-    console.log('submit deposit ', this.state.depositAmount)
-
     this.props.sendTransaction({
       variables: {
         contractAddress: this.relayHubAddress(),
         contractName: 'RelayHub',
         method: 'depositFor',
         args: [this.props.recipientAddress],
-        value: 1000000000
+        value: this.state.depositAmount
       }
+    }).then(({ data }) => {
+      this.props.ee(data.sendTransaction.id)
+        .on('error', function () {
+          console.log('There was an error', arguments)
+        })
+        .on('receipt', () => {
+          console.log('accepted!')
+          this.setState({
+            depositAmount: '0'
+          })
+        })
     })
   }
 
   relayHubAddress = () => {
-    return this.props.recipientQuery.RelayRecipient.relayHubAddress
+    if (this.props.recipientQuery.RelayRecipient) {
+      return this.props.recipientQuery.RelayRecipient.relayHubAddress
+    }
   }
 
   render () {
@@ -85,4 +127,4 @@ export const RecipientForm = withSendTransaction(
       </>
     }
   }
-})))
+})))))
