@@ -1830,10 +1830,10 @@ cyclist@~0.2.2:
   resolved "https://registry.yarnpkg.com/cyclist/-/cyclist-0.2.2.tgz#1b33792e11e914a2fd6d6ed6447464444e5fa640"
   integrity sha1-GzN5LhHpFKL9bW7WRHRkRE5fpkA=
 
-dapp-core@^0.3.0:
-  version "0.3.0"
-  resolved "https://registry.yarnpkg.com/dapp-core/-/dapp-core-0.3.0.tgz#43511b541fc82ff916e7794b4cfaab50d53ffac0"
-  integrity sha512-3pq8uONOQ2YNmKKMZVTCvdX5ayp2bN1mCKn5+L++fjGXc78OpW74ljgm64mCdjpJ6UMYlWA9FZkHfwnRRsriLg==
+dapp-core@^0.4.0:
+  version "0.4.0"
+  resolved "https://registry.yarnpkg.com/dapp-core/-/dapp-core-0.4.0.tgz#cf6c85aa9216e9a9d1e11aa5aca925c73d6ae1e8"
+  integrity sha512-B0kjq7G+FIDQNb8DiJH5pess9AYiaPRGjMjtT9S+T0uhkKm0l0XtY34mV0eQnjNuCvrIHPv2uSpFt6i/N43z6w==
   dependencies:
     apollo-cache-inmemory "^1.6.2"
     apollo-client "^2.6.3"
