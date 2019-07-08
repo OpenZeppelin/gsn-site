@@ -1,11 +1,31 @@
+const {
+  colors
+} = require('tailwindcss/defaultTheme')
+
 module.exports = {
   theme: {
     extend: {
+      fill: theme => ({
+        'indigo': theme('colors.indigo.500')
+      }),
       colors: {
         gray: {
+          ...colors.gray,
           '100': '#f8f8f8',
         },
-        indigo: '#5c6ac4',
+        teal: {
+          ...colors.teal,
+          '200': '#63D2F9'
+        },
+        blue: {
+          ...colors.blue,
+          '300': '#63B0F9',
+          '900': '#282846',
+        },
+        indigo: {
+          ...colors.indigo,
+          '500': '#4E5EE4',
+        },
       },
       container: {
         center: true,
