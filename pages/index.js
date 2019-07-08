@@ -5,9 +5,13 @@ import { queries } from 'dapp-core'
 import { networkIdToName } from 'lib/utils/networkIdToName'
 import { LandingPageForm } from 'lib/components/LandingPageForm'
 
+import '../styles/index.css'
+
 function Home() {
   return (
-    <div>
+    <div
+      className="p-4 shadow rounded bg-white"
+    >
       <p>
         Welcome to Next.js!
       </p>

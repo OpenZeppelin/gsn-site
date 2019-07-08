@@ -18,8 +18,10 @@ class MyApp extends App {
 
     return (
       <Container>
-        <Link href='/'><a title='Home'>Home</a></Link>
-        <Component {...pageProps} />
+        <div className='container'>
+          <Link href='/'><a title='Home'>Home</a></Link>
+          <Component {...pageProps} />
+        </div>
       </Container>
     );
   }
