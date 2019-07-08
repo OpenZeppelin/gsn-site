@@ -1,24 +1,43 @@
 import React, { PureComponent } from 'react'
-import { withRouter } from 'next/router'
 import PropTypes from 'prop-types'
-import { graphql, withApollo } from 'react-apollo'
-import { react } from 'dapp-core'
+import { graphql } from 'react-apollo'
+import { ethers } from 'ethers'
 
 import { ConnectWallet } from 'lib/components/ConnectWallet'
-import { withSendTransaction } from './hoc/withSendTransaction'
-import { withEthereumPermissionQuery } from './hoc/withEthereumPermissionQuery';
+import { relayBalancesQuery } from 'lib/queries/relayBalancesQuery'
 import { relayQuery } from 'lib/queries/relayQuery'
 import { relayHubTargetSubscription } from '../subscriptions/relayHubTargetSubscription'
+import { ZERO_ADDRESS } from 'lib/constants'
+import { withFormProps } from 'lib/components/hoc/withFormProps'
+import { RegisterRelayForm } from './RegisterRelayForm';
 
-export const RelayForm = react.withTransactionEe(withSendTransaction(withApollo(withRouter(withEthereumPermissionQuery(graphql(relayQuery, {
-  name: 'relayQuery',
-  options: (props) => ({
-    variables: {
-      relayHubAddress: props.relayHubAddress,
-      relayAddress: props.relayAddress
-    }
-  })
-})(class _RelayHubForm extends PureComponent {
+export const RelayForm = withFormProps(
+  graphql(relayBalancesQuery, {
+    name: 'relayBalancesQuery',
+    options: (props) => ({
+      variables: {
+        relayHubAddress: props.relayHubAddress,
+        relayAddress: props.relayAddress
+      }
+    })
+  })(
+  graphql(relayQuery, {
+    name: 'relayQuery',
+    skip: (props) => {
+      const skip =
+        !props.relayBalancesQuery ||
+        !props.relayBalancesQuery.owner ||
+        props.relayBalancesQuery.owner === ZERO_ADDRESS
+      return skip
+    },
+    options: (props) => ({
+      variables: {
+        relayHubAddress: props.relayHubAddress,
+        relayAddress: props.relayAddress
+      }
+    })
+  })(
+class _RelayHubForm extends PureComponent {
   static propTypes = {
     relayHubAddress: PropTypes.string.isRequired,
     relayAddress: PropTypes.string.isRequired
@@ -27,8 +46,9 @@ export const RelayForm = react.withTransactionEe(withSendTransaction(withApollo(
   constructor (props) {
     super(props)
     this.state = {
-      stake: '0',
-      deposit: '0'
+      stake: '',
+      deposit: '',
+      unstakeDelay: ''
     }
   }
 
@@ -40,12 +60,37 @@ export const RelayForm = react.withTransactionEe(withSendTransaction(withApollo(
         targetAddress: this.props.relayAddress
       }
     }).subscribe(() => {
-      this.props.relayQuery.refetch()
+      this.props.relayBalancesQuery.refetch()
     })
   }
 
   componentWillUnmount () {
     this.subscription.unsubscribe()
+  }
+
+  componentDidUpdate (oldProps) {
+    console.log(this.state.unstakeDelay, this.unstakeDelay())
+    if (this.state.unstakeDelay === '' && this.unstakeDelay() !== undefined) {
+      this.setState({
+        unstakeDelay: this.unstakeDelay()
+      })
+    }
+  }
+
+  unstakeDelay () {
+    const { relayQuery } = this.props
+
+    let relay
+    if (relayQuery && relayQuery.RelayHub) {
+      relay = relayQuery.RelayHub.relay
+    }
+
+    let unstakeDelay
+    if (relay) {
+      unstakeDelay = relay.unstakeDelay
+    }
+
+    return unstakeDelay
   }
 
   handleSubmitStake = (e) => {
@@ -55,8 +100,8 @@ export const RelayForm = react.withTransactionEe(withSendTransaction(withApollo(
         contractAddress: this.props.relayHubAddress,
         contractName: 'RelayHub',
         method: 'stake',
-        args: [this.props.relayAddress, '30'],
-        value: this.state.stake
+        args: [this.props.relayAddress, this.state.unstakeDelay],
+        value: ethers.utils.parseEther(this.state.stake)
       }
     }).then(({ data }) => {
       this.props.ee(data.sendTransaction.id)
@@ -66,7 +111,7 @@ export const RelayForm = react.withTransactionEe(withSendTransaction(withApollo(
         .on('receipt', () => {
           console.log('accepted!')
           this.setState({
-            stake: '0'
+            stake: ''
           })
         })
     })
@@ -79,10 +124,8 @@ export const RelayForm = react.withTransactionEe(withSendTransaction(withApollo(
       contractName: 'RelayHub',
       method: 'depositFor',
       args: [this.props.relayAddress],
-      value: this.state.deposit
+      value: ethers.utils.parseEther(this.state.deposit)
     }
-
-    console.log(variables)
 
     this.props.sendTransaction({
       variables
@@ -94,17 +137,22 @@ export const RelayForm = react.withTransactionEe(withSendTransaction(withApollo(
         .on('receipt', () => {
           console.log('accepted!')
           this.setState({
-            deposit: '0'
+            deposit: ''
           })
         })
     })
   }
 
   render () {
-    const { relayQuery, ethereumPermissionQuery } = this.props
-    const { RelayHub, loading, error } = relayQuery
+    const { relayBalancesQuery, ethereumPermissionQuery, relayQuery } = this.props
+    const { RelayHub, loading, error } = relayBalancesQuery || {}
 
-    const { ethereumPermission } = ethereumPermissionQuery
+    let relay
+    if (relayQuery && relayQuery.RelayHub) {
+      relay = relayQuery.RelayHub.relay
+    }
+
+    const { ethereumPermission } = ethereumPermissionQuery || {}
 
     let connect
     if (!ethereumPermission) {
@@ -116,41 +164,63 @@ export const RelayForm = react.withTransactionEe(withSendTransaction(withApollo(
     if (loading) {
       return '...'
     } else if (error) {
+      console.error(error)
       return 'The address provided is not a valid relay'
     } else {
-      const { owner, stake, balance, relay } = RelayHub
+      let relayForm
+      if (!relay) { // then it has been registered as a Relay
+        relayForm = <RegisterRelayForm relayHubAddress={this.props.relayHubAddress} />
+      }
 
-      const { unstakeDelay } = relay
+      const { owner, stake, balance } = RelayHub || {}
+      const unstakeDelay = this.unstakeDelay() || '0'
 
       return (
         <>
           <p>
-            Owner: {owner.toString()}
+            Owner: {owner ? owner.toString() : ZERO_ADDRESS}
           </p>  
           <p>
-            Stake: {stake.toString()}
+            Stake: {stake ? ethers.utils.formatEther(stake) : '0'}
           </p>
           <p>
-            Balance: {balance.toString()}
+            Balance: {balance ? ethers.utils.formatEther(balance) : '0'}
           </p>
 
           <p>
-            Unstake Delay: {unstakeDelay.toString()}
+            Unstake Delay: {unstakeDelay ? unstakeDelay.toString() : '?'}
           </p>
 
           {connect}
 
+          <form onSubmit={this.handleSubmitDeposit}>
+            <input
+              placeholder='deposit (eth)'
+              disabled={!ethereumPermission} type='number' value={this.state.deposit} onChange={(e) => this.setState({deposit: e.target.value})} />
+            <input disabled={!ethereumPermission} type='submit' value='Deposit' />
+          </form>
+
           <form onSubmit={this.handleSubmitStake}>
-            <input disabled={!ethereumPermission} type='number' value={this.state.stake} onChange={(e) => this.setState({stake: e.target.value})} />
+            <input
+              placeholder='stake (eth)'
+              disabled={!ethereumPermission}
+              type='number'
+              value={this.state.stake}
+              onChange={(e) => this.setState({stake: e.target.value})} />
+
+            <input
+              placeholder='unstake delay (s)'
+              disabled={!ethereumPermission}
+              type='number'
+              value={this.state.unstakeDelay}
+              onChange={(e) => this.setState({unstakeDelay: e.target.value})} />
+
             <input disabled={!ethereumPermission} type='submit' value='Stake' />
           </form>
 
-          <form onSubmit={this.handleSubmitDeposit}>
-            <input disabled={!ethereumPermission} type='number' value={this.state.deposit} onChange={(e) => this.setState({deposit: e.target.value})} />
-            <input disabled={!ethereumPermission} type='submit' value='Deposit' />
-          </form>
+          {relayForm}
         </>
       )
     }
   }
-}))))))
+})))

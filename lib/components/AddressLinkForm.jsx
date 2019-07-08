@@ -4,7 +4,12 @@ import PropTypes from 'prop-types'
 
 export const AddressLinkForm = withRouter(class _AddressLinkForm extends PureComponent {
   static propTypes = {
-    formatUrl: PropTypes.func.isRequired
+    formatUrl: PropTypes.func.isRequired,
+    placeholder: PropTypes.string
+  }
+
+  static defaultProps = {
+    placeholder: 'enter an address'
   }
 
   constructor (props) {
@@ -28,6 +33,7 @@ export const AddressLinkForm = withRouter(class _AddressLinkForm extends PureCom
         <input
           className='flex-1 bg-gray-200 hover:bg-white hover:border-gray-300 focus:outline-none focus:bg-white focus:shadow-outline focus:border-gray-300 appearance-none border border-transparent rounded w-full py-2 px-4 text-gray-700 leading-tight '
           type='text'
+          placeholder={this.props.placeholder}
           value={this.state.address}
           onChange={(e) => this.setState({address: e.target.value}) }
         />

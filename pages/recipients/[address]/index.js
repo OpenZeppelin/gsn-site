@@ -2,7 +2,7 @@ import { DynamicApolloWrapper } from 'lib/components/DynamicApolloWrapper'
 import { useRouter } from 'next/router'
 import { RecipientForm } from 'lib/components/RecipientForm'
 
-function Dashboard() {
+function RecipientDashboard() {
   const router = useRouter()
   const { address } = router.query
 
@@ -18,4 +18,4 @@ function Dashboard() {
   )
 }
 
-export default Dashboard;
+export default RecipientDashboard;

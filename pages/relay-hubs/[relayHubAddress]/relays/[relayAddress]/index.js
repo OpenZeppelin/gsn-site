@@ -2,9 +2,11 @@ import { useRouter } from 'next/router'
 import { RelayForm } from 'lib/components/RelayForm'
 import { DynamicApolloWrapper } from 'lib/components/DynamicApolloWrapper'
 
-function Dashboard() {
+function RelayDashboard() {
   const router = useRouter()
   const { relayHubAddress, relayAddress } = router.query
+
+  console.log('re-render [relayAddress]/index.html')
 
   return (
     <div>
@@ -22,4 +24,4 @@ function Dashboard() {
   )
 }
 
-export default Dashboard;
+export default RelayDashboard;
