@@ -48,9 +48,9 @@ export const Nav = class _Nav extends Component {
 
             </div>
             <div>
-              <a href='#' className='inline-block text-sm px-4 py-2 leading-none border rounded text-indigo-500 border-indigo-500 hover:border-indigo-300 hover:text-indigo-300 mt-4 lg:mt-0'>
-                Download
-            </a>
+              <a href='#' className='inline-block font-silkaMedium text-bold text-sm px-4 py-2 leading-none border rounded text-black border-white hover:text-indigo-500 mt-4 lg:mt-0'>
+                Section 1
+              </a>
             </div>
           </div>
       </nav>
