@@ -3,7 +3,9 @@ import { withRouter } from 'next/router'
 import PropTypes from 'prop-types'
 import { withApollo } from 'react-apollo'
 
+import { formatRelayUrl } from 'lib/utils/formatRelayUrl'
 import { RelayUrlForm } from 'lib/components/RelayUrlForm'
+import { InputForm } from 'lib/components/InputForm'
 import { AddressLinkForm } from 'lib/components/AddressLinkForm'
 
 export const RelayHubForm = withApollo(withRouter(class _RelayHubForm extends PureComponent {
@@ -11,19 +13,25 @@ export const RelayHubForm = withApollo(withRouter(class _RelayHubForm extends Pu
     relayHubAddress: PropTypes.string.isRequired
   }
 
-  handleRelayUrl = (url) => {
-    this.props.client.query(relayAddressQuery)
+  handleRelayUrl = (relayUrl) => {
+    const { relayHubAddress } = this.props
+
+    this.props.router.push(
+      formatRelayUrl({ relayHubAddress, relayUrl })
+    )
   }
 
   render () {
+    const { relayHubAddress } = this.props
     return (
       <>
         <h2>Access Relay</h2>
         <AddressLinkForm
-          formatUrl={(address) => `/relay-hubs/${this.props.relayHubAddress}/relays/${address}`}
+          formatUrl={(relayAddress) => formatRelayUrl({ relayHubAddress, relayAddress })}
           />
-        <RelayUrlForm
-          relayHubAddress={this.props.relayHubAddress}
+        <InputForm
+          onSubmit={this.handleRelayUrl}
+          placeholder='enter relay url'
           />
       </>
     )

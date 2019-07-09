@@ -4,7 +4,7 @@ import { DynamicApolloWrapper } from 'lib/components/DynamicApolloWrapper'
 
 function RelayDashboard() {
   const router = useRouter()
-  const { relayHubAddress, relayAddress } = router.query
+  const { relayHubAddress, relayAddress, relayUrl } = router.query
 
   console.log('re-render [relayAddress]/index.html')
 
@@ -13,12 +13,12 @@ function RelayDashboard() {
       <p>
         Relay Hub {relayHubAddress}
       </p>
-      <p>
-        Relay {relayAddress}
-      </p>
 
       <DynamicApolloWrapper>
-        <RelayForm relayHubAddress={relayHubAddress} relayAddress={relayAddress} />
+        <RelayForm
+          relayHubAddress={relayHubAddress}
+          relayAddress={relayAddress}
+          relayUrl={relayUrl} />
       </DynamicApolloWrapper>
     </div>
   )

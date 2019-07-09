@@ -4,6 +4,7 @@ import { graphql } from 'react-apollo'
 import Link from 'next/link'
 import parse from 'url-parse'
 
+import { formatRelayUrl } from 'lib/utils/formatRelayUrl'
 import { relayAddressQuery } from 'lib/queries/relayAddressQuery'
 
 export const RelayUrlLink = graphql(relayAddressQuery, {
@@ -37,7 +38,7 @@ class _RelayUrlLink extends PureComponent {
     if (relayAddress) {
       return (
         <>
-          <Link href={`/relay-hubs/${relayHubAddress}/relays/${relayAddress}`}>
+          <Link href={formatRelayUrl({ relayHubAddress, relayAddress })}>
             Go to Relay
           </Link>
         </>
