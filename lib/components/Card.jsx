@@ -1,0 +1,24 @@
+import React from 'react'
+
+export const Card = ({ img, text, url, large }) => {
+
+  const horizontalPadding = large ? 'px-16' : 'px-10'
+  const verticalPadding = large ? 'pt-10 pb-16' : 'py-8'
+
+  return (
+    <div className='max-w-sm overflow-hidden shadow-lg'>
+      <div className='text-center p-10 h-30 border-solid border-b border-gray-400'>
+        {img}
+      </div>
+
+      <div className={`${horizontalPadding} ${verticalPadding}`}>
+        <p className='text-sm'>
+          {text}
+        </p>
+      </div>
+      <div className={`${horizontalPadding} pt-6 pb-12`}>
+        <a className='font-silkaMedium uppercase text-sm' href={url}>Go To Link &gt;</a>
+      </div>
+    </div>
+  )
+}
