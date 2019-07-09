@@ -1,6 +1,8 @@
 import { useRouter } from 'next/router'
+import Link from 'next/link'
 
 import { MainLayout } from 'lib/components/layout/MainLayout'
+import { Section } from 'lib/components/layout/Section'
 import { DynamicApolloWrapper } from 'lib/components/DynamicApolloWrapper'
 import { RelayHubForm } from 'lib/components/RelayHubForm'
 
@@ -8,21 +10,16 @@ function RelayHubDashboard () {
   const router = useRouter()
   const { relayHubAddress } = router.query
 
-  console.log('re-render [relayHubAddress]/index.html')
-
   return (
     <MainLayout>
-      <div
-        className='container'
-      >
-        <p>
-          Relay Hub {relayHubAddress}
-        </p>
-
-        <DynamicApolloWrapper>
+      <DynamicApolloWrapper>
+        <Section>
+          <p>
+            <Link href='/relay-hubs'>Relay Hubs</Link> &raquo; {relayHubAddress}
+          </p>
           <RelayHubForm relayHubAddress={relayHubAddress} />
-        </DynamicApolloWrapper>
-      </div>
+        </Section>
+      </DynamicApolloWrapper>
     </MainLayout>
   )
 }

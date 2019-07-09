@@ -1,4 +1,5 @@
 import React, { PureComponent } from 'react'
+import Link from 'next/link'
 import PropTypes from 'prop-types'
 import { graphql, withApollo, Query } from 'react-apollo'
 import { ConnectWallet } from 'lib/components/ConnectWallet'
@@ -118,7 +119,7 @@ export const RecipientForm = react.withTransactionEe(withApollo(withSendTransact
           Recipient balance is {balance ? ethers.utils.formatEther(balance) : '?'}
         </p>
         <p>
-          Relay Hub is {relayHubAddress || '?'}
+          Relay Hub is {relayHubAddress ? <Link href={`/relay-hubs/${relayHubAddress}`}>{relayHubAddress}</Link> : '?'}
         </p>
 
         {connect}

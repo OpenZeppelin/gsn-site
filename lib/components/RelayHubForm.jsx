@@ -4,7 +4,6 @@ import PropTypes from 'prop-types'
 import { withApollo } from 'react-apollo'
 
 import { formatRelayUrl } from 'lib/utils/formatRelayUrl'
-import { RelayUrlForm } from 'lib/components/RelayUrlForm'
 import { InputForm } from 'lib/components/InputForm'
 import { AddressLinkForm } from 'lib/components/AddressLinkForm'
 

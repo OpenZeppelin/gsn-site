@@ -154,9 +154,6 @@ export const RelayForm = withFormProps(withRelay(
         return (
           <>
             <p>
-              Relay: {relayAddress}
-            </p>
-            <p>
               Owner: {owner ? owner.toString() : ZERO_ADDRESS}
             </p>  
             <p>
@@ -173,7 +170,7 @@ export const RelayForm = withFormProps(withRelay(
             {connect}
 
             <form onSubmit={this.handleSubmitDeposit}>
-              <h2>Deposit for Relay</h2>
+              <h2>Deposit</h2>
               <input
                 placeholder='deposit (eth)'
                 disabled={!ethereumPermission} type='number' value={this.state.deposit} onChange={(e) => this.setState({deposit: e.target.value})} />
@@ -181,7 +178,7 @@ export const RelayForm = withFormProps(withRelay(
             </form>
 
             <form onSubmit={this.handleSubmitStake}>
-              <h2>Stake Relay</h2>
+              <h2>Stake</h2>
 
               <input
                 placeholder='stake (eth)'

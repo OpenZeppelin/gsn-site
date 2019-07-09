@@ -1,34 +1,20 @@
 import React from 'react'
 
 import { DynamicApolloWrapper } from 'lib/components/DynamicApolloWrapper';
-import { Query } from 'react-apollo'
-import { queries } from 'dapp-core'
-
+import { AddressLinkForm } from 'lib/components/AddressLinkForm'
 import { MainLayout } from 'lib/components/layout/MainLayout'
-import { LandingPageForm } from 'lib/components/LandingPageForm'
-import { networkIdToName } from 'lib/utils/networkIdToName'
+import { Section } from 'lib/components/layout/Section'
 
 const RecipientsIndex = function() {
   return (
     <MainLayout>
       <DynamicApolloWrapper>
-        <p>
-          <Query query={queries.networkAccountQuery}>
-            {({ data, loading }) => {
-              console.log(data)
-              var network = 'loading...'
-              if (!loading) {
-                network =  networkIdToName(data.networkId)
-              }
-
-              return <>
-                This content is dynamically loaded from Ethereum network {network}
-              </>
-            }}
-          </Query>
-        </p>
-
-        <LandingPageForm />
+        <Section>
+          <AddressLinkForm
+            title='Access Recipient'
+            formatUrl={(address) => `/recipients/${address}`}
+          />
+        </Section>
       </DynamicApolloWrapper>
     </MainLayout>
   )

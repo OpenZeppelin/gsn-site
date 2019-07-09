@@ -35,17 +35,20 @@ export const InputForm = class _InputForm extends PureComponent {
         <h3>
           {this.props.title}
         </h3>
-        <input
-          className='flex-1 bg-white hover:border-gray-300 focus:outline-none focus:shadow-outline focus:border-gray-300 appearance-none border border-transparent rounded py-2 px-4 text-gray-700 leading-tight '
-          type='text'
-          placeholder={this.props.placeholder}
-          value={this.state.value}
-          onChange={(e) => this.setState({value: e.target.value}) }
-        />
-        <input type='submit' value={this.props.buttonText}
-          disabled={!this.state.value}
-          className='ml-4 flex-shrink-0 bg-blue-500 hover:bg-blue-300 focus:outline-none focus:shadow-outline text-white font-bold py-2 px-4 rounded cursor-pointer'
-        />
+
+        <div className='flex'>
+          <input
+            className='flex-1 bg-white hover:border-gray-300 focus:outline-none focus:shadow-outline focus:border-gray-300 appearance-none border border-transparent rounded py-2 px-4 text-gray-700 leading-tight '
+            type='text'
+            placeholder={this.props.placeholder}
+            value={this.state.value}
+            onChange={(e) => this.setState({value: e.target.value}) }
+          />
+          <input type='submit' value={this.props.buttonText}
+            disabled={!this.state.value}
+            className='ml-4 flex-shrink-0 bg-blue-500 hover:bg-blue-300 focus:outline-none focus:shadow-outline text-white font-bold py-2 px-4 rounded cursor-pointer'
+          />
+        </div>
       </form>
     )
   }
