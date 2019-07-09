@@ -1,7 +1,16 @@
 @tailwind base;
-@tailwind components;
-@tailwind utilities;
-@tailwind screens;
+
+h1 {
+  @apply text-2xl;
+}
+
+h2 {
+  @apply text-xl;
+}
+
+h3 {
+  @apply text-lg;
+}
 
 * {
   box-sizing: border-box;
@@ -13,14 +22,24 @@ body {
   @apply bg-white font-sans;
 }
 
+blockquote,
+dl,
+dd,
 h1,
 h2,
 h3,
 h4,
 h5,
-h6 {
-  @apply font-silkaMedium;
+h6,
+figure,
+p,
+pre {
+  margin: 0.5rem 0;
 }
+
+@tailwind components;
+@tailwind utilities;
+@tailwind screens;
 
 .nav-title {
   padding-top: 4px;

@@ -5,6 +5,23 @@ const {
 module.exports = {
   theme: {
     extend: {
+      boxShadow: {
+        'default': '0 4px 5px 0 rgba(0, 0, 0, .13), 0 3px 4px 0 rgba(0, 0, 0, .08)',
+        'md': '0 4px 6px -1px rgba(0, 0, 0, .1), 0 2px 4px -1px rgba(0, 0, 0, .06)',
+        'lg': '0 10px 15px -3px rgba(0, 0, 0, .1), 0 4px 6px -2px rgba(0, 0, 0, .05)',
+        'xl': '0 20px 25px -5px rgba(0, 0, 0, .1), 0 10px 10px -5px rgba(0, 0, 0, .04)',
+        '2xl': '0 25px 50px -12px rgba(0, 0, 0, .25)',
+        '3xl': '0 35px 60px -15px rgba(0, 0, 0, .3)',
+        'inner': 'inset 0 2px 4px 0 rgba(0,0,0,0.06)',
+        'outline': '0 0 0 3px rgba(66,153,225,0.5)',
+        'focus': '0 0 0 3px rgba(66,153,225,0.5)',
+        'none': 'none',
+      },
+      fontSize: {
+        '4xl': '2rem',
+        '5xl': '2.5rem',
+        '6xl': '3rem',
+      },
       fontFamily: {
         'silkaBlack': ['Silka Black'],
         'silkaBold': ['Silka Bold'],
@@ -49,12 +66,11 @@ module.exports = {
         padding: '2rem',
       },
       screens: {
-        'tablet': '640px',
+        'sm': '640px',
         // => @media (min-width: 640px) { ... }
-        'laptop': '1024px',
-        // => @media (min-width: 1024px) { ... }
-        'desktop': '1280px',
-        // => @media (min-width: 1280px) { ... }
+        'md': '768px',
+        'lg': '768px',
+        'xl': '1020px',
       },
       backgroundColor: theme => ({
         ...theme('colors'),

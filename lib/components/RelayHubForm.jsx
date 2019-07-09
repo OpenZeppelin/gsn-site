@@ -25,8 +25,8 @@ export const RelayHubForm = withApollo(withRouter(class _RelayHubForm extends Pu
     const { relayHubAddress } = this.props
     return (
       <>
-        <h2>Access Relay</h2>
         <AddressLinkForm
+          title='Access Relay'
           formatUrl={(relayAddress) => formatRelayUrl({ relayHubAddress, relayAddress })}
           />
         <InputForm
