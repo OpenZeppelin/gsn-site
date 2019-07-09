@@ -24,18 +24,24 @@ export const RelayForm = withFormProps(
   graphql(relayQuery, {
     name: 'relayQuery',
     skip: (props) => {
+      // return true
       const skip =
-        !props.relayBalancesQuery ||
-        !props.relayBalancesQuery.owner ||
-        props.relayBalancesQuery.owner === ZERO_ADDRESS
+        !props.relayBalancesQuery.RelayHub ||
+        !props.relayBalancesQuery.RelayHub.owner ||
+        props.relayBalancesQuery.RelayHub.owner === ZERO_ADDRESS
+      console.log('SKIPPING RELAY QUEWRY: ', skip, props.relayBalancesQuery)
       return skip
     },
-    options: (props) => ({
-      variables: {
+    options: (props) => {
+      const variables = {
         relayHubAddress: props.relayHubAddress,
         relayAddress: props.relayAddress
       }
-    })
+      console.log('relayQuery variables: ', variables)
+      return {
+        variables
+      }
+    }
   })(
 class _RelayHubForm extends PureComponent {
   static propTypes = {
@@ -48,7 +54,8 @@ class _RelayHubForm extends PureComponent {
     this.state = {
       stake: '',
       deposit: '',
-      unstakeDelay: ''
+      unstakeDelay: '',
+      relayAddress: ''
     }
   }
 
@@ -69,7 +76,6 @@ class _RelayHubForm extends PureComponent {
   }
 
   componentDidUpdate (oldProps) {
-    console.log(this.state.unstakeDelay, this.unstakeDelay())
     if (this.state.unstakeDelay === '' && this.unstakeDelay() !== undefined) {
       this.setState({
         unstakeDelay: this.unstakeDelay()
@@ -194,6 +200,7 @@ class _RelayHubForm extends PureComponent {
           {connect}
 
           <form onSubmit={this.handleSubmitDeposit}>
+            <h2>Deposit for Relay</h2>
             <input
               placeholder='deposit (eth)'
               disabled={!ethereumPermission} type='number' value={this.state.deposit} onChange={(e) => this.setState({deposit: e.target.value})} />
@@ -201,6 +208,8 @@ class _RelayHubForm extends PureComponent {
           </form>
 
           <form onSubmit={this.handleSubmitStake}>
+            <h2>Stake Relay</h2>
+
             <input
               placeholder='stake (eth)'
               disabled={!ethereumPermission}

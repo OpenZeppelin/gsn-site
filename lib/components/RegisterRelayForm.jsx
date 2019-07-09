@@ -17,8 +17,7 @@ export const RegisterRelayForm = graphql(queries.networkAccountQuery, { name: 'n
       super(props)
       this.state = {
         transactionFee: '0',
-        url: '',
-        stake: '0'
+        url: ''
       }
     }
 
@@ -29,8 +28,7 @@ export const RegisterRelayForm = graphql(queries.networkAccountQuery, { name: 'n
           contractAddress: this.props.relayHubAddress,
           contractName: 'RelayHub',
           method: 'registerRelay',
-          args: [this.state.transactionFee, this.state.url],
-          value: ethers.utils.parseEther(this.state.stake)
+          args: [this.state.transactionFee, this.state.url]
         }
       }).then(({ data }) => {
         this.props.ee(data.sendTransaction.id)
@@ -58,13 +56,10 @@ export const RegisterRelayForm = graphql(queries.networkAccountQuery, { name: 'n
           <>
 
             <form onSubmit={this.handleRegisterRelay}>
+              <h2>Register Relay</h2>
+              
               <div>
                 Relay address: {account}
-              </div>
-
-              <div>
-                <label htmlFor='transaction-fee'>Stake (Eth)</label>
-                <input disabled={!ethereumPermission} type='number' value={this.state.stake} onChange={(e) => this.setState({stake: e.target.value })} />
               </div>
 
               <div>
