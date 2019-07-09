@@ -5,6 +5,23 @@ const {
 module.exports = {
   theme: {
     extend: {
+      fontFamily: {
+        'silkaBlack': ['Silka Black'],
+        'silkaBold': ['Silka Bold'],
+        'silkaExtraLight': ['Silka ExtraLight'],
+        'silkaLight': ['Silka Light'],
+        'silkaMedium': ['Silka Medium'],
+        'silkaRegular': ['Silka Regular'],
+        'silkaSemiBold': ['Silka SemiBold'],
+        'silkaThin': ['Silka Thin'],
+        'sans': ['Helvetica Neue', 'Helvetica', 'Roboto', 'Arial', 'sans-serif'],
+      },
+      // spacing: {
+      //   sm: '8px',
+      //   md: '16px',
+      //   lg: '24px',
+      //   xl: '48px',
+      // },
       fill: theme => ({
         'indigo': theme('colors.indigo.500')
       }),
