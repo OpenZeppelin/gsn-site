@@ -6,6 +6,7 @@ import { networkIdToName } from 'lib/utils/networkIdToName'
 import { LandingPageForm } from 'lib/components/LandingPageForm'
 
 import '../styles/index.css'
+import '../styles/_fonts.css'
 
 function Home() {
   return (
@@ -15,7 +16,7 @@ function Home() {
       <div
         className='container'
       >
-        <p>
+        <p className='font-display'>
           Welcome to Next.js!
         </p>
         <DynamicApolloWrapper>

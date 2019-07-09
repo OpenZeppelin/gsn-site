@@ -3,6 +3,25 @@
 @tailwind utilities;
 @tailwind screens;
 
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0
+}
+
 body {
-  @apply bg-white;
+  @apply bg-white font-sans;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  @apply font-silkaMedium;
+}
+
+.nav-title {
+  padding-top: 4px;
 }

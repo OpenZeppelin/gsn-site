@@ -19,6 +19,7 @@
     "ethers": "^4.0.32",
     "graphql": "^14.4.2",
     "next": "^8.1.1-canary.68",
+    "next-fonts": "^0.17.0",
     "react": "^16.8.6",
     "react-dom": "^16.8.6"
   },

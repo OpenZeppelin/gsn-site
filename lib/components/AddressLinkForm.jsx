@@ -31,7 +31,7 @@ export const AddressLinkForm = withRouter(class _AddressLinkForm extends PureCom
     return (
       <form onSubmit={this.handleSubmitAddress}>
         <input
-          className='flex-1 bg-white hover:border-gray-300 focus:outline-none focus:shadow-outline focus:border-gray-300 appearance-none border border-transparent rounded w-full py-2 px-4 text-gray-700 leading-tight '
+          className='flex-1 bg-white hover:border-gray-300 focus:outline-none focus:shadow-outline focus:border-gray-300 appearance-none border border-transparent rounded py-2 px-4 text-gray-700 leading-tight '
           type='text'
           placeholder={this.props.placeholder}
           value={this.state.address}
