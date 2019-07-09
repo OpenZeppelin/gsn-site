@@ -12,14 +12,14 @@ function RecipientDashboard() {
 
   return (
     <MainLayout>
-      <DynamicApolloWrapper>
         <Section>
           <p>
             <Link href='/recipients'>Recipients</Link> &raquo; {address}
           </p>
-          <RecipientForm recipientAddress={address} />
+          <DynamicApolloWrapper>
+            <RecipientForm recipientAddress={address} />
+          </DynamicApolloWrapper>
         </Section>
-      </DynamicApolloWrapper>
     </MainLayout>
   )
 }
