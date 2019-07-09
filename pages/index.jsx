@@ -5,6 +5,7 @@ import { BenefitColumns } from 'lib/components/BenefitColumns'
 import { BuildSeamlessApps } from 'lib/components/BuildSeamlessApps'
 import { GSNTools } from 'lib/components/GSNTools'
 import { Hero } from 'lib/components/Hero'
+import { UsersAndAlliance } from 'lib/components/UsersAndAlliance'
 
 const Home = function() {
   return (
@@ -13,6 +14,7 @@ const Home = function() {
       <BenefitColumns />
       <BuildSeamlessApps />
       <GSNTools />
+      <UsersAndAlliance />
     </MainLayout>
   )
 }
