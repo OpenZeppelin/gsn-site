@@ -88,3 +88,30 @@
     font-style: normal;
 }
 
+@font-face {
+    font-family: 'Helvetica Neue Thin';
+    font-style: normal;
+    font-weight: normal;
+    src: url('../fonts/HelveticaNeue-Thin.woff') format('woff');
+}
+
+@font-face {
+    font-family: 'Helvetica Neue Light';
+    font-style: normal;
+    font-weight: normal;
+    src: url('../fonts/HelveticaNeue-Light.woff') format('woff');
+}
+
+@font-face {
+    font-family: 'Helvetica Neue Regular';
+    font-style: normal;
+    font-weight: normal;
+    src: url('../fonts/HelveticaNeue-Roman.woff') format('woff');
+}
+
+@font-face {
+    font-family: 'Helvetica Neue Bold';
+    font-style: normal;
+    font-weight: normal;
+    src: url('../fonts/HelveticaNeueBold.woff') format('woff');
+}

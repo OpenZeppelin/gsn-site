@@ -6,18 +6,13 @@ module.exports = {
   theme: {
     extend: {
       boxShadow: {
-        'default': '0 4px 5px 0 rgba(0, 0, 0, .13), 0 3px 4px 0 rgba(0, 0, 0, .08)',
-        'md': '0 4px 6px -1px rgba(0, 0, 0, .1), 0 2px 4px -1px rgba(0, 0, 0, .06)',
-        'lg': '0 10px 15px -3px rgba(0, 0, 0, .1), 0 4px 6px -2px rgba(0, 0, 0, .05)',
-        'xl': '0 20px 25px -5px rgba(0, 0, 0, .1), 0 10px 10px -5px rgba(0, 0, 0, .04)',
-        '2xl': '0 25px 50px -12px rgba(0, 0, 0, .25)',
-        '3xl': '0 35px 60px -15px rgba(0, 0, 0, .3)',
-        'inner': 'inset 0 2px 4px 0 rgba(0,0,0,0.06)',
-        'outline': '0 0 0 3px rgba(66,153,225,0.5)',
-        'focus': '0 0 0 3px rgba(66,153,225,0.5)',
-        'none': 'none',
+        'default': '0 4px 5px 0 rgba(0, 0, 0, .13), 0 3px 4px 0 rgba(0, 0, 0, .08)'
+      },
+      lineHeight: {
+        relaxed: 1.75
       },
       fontSize: {
+        'md': '1.075rem',
         '4xl': '2rem',
         '5xl': '2.5rem',
         '6xl': '3rem',
@@ -31,7 +26,24 @@ module.exports = {
         'silkaRegular': ['Silka Regular'],
         'silkaSemiBold': ['Silka SemiBold'],
         'silkaThin': ['Silka Thin'],
+        'helveticaNeueThin': ['Helvetica Neue Thin'],
+        'helveticaNeueLight': ['Helvetica Neue Light'],
+        'helveticaNeueRegular': ['Helvetica Neue Regular'],
+        'helveticaNeueBold': ['Helvetica Neue Bold'],
         'sans': ['Helvetica Neue', 'Helvetica', 'Roboto', 'Arial', 'sans-serif'],
+      },
+      opacity: {
+        '0': '0',
+        '10': '.1',
+        '20': '.2',
+        '30': '.3',
+        '40': '.4',
+        '50': '.5',
+        '60': '.6',
+        '70': '.7',
+        '80': '.8',
+        '90': '.9',
+        '100': '1',
       },
       // spacing: {
       //   sm: '8px',
@@ -71,13 +83,7 @@ module.exports = {
         'md': '768px',
         'lg': '768px',
         'xl': '1020px',
-      },
-      backgroundColor: theme => ({
-        ...theme('colors'),
-        'primary': '#3490dc',
-        'secondary': '#ffed4a',
-        'danger': '#e3342f',
-      })
+      }
     },
   },
   variants: {},
