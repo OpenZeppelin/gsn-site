@@ -1,5 +1,15 @@
 @tailwind base;
 
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0
+}
+
+body {
+  @apply bg-white font-helveticaNeueLight;
+}
+
 h1 {
   @apply text-2xl;
 }
@@ -12,14 +22,8 @@ h3 {
   @apply text-lg;
 }
 
-* {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0
-}
-
-body {
-  @apply bg-white font-sans;
+a {
+  @apply text-indigo-500;
 }
 
 blockquote,
@@ -35,6 +39,20 @@ figure,
 p,
 pre {
   margin: 0.5rem 0;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+  {
+  @apply opacity-90;
+}
+
+p {
+  @apply opacity-80 tracking-wider;
 }
 
 @tailwind components;

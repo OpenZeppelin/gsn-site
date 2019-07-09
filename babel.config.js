@@ -2,12 +2,15 @@ module.exports = function (api) {
   api.cache(true)
 
   const presets = [
-    "next/babel"
+    'next/babel'
   ]
 
   const plugins = [
     [
-      "babel-plugin-root-import"
+       'inline-react-svg'
+    ],
+    [
+      'babel-plugin-root-import'
     ]
   ]
 
