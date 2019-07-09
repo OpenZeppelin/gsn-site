@@ -1,5 +1,5 @@
-import Meta from './meta'
-import Footer from './footer'
+import Meta from './Meta'
+import Footer from './Footer'
 
 import '~/styles/index.css'
 import '~/styles/fonts.css'
