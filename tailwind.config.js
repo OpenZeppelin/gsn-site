@@ -4,9 +4,17 @@ const {
 
 module.exports = {
   theme: {
+    minWidth: {
+      '0': '0',
+      '1/4': '25%',
+      '1/2': '50%',
+      '3/4': '75%',
+      'full': '100%',
+    },
     extend: {
       boxShadow: {
-        'default': '0 4px 5px 0 rgba(0, 0, 0, .13), 0 3px 4px 0 rgba(0, 0, 0, .08)'
+        'default': '0 4px 5px 0 rgba(0, 0, 0, .13), 0 3px 4px 0 rgba(0, 0, 0, .08)',
+        'lg': '0 6px 25px -2px rgba(0, 0, 0, 0.1), 0 4px 15px -1px rgba(0, 0, 0, 0.05)',
       },
       lineHeight: {
         relaxed: 1.75
