@@ -3,6 +3,7 @@ import PropTypes from 'prop-types'
 import { graphql, withApollo } from 'react-apollo'
 import { ConnectWallet } from 'lib/components/ConnectWallet'
 import { react } from 'dapp-core'
+import { ethers } from 'ethers'
 
 import { recipientQuery } from '../queries/recipientQuery'
 import { withSendTransaction } from './hoc/withSendTransaction'
@@ -29,7 +30,7 @@ export const RecipientForm = react.withTransactionEe(withApollo(withSendTransact
   constructor (props) {
     super(props)
     this.state = {
-      depositAmount: 0
+      depositAmount: ''
     }
   }
 
@@ -70,7 +71,7 @@ export const RecipientForm = react.withTransactionEe(withApollo(withSendTransact
         contractName: 'RelayHub',
         method: 'depositFor',
         args: [this.props.recipientAddress],
-        value: this.state.depositAmount
+        value: ethers.utils.parseEther(this.state.depositAmount).toString()
       }
     }).then(({ data }) => {
       this.props.ee(data.sendTransaction.id)
@@ -80,7 +81,7 @@ export const RecipientForm = react.withTransactionEe(withApollo(withSendTransact
         .on('receipt', () => {
           console.log('accepted!')
           this.setState({
-            depositAmount: '0'
+            depositAmount: ''
           })
         })
     })
@@ -110,12 +111,13 @@ export const RecipientForm = react.withTransactionEe(withApollo(withSendTransact
     } else if (loading) {
       return '...'
     } else {
+      const { balance, relayHubAddress } = RelayRecipient || {}
       return <>
         <p>
-          Recipient balance is {RelayRecipient.balance.toString()}
+          Recipient balance is {balance ? ethers.utils.formatEther(balance) : '?'}
         </p>
         <p>
-          Relay Hub is {RelayRecipient.relayHubAddress.toString()}
+          Relay Hub is {relayHubAddress || '?'}
         </p>
 
         {connect}
