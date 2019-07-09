@@ -2,12 +2,8 @@ import React from 'react'
 
 export const Hero = function() {
   return (
-    <div
-      className='pt-20 pb-12 bg-gray-100'
-    >
-      <div
-        className='container'
-      >
+    <div className='pt-20 pb-12 bg-gray-100'>
+      <div className='container'>
         <div className='w-9/12 mx-auto'>
           <div className='text-center'>
             <h1 className='font-silkaSemiBold text-4xl'>

@@ -61,3 +61,7 @@ p {
 .nav-title {
   padding-top: 4px;
 }
+
+.card-custom-max-width {
+  max-width: 27rem;
+}

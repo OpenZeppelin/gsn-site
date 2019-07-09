@@ -3,11 +3,11 @@ import React from 'react'
 export const Card = ({ img, text, url, large }) => {
 
   const horizontalPadding = large ? 'px-16' : 'px-10'
-  const verticalPadding = large ? 'pt-10 pb-16' : 'py-8'
+  const verticalPadding = large ? 'pt-10 pb-24' : 'py-8'
 
   return (
-    <div className='max-w-sm overflow-hidden shadow-lg'>
-      <div className='text-center p-10 h-30 border-solid border-b border-gray-400'>
+    <div className='bg-white overflow-hidden shadow-lg'>
+      <div className='text-center flex justify-center p-12 h-30 border-solid border-b border-gray-400'>
         {img}
       </div>
 
