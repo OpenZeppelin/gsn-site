@@ -1,11 +1,12 @@
 import React, { PureComponent } from 'react'
 import PropTypes from 'prop-types'
-import { graphql, withApollo } from 'react-apollo'
+import { graphql, withApollo, Query } from 'react-apollo'
 import { ConnectWallet } from 'lib/components/ConnectWallet'
 import { react } from 'dapp-core'
 import { ethers } from 'ethers'
 
 import { recipientQuery } from '../queries/recipientQuery'
+import { relayHubQuery } from '../queries/relayHubQuery'
 import { withSendTransaction } from './hoc/withSendTransaction'
 import { withEthereumPermissionQuery } from './hoc/withEthereumPermissionQuery';
 import { relayHubTargetSubscription } from '../subscriptions/relayHubTargetSubscription'
@@ -122,10 +123,24 @@ export const RecipientForm = react.withTransactionEe(withApollo(withSendTransact
 
         {connect}
 
-        <form onSubmit={this.handleSubmitDeposit}>
-          <input disabled={!ethereumPermission} type='number' value={this.state.depositAmount} onChange={(e) => this.setState({depositAmount: e.target.value})} />
-          <input disabled={!ethereumPermission} type='submit' value='Deposit' />
-        </form>
+        <Query query={relayHubQuery} variables={{relayHubAddress}}>
+          {({data, loading, error}) => {
+            if (loading) {
+              return <></>
+            } else if (error) {
+              console.error(error)
+              return <></>
+            } else {
+              const { maximumDeposit } = data.RelayHub
+              return (
+                <form onSubmit={this.handleSubmitDeposit}>
+                  <input disabled={!ethereumPermission} type='number' min='0' max={ethers.utils.formatEther(maximumDeposit)} value={this.state.depositAmount} onChange={(e) => this.setState({depositAmount: e.target.value})} />
+                  <input disabled={!ethereumPermission} type='submit' value='Deposit' />
+                </form>
+              )
+            }
+          }}
+        </Query>
       </>
     }
   }
