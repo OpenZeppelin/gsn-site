@@ -26,10 +26,11 @@ export const RelayHubForm = withApollo(withRouter(class _RelayHubForm extends Pu
     return (
       <>
         <AddressLinkForm
-          title='Access Relay'
+          title='Lookup Relay by Address'
           formatUrl={(relayAddress) => formatRelayUrl({ relayHubAddress, relayAddress })}
           />
         <InputForm
+          title='Lookup Relay by Url'
           onSubmit={this.handleRelayUrl}
           placeholder='enter relay url'
           />
