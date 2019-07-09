@@ -15,9 +15,11 @@ export const AddressLinkForm = withRouter(class _AddressLinkForm extends PureCom
   }
 
   handleSubmitAddress = (address) => {
-    this.props.router.push(
-      this.props.formatUrl(address)
-    )
+    const url = this.props.formatUrl(address)
+    console.log('navigating to: ', url)
+    // this.props.router.push(
+    //   this.props.formatUrl(address)
+    // )
   }
 
   render () {
