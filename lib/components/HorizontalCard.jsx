@@ -4,14 +4,14 @@ import Link from 'next/link'
 export const HorizontalCard = ({ title, img, text, btnText, btnUrl }) => {
 
   return (
-    <div class="card-custom-height w-full lg:flex">
-      <div class="bg-white flex flex-wrap shadow-md hover:shadow-lg rounded flex flex-col justify-between trans trans-fast">
-        <div class="px-10 py-12 w-26">
+    <div className="card-custom-height w-full lg:flex">
+      <div className="bg-white flex flex-wrap shadow-md hover:shadow-lg rounded flex flex-col justify-between trans trans-fast">
+        <div className="px-10 py-12 w-26">
           {img}
         </div>
         
-        <div class="w-auto pt-8 pr-48 mb-8">
-          <div class="text-gray-900 font-silkaMedium text-xl mb-4">
+        <div className="w-auto pt-8 pr-48 mb-8">
+          <div className="text-gray-900 font-silkaMedium text-xl mb-4">
             <Link
               href={btnUrl}
             >

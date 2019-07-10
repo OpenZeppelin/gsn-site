@@ -12,8 +12,6 @@ function RelayDashboard() {
   const router = useRouter()
   const { relayHubAddress, relayAddress, relayUrl } = router.query
 
-  console.log('re-render [relayAddress]/index.html')
-
   return (
     <MainLayout>
       <DynamicApolloWrapper>
