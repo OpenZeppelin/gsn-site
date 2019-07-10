@@ -15,7 +15,7 @@ export const UsersAndAlliance = function() {
             </blockquote>
             <p className='text-white my-8'>
               <img
-                srcset='/static/eich.png 1x, /static/eich@2x.png 2x'
+                srcSet='/static/eich.png 1x, /static/eich@2x.png 2x'
                 src='/static/eich.png'
                 alt='Brendan Eich photo'
                 className='inline-block mr-4'
@@ -30,7 +30,7 @@ export const UsersAndAlliance = function() {
             </blockquote>
             <p className='text-white my-8'>
               <img
-                srcset='/static/eich.png 1x, /static/eich@2x.png 2x'
+                srcSet='/static/eich.png 1x, /static/eich@2x.png 2x'
                 src='/static/eich.png'
                 alt='Brendan Eich photo'
                 className='inline-block mr-4'

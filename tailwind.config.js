@@ -27,6 +27,7 @@ module.exports = {
         relaxed: 1.75
       },
       fontSize: {
+        'xxs': '0.65rem',
         'md': '1.075rem',
         '4xl': '2rem',
         '5xl': '2.5rem',

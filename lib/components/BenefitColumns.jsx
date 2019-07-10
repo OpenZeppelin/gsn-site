@@ -10,7 +10,7 @@ export const BenefitColumns = function() {
       className='pt-32 pb-20 bg-white'
     >
       <div className='container'>
-        <div className='flex flex-wrap -mx-6'>
+        <div className='flex flex-wrap items-baseline -mx-6'>
           <div className='w-1/3 mb-4 px-6'>
             <OpenSourceImg />
             <h3 className='font-silkaMedium text-xl opacity-90 pt-4 pb-2'>

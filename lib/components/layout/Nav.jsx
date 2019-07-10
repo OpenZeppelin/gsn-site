@@ -58,9 +58,8 @@ export const Nav = class _Nav extends Component {
               </NavLink>
             </div>
           </div>
-      </nav>
-        </div>
-        
+        </nav>
+      </div>
     )
   }
 }

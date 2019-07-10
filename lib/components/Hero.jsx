@@ -13,8 +13,8 @@ export const Hero = function() {
           </h2>
 
           <a
-            href='#'
-            className='font-silkaSemiBold shadow uppercase rounded tracking-wider bg-indigo-500 hover:bg-indigo-600 text-white p-2 px-4 inline-block trans trans-slow'
+            href='https://github.com/tabookey/tabookey-gasless'
+            className='font-silkaSemiBold shadow uppercase rounded tracking-wider bg-indigo-500 hover:bg-indigo-600 text-white hover:text-white p-2 px-4 inline-block trans trans-slow'
           >
             Use GSN in your application
           </a>

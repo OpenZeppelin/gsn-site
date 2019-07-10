@@ -25,7 +25,7 @@ export const GSNAlliance = function() {
           <div className='w-1/4 mb-20 px-6 -mt-2'>
             <a href='https://www.tabookey.com'>
               <img
-                srcset='/static/tabookey-logo.png 1x, /static/tabookey-logo@2x.png 2x'
+                srcSet='/static/tabookey-logo.png 1x, /static/tabookey-logo@2x.png 2x'
                 src='/static/tabookey-logo.png'
                 alt='Tabookey logo'
                 className='mx-auto hover:opacity-80 trans trans-fast'
@@ -50,7 +50,7 @@ export const GSNAlliance = function() {
           <div className='w-1/4 mb-20 px-6 -mt-2'>
             <a href='https://www.metacartel.org'>
               <img
-                srcset='/static/metacartel-logo.png 1x, /static/metacartel-logo@2x.png 2x'
+                srcSet='/static/metacartel-logo.png 1x, /static/metacartel-logo@2x.png 2x'
                 src='/static/metacartel-logo.png'
                 alt='MetaCartel logo'
                 className='mx-auto hover:opacity-80 trans trans-fast'
@@ -60,7 +60,7 @@ export const GSNAlliance = function() {
           <div className='w-1/4 mb-20 px-6 -mt-6'>
             <a href='https://github.com/austintgriffith/burner-wallet'>
               <img
-                srcset='/static/burnerwallet-logo.png 1x, /static/burnerwallet-logo@2x.png 2x'
+                srcSet='/static/burnerwallet-logo.png 1x, /static/burnerwallet-logo@2x.png 2x'
                 src='/static/burnerwallet-logo.png'
                 alt='burner wallet logo'
                 className='mx-auto hover:opacity-80 trans trans-fast'
