@@ -6,6 +6,10 @@
   padding: 0
 }
 
+html {
+  overflow-x: hidden;
+}
+
 body {
   @apply bg-white font-helveticaNeueLight;
 }
@@ -99,13 +103,16 @@ button:focus {
   padding-top: 4px;
 }
 
-.card-custom-max-width {
-  max-width: 27rem;
+@screen lg {
+  .card-custom-max-width {
+    max-width: 27rem;
+  }
+  
+  .card-custom-height {
+    height: 18rem;
+  }
 }
 
-.card-custom-height {
-  height: 18rem;
-}
 
 .max-width-1\/2 {
   max-width: 50%;

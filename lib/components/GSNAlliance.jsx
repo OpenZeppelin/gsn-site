@@ -15,14 +15,13 @@ export const GSNAlliance = function() {
           </h2>
         </div>
 
-
-        <div className='flex flex-wrap justify-center -mx-6 mt-20'>
-          <div className='w-1/4 mb-20 px-6'>
+        <div className='flex flex-wrap justify-center items-center content-center -mx-6 mt-20'>
+          <div className='md:w-1/4 mb-20 px-20 sm:px-12 md:px-6'>
             <a href='https://openzeppelin.org'>
               <OpenZeppelinColorLogo className='mx-auto hover:opacity-80 trans trans-fast' />
             </a>
           </div>
-          <div className='w-1/4 mb-20 px-6 -mt-2'>
+          <div className='md:w-1/4 mb-20 px-20 sm:px-12 md:px-6 md:-mt-1'>
             <a href='https://www.tabookey.com'>
               <img
                 srcSet='/static/tabookey-logo.png 1x, /static/tabookey-logo@2x.png 2x'
@@ -32,22 +31,22 @@ export const GSNAlliance = function() {
               />
             </a>
           </div>
-          <div className='w-1/4 mb-20 px-6'>
+          <div className='md:w-1/4 mb-20 px-20 sm:px-12 md:px-6'>
             <a href='https://www.portis.io'>
               <PortisLogo className='mx-auto hover:opacity-80 trans trans-fast' width='98' height='30' />
             </a>
           </div>
-          <div className='w-1/4 mb-20 px-6'>
+          <div className='md:w-1/4 mb-20 px-20 sm:px-12 md:px-6'>
             <a href='https://pillarproject.io'>
               <PillarLogo className='mx-auto hover:opacity-80 trans trans-fast' />
             </a>
           </div>
-          <div className='w-1/4 mb-20 px-6'>
+          <div className='md:w-1/4 mb-20 px-20 sm:px-12 md:px-6'>
             <a href='https://groundhog.network'>
               <GroundhogLogo className='mx-auto hover:opacity-80 trans trans-fast' />
             </a>
           </div>
-          <div className='w-1/4 mb-20 px-6 -mt-2'>
+          <div className='md:w-1/4 mb-20 px-20 sm:px-12 md:px-6 md:-mt-1'>
             <a href='https://www.metacartel.org'>
               <img
                 srcSet='/static/metacartel-logo.png 1x, /static/metacartel-logo@2x.png 2x'
@@ -57,7 +56,7 @@ export const GSNAlliance = function() {
               />
             </a>
           </div>
-          <div className='w-1/4 mb-20 px-6 -mt-6'>
+          <div className='md:w-1/4 mb-20 px-20 sm:px-12 md:px-6 -mt-6'>
             <a href='https://github.com/austintgriffith/burner-wallet'>
               <img
                 srcSet='/static/burnerwallet-logo.png 1x, /static/burnerwallet-logo@2x.png 2x'

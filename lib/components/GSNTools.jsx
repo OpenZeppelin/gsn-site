@@ -15,8 +15,8 @@ export const GSNTools = function() {
           </h2>
         </div>
 
-        <div className='flex flex-wrap -mx-32'>
-          <div className='max-w-1/2 mt-16 mb-4 px-6'>
+        <div className='flex flex-wrap lg:-mx-32'>
+          <div className='lg:max-w-1/2 mt-16 mb-4 lg:px-6'>
             <HorizontalCard
               img={<ManageStar />}
               title='Manage your application &gt;'
@@ -26,7 +26,7 @@ export const GSNTools = function() {
             />
           </div>
 
-          <div className='max-w-1/2 mt-16 mb-4 px-6'>
+          <div className='lg:max-w-1/2 mt-16 mb-4 lg:px-6'>
             <HorizontalCard
               img={<ParticipateStar />}
               title='Participate in the network &gt;'

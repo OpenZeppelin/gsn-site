@@ -8,8 +8,8 @@ export default () => (
   <footer className='bg-blue-900 text-white'>
     <div className='container pt-16 pb-6'>
 
-      <nav className='flex items-center justify-between flex-wrap py-4'>
-        <div className='flex items-center flex-shrink-0 text-blue-900 mr-6'>
+      <nav className='md:flex items-center justify-between flex-wrap py-4'>
+        <div className='md:flex items-center flex-shrink-0 text-blue-900 mr-6'>
           <a href='https://openzeppelin.org'><OpenZeppelinWhiteLogo /></a>
         </div>
 
@@ -18,20 +18,20 @@ export default () => (
         >
           <div className='text-sm lg:flex-grow'></div>
 
-          <a href='https://github.com/tabookey/tabookey-gasless' className='inline-block font-silkaMedium text-bold text-sm text-white pl-16 pt-1 leading-none mt-4 lg:mt-0'>
+          <a href='https://github.com/tabookey/tabookey-gasless' className='block md:inline-block font-silkaMedium text-bold text-sm text-white pr-6 lg:pr-0 lg:pl-16 pt-1 leading-none mt-4 lg:mt-0'>
             GitHub
           </a>
-          <a href='#' className='inline-block font-silkaMedium text-bold text-sm text-white pl-16 pt-1 leading-none mt-4 lg:mt-0'>
+          <a href='#' className='block md:inline-block font-silkaMedium text-bold text-sm text-white pr-6 lg:pr-0 lg:pl-16 pt-1 leading-none mt-4 lg:mt-0'>
             Products
           </a>
           <Link href='/recipients'>
-            <a href='#' className='inline-block font-silkaMedium text-bold text-sm text-white pl-16 pt-1 leading-none mt-4 lg:mt-0'>
+            <a href='#' className='block md:inline-block font-silkaMedium text-bold text-sm text-white pr-6 lg:pr-0 lg:pl-16 pt-1 leading-none mt-4 lg:mt-0'>
               Dapp Tool
             </a>
           </Link>
 
           <Link href='/relay-hubs'>
-            <a href='#' className='inline-block font-silkaMedium text-bold text-sm text-white pl-16 pt-1 leading-none mt-4 lg:mt-0'>
+            <a href='#' className='block md:inline-block font-silkaMedium text-bold text-sm text-white pr-6 lg:pr-0 lg:pl-16 pt-1 leading-none mt-4 lg:mt-0'>
               Relayer Tool
             </a>
           </Link>
