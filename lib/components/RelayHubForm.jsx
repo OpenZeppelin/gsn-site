@@ -7,7 +7,7 @@ import { formatRelayUrl } from 'lib/utils/formatRelayUrl'
 import { InputForm } from 'lib/components/InputForm'
 import { AddressLinkForm } from 'lib/components/AddressLinkForm'
 
-export const RelayHubForm = withApollo(withRouter(class _RelayHubForm extends PureComponent {
+export const RelayHubForm = withRouter(class _RelayHubForm extends PureComponent {
   static propTypes = {
     relayHubAddress: PropTypes.string.isRequired
   }
@@ -36,4 +36,4 @@ export const RelayHubForm = withApollo(withRouter(class _RelayHubForm extends Pu
       </>
     )
   }
-}))
+})

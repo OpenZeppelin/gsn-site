@@ -9,10 +9,12 @@ import { ethers } from 'ethers'
 import { recipientQuery } from '../queries/recipientQuery'
 import { relayHubQuery } from '../queries/relayHubQuery'
 import { withSendTransaction } from './hoc/withSendTransaction'
-import { withEthereumPermissionQuery } from './hoc/withEthereumPermissionQuery';
+import { withEthereumPermissionQuery } from './hoc/withEthereumPermissionQuery'
+import { withNetworkAccountQuery } from './hoc/withNetworkAccountQuery'
 import { relayHubTargetSubscription } from '../subscriptions/relayHubTargetSubscription'
 
 export const RecipientForm = react.withTransactionEe(withApollo(withSendTransaction(
+  withNetworkAccountQuery(
   withEthereumPermissionQuery(
   graphql(recipientQuery, {
     name: 'recipientQuery',
@@ -96,9 +98,16 @@ export const RecipientForm = react.withTransactionEe(withApollo(withSendTransact
   }
 
   render () {
-    const { recipientQuery, ethereumPermissionQuery } = this.props
+    const {
+      recipientQuery,
+      ethereumPermissionQuery,
+      networkAccountQuery
+    } = this.props
+    const { networkId, account } = networkAccountQuery
     const { RelayRecipient, error, loading } = recipientQuery
     const { ethereumPermission } = ethereumPermissionQuery
+
+    console.log(networkId, account)
 
     let connect
     if (!ethereumPermission) {
@@ -145,4 +154,4 @@ export const RecipientForm = react.withTransactionEe(withApollo(withSendTransact
       </>
     }
   }
-})))))
+}))))))

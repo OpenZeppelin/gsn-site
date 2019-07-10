@@ -1,6 +1,5 @@
 import React from 'react'
 
-import { DynamicApolloWrapper } from 'lib/components/DynamicApolloWrapper'
 import { MainLayout } from 'lib/components/layout/MainLayout'
 import { AddressLinkForm } from 'lib/components/AddressLinkForm'
 import { Section } from 'lib/components/layout/Section'
@@ -9,12 +8,14 @@ const RelayHubsIndex = function() {
   return (
     <MainLayout>
       <Section>
-        <DynamicApolloWrapper>
-          <AddressLinkForm
-            title='Access Relay Hub'
-            formatUrl={(address) => `/relay-hubs/${address}`}
-          />
-        </DynamicApolloWrapper>
+        <h1>Relay Tool</h1>
+        <p>
+          
+        </p>
+        <AddressLinkForm
+          title='Access Relay Hub'
+          formatUrl={(address) => `/relay-hubs/${address}`}
+        />
       </Section>
     </MainLayout>
   )

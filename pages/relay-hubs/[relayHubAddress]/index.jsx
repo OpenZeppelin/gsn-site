@@ -13,7 +13,7 @@ function RelayHubDashboard () {
     <MainLayout>
       <Section>
         <p>
-          <Link href='/relay-hubs'>Relay Hubs</Link> &raquo; {relayHubAddress}
+          <Link href='/relay-hubs'><a>Relay Hubs</a></Link> &raquo; {relayHubAddress}
         </p>
         <RelayHubForm relayHubAddress={relayHubAddress} />
       </Section>

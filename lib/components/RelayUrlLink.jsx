@@ -39,7 +39,7 @@ class _RelayUrlLink extends PureComponent {
       return (
         <>
           <Link href={formatRelayUrl({ relayHubAddress, relayAddress })}>
-            Go to Relay
+            <a>Go to Relay</a>
           </Link>
         </>
       )

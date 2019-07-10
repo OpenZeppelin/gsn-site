@@ -26,8 +26,9 @@ function RelayDashboard() {
                 return (
                   <>
                     <p>
-                      <Link href='/relay-hubs'>Relay Hubs</Link> &raquo;&nbsp;
-                      <Link href={`/relay-hubs/${relayHubAddress}`}>{utils.shortenAddress(relayHubAddress)}</Link> &raquo;&nbsp;
+                      <Link href='/relay-hubs'><a>Relay Hubs</a></Link> &raquo;&nbsp;
+                      <Link href={`/relay-hubs/${relayHubAddress}`}><a>{utils.shortenAddress(relayHubAddress)}</a></Link> &raquo;&nbsp;
+                      Relay &raquo;&nbsp;
                       {relayWrapperProps.relayAddress}
                     </p>
                   </>

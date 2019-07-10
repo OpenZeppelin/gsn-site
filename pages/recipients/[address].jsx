@@ -14,7 +14,7 @@ function RecipientDashboard() {
     <MainLayout>
       <Section>
         <p>
-          <Link href='/recipients'>Recipients</Link> &raquo; {address}
+          <Link href='/recipients'><a>Recipients</a></Link> &raquo; {address}
         </p>
         <DynamicApolloWrapper>
           <RecipientForm recipientAddress={address} />

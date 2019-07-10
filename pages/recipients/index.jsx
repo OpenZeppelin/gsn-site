@@ -10,10 +10,10 @@ const RecipientsIndex = function() {
       <Section>
         <h1>Dapp Tool</h1>
         <p>
-          Check and top-up your contract balances using the dapp tool.
+          Check your contract balances and make deposits using the Dapp Tool.  You'll want to make sure the contract has enough balance to cover transaction costs for users.
         </p>
         <p>
-          Enter your contract address below.  The contract must implement the <a href='https://github.com/tabookey/tabookey-gasless/blob/master/contracts/RelayRecipient.sol' target='_blank' rel='noopen' rel='noreferrer'>RelayRecipient</a> interface.
+          Enter the contract address below.  The contract must implement the <a href='https://github.com/tabookey/tabookey-gasless/blob/master/contracts/RelayRecipient.sol' target='_blank' rel='noopen' rel='noreferrer'>RelayRecipient</a> interface.
         </p>
         <AddressLinkForm
           title=''

@@ -2,6 +2,8 @@ import React, { Component } from 'react'
 import classnames from 'classnames'
 import Link from 'next/link'
 
+import { NavLink } from './NavLink'
+
 export const Nav = class _Nav extends Component {
   state = {
     menuOpen: false
@@ -48,9 +50,12 @@ export const Nav = class _Nav extends Component {
 
             </div>
             <div>
-              <a href='#' className='inline-block font-silkaMedium text-bold text-sm px-4 py-2 leading-none border rounded text-black border-white hover:text-indigo-500 mt-4 lg:mt-0'>
-                Section 1
-              </a>
+              <NavLink href='/recipients'>
+                Dapp Tool
+              </NavLink>
+              <NavLink href='/relay-hubs'>
+                Relay Tool
+              </NavLink>
             </div>
           </div>
       </nav>
