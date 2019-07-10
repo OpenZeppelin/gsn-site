@@ -64,34 +64,34 @@ p {
 
 input[type='text'],
 textarea,
-button {
+button:not(.burger) {
   @apply font-silkaRegular flex-1 bg-white appearance-none border-2  border-transparent rounded py-2 px-4 text-gray-700 leading-tight;
 }
 
 input[type='text']:hover,
 textarea:hover,
-button:hover {
+button:not(.burger):hover {
   @apply border-gray-300;
 }
 
 input[type='text']:focus,
 textarea:focus,
-button:focus {
+button:not(.burger):focus {
   @apply outline-none shadow-outline border-gray-300;
 }
 
 input[type='submit'],
-button {
+button:not(.burger) {
   @apply font-silkaMedium text-sm border-blue-400 border-2 flex-shrink-0 bg-blue-500 text-white font-bold py-2 px-4 rounded cursor-pointer;
 }
 
 input[type='submit']:hover,
-button:hover {
+button:not(.burger):hover {
   @apply border-white bg-blue-300;
 }
 
 input[type='submit']:focus,
-button:focus {
+button:not(.burger):focus {
   @apply outline-none shadow-outline;
 }
 
@@ -100,7 +100,19 @@ button:focus {
 @tailwind screens;
 
 .nav-title {
-  padding-top: 4px;
+  padding-top: 2px;
+}
+
+@media (max-width: 768px) {
+  .animate-height-0 {
+    height: 0;
+    overflow: hidden;
+  }
+
+  .animate-height-40 {
+    height: 40px;
+    overflow: hidden;
+  }
 }
 
 @screen lg {
@@ -113,13 +125,16 @@ button:focus {
   }
 }
 
-
 .max-width-1\/2 {
   max-width: 50%;
 }
 
 .section-min-height {
   min-height: 70vh;
+}
+
+.burger {
+  transform: scale(0.6) translateX(20px);
 }
 
 .trans {

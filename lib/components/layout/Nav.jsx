@@ -16,39 +16,36 @@ export const Nav = class _Nav extends Component {
   render () {
     return (
       <div className='container'>
-        <nav className='flex items-center justify-between flex-wrap bg-white py-4'>
-          <div className='flex items-center flex-shrink-0 text-blue-900 mr-6'>
+        <nav className='flex items-center justify-between flex-wrap bg-white py-2'>
+          <div className='text-blue-900 mr-6'>
             <Link href='/'>
               <a
-                className='flex mt-4 lg:mt-0 text-indigo-500 hover:text-indigo-200 mr-4'
+                className='flex text-indigo-500 hover:text-indigo-200 mr-4 my-3 lg:my-2 lg:mt-3'
                 title='Home'
               >
                 <span className='font-silkaBlack text-4xl leading-none text-indigo-500 mr-4'>G<span className='text-blue-300'>S</span><span className='text-teal-200'>N</span></span>
-                <span className='font-silkaSemiBold text-lg text-blue-900 nav-title'>Gas Station Network</span>
+                <span className='font-silkaSemiBold text-lg text-blue-900 nav-title hidden sm:block'>Gas Station Network</span>
               </a>
             </Link>
           </div>
-          <div className='block lg:hidden'>
+          <div className='block md:hidden text-right'>
             <button
               onClick={this.toggleMenu}
-              className='flex items-center px-3 py-2 border rounded text-indigo-500 border-indigo-300 hover:text-indigo-300'
+              className='burger flex bg-white border-gray-100 items-center px-3 py-2 border-4 rounded text-gray-400'
             >
-              <svg className='fill-current h-3 w-3' viewBox='0 0 20 20' xmlns='http://www.w3.org/2000/svg'><title>Menu</title><path d='M0 3h20v2H0V3zm0 6h20v2H0V9zm0 6h20v2H0v-2z' /></svg>
+              <svg className='fill-current' height="32px" width="32px"><path d="M4,10h24c1.104,0,2-0.896,2-2s-0.896-2-2-2H4C2.896,6,2,6.896,2,8S2.896,10,4,10z M28,14H4c-1.104,0-2,0.896-2,2  s0.896,2,2,2h24c1.104,0,2-0.896,2-2S29.104,14,28,14z M28,22H4c-1.104,0-2,0.896-2,2s0.896,2,2,2h24c1.104,0,2-0.896,2-2  S29.104,22,28,22z" /></svg>
             </button>
           </div>
           <div
             className={classnames(
-              'w-full sm:flex flex-grow lg:items-center lg:w-auto',
+              'w-full flex-grow md:items-center md:w-auto md:flex trans trans-slow',
               {
-                hidden: !this.state.menuOpen,
-                block: this.state.menuOpen,
+                'animate-height-0': !this.state.menuOpen,
+                'animate-height-40': this.state.menuOpen,
               }
             )}
           >
-            <div className='text-sm lg:flex-grow'>
-              
-
-            </div>
+            <div className='text-sm md:flex-grow'></div>
             <div>
               <NavLink href='/recipients'>
                 Dapp Tool
