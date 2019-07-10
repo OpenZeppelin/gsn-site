@@ -26,6 +26,10 @@ a {
   @apply text-indigo-500;
 }
 
+a:hover {
+  @apply text-blue-600;
+}
+
 blockquote,
 dl,
 dd,
@@ -64,4 +68,36 @@ p {
 
 .card-custom-max-width {
   max-width: 27rem;
+}
+
+.card-custom-height {
+  height: 18rem;
+}
+
+.max-width-1\/2 {
+  max-width: 50%;
+}
+
+.trans {
+  transition: all .25s;
+}
+
+.trans-bg {
+  transition-property: background;
+}
+
+.trans-slow {
+  transition-duration: .5s;
+}
+
+.trans-slower {
+  transition-duration: .5s;
+}
+
+.trans-fast {
+  transition-duration: .15s;
+}
+
+.trans-faster {
+  transition-duration: .075s;
 }

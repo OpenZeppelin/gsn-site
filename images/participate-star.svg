@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="74" height="86" viewBox="0 0 74 86">
+  <g fill="none">
+    <polygon fill="#4E5EE4" points="37 0 74 24 0 24"/>
+    <polygon fill="#4E5EE4" points="37 62 74 86 0 86" transform="rotate(-180 37 74)"/>
+    <polygon fill="#4E5EE4" points="0 24 0 62 74 62 74 24"/>
+    <g stroke="#FFF" transform="translate(10 15)">
+      <circle cx="46.5" cy="16.5" r="4" fill="#FFF" stroke-width="3" transform="rotate(150 46.5 16.5)"/>
+      <circle cx="8.5" cy="38.5" r="4" fill="#FFF" stroke-width="3" transform="rotate(150 8.5 38.5)"/>
+      <path stroke-width="4" d="M44,18 L11,37"/>
+      <circle cx="27.5" cy="5.5" r="4" fill="#FFF" stroke-width="3" transform="rotate(90 27.5 5.5)"/>
+      <circle cx="27.5" cy="49.5" r="4" fill="#FFF" stroke-width="3" transform="rotate(90 27.5 49.5)"/>
+      <path stroke-width="4" d="M45.5595238,27.5 L9.2202381,27.5" transform="rotate(-90 27.5 27.5)"/>
+      <circle cx="46.5" cy="38.5" r="4" fill="#FFF" stroke-width="3" transform="rotate(-150 46.5 38.5)"/>
+      <circle cx="8.5" cy="16.5" r="4" fill="#FFF" stroke-width="3" transform="rotate(-150 8.5 16.5)"/>
+      <path stroke-width="4" d="M44,37 L11,18"/>
+    </g>
+  </g>
+</svg>

@@ -6,7 +6,7 @@ export const Card = ({ img, text, url, large }) => {
   const verticalPadding = large ? 'pt-10 pb-24' : 'py-8'
 
   return (
-    <div className='bg-white overflow-hidden shadow-lg'>
+    <div className='bg-white overflow-hidden shadow-md hover:shadow-lg trans trans-fast'>
       <div className='text-center flex justify-center p-12 h-30 border-solid border-b border-gray-400'>
         {img}
       </div>
