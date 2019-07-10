@@ -19,11 +19,13 @@
     "dapp-core": "^0.5.0",
     "ethers": "^4.0.32",
     "graphql": "^14.4.2",
+    "localforage": "^1.7.3",
     "next": "^8.1.1-canary.68",
     "next-fonts": "^0.17.0",
     "query-string": "^6.8.1",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
+    "react-select": "^3.0.4",
     "url-parse": "^1.4.7"
   },
   "scripts": {
