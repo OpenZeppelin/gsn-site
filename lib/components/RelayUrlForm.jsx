@@ -29,7 +29,7 @@ export const RelayUrlForm = class _RelayUrlForm extends PureComponent {
       <>
         <form onSubmit={this.handleSubmit}>
           <input
-            className='flex-1 bg-white hover:border-gray-300 focus:outline-none focus:shadow-outline focus:border-gray-300 appearance-none border border-transparent rounded w-full py-2 px-4 text-gray-700 leading-tight '
+            // className='flex-1 bg-white hover:border-gray-300 focus:outline-none focus:shadow-outline focus:border-gray-300 appearance-none border border-transparent rounded w-full py-2 px-4 text-gray-700 leading-tight '
             type='text'
             placeholder={'enter a url'}
             value={this.state.url}

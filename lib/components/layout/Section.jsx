@@ -2,8 +2,10 @@ import React from 'react'
 
 export function Section({ children }) {
   return (
-    <div className='container bg-gray-100 pt-4 pb-4'>
-      {children}
+    <div className='bg-gray-100 section-min-height'>
+      <div className='container py-12'>
+        {children}
+      </div>
     </div>
   )
 }

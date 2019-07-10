@@ -2,6 +2,7 @@ import React from 'react'
 
 import { Card } from 'lib/components/Card'
 
+import PillarLogo from '~/images/pillar-logo.svg'
 import PortisLogo from '~/images/portis-logo.svg'
 import OpenZeppelinLogo from '~/images/open-zeppelin-logo.svg'
 
@@ -25,25 +26,25 @@ export const BuildSeamlessApps = function() {
           <div className='max-w-sm mt-20 mb-4 px-6'>
             <Card
               img={<PortisLogo />}
-              text='Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam in dolor eget est blandit tincidunt. Vestibulum venenatis quam et libero vulputate pharetra. Proin non euismod risus. Maecenas vel arcu eu nunc egestas scelerisque quis viverra orci.'
-              url='https://google.ca'
+              text='With the Portis SDK, DApps get a standard web3 provider, and thanks to E2E encryption, their users get a non-custodial wallet and can sign transactions. all using their existing browser, with a familiar email and password login flow - no installation required!'
+              url='https://developers.portis.io'
             />
           </div>
 
           <div className='card-custom-max-width mt-10 mb-4 px-6'>
             <Card
               img={<OpenZeppelinLogo />}
-              text='Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam in dolor eget est blandit tincidunt. Vestibulum venenatis quam et libero vulputate pharetra. Proin non euismod risus. Maecenas vel arcu eu nunc egestas scelerisque quis viverra orci.'
-              url='https://google.ca'
+              text='OpenZeppelin is a battle-tested library of reusable smart contracts for Ethereum and other blockchains. Reduce the risk of vulnerabilities in your applications by using standard, tested, community-reviewed code. Using industry standard contract security patterns and best practices.'
+              url='https://openzeppelin.org'
               large
             />
           </div>
 
           <div className='max-w-sm mt-20 mb-4 px-6'>
             <Card
-              img={<PortisLogo />}
+              img={<PillarLogo />}
               text='Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam in dolor eget est blandit tincidunt. Vestibulum venenatis quam et libero vulputate pharetra. Proin non euismod risus. Maecenas vel arcu eu nunc egestas scelerisque quis viverra orci.'
-              url='https://google.ca'
+              url='https://pillarproject.io'
             />
           </div>
         </div>

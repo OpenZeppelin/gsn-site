@@ -1,4 +1,5 @@
 import React from 'react'
+import Link from 'next/link'
 
 import { MainLayout } from 'lib/components/layout/MainLayout'
 import { AddressLinkForm } from 'lib/components/AddressLinkForm'

@@ -58,6 +58,39 @@ p {
   @apply opacity-80 tracking-wider text-blue-900;
 }
 
+input[type='text'],
+textarea,
+button {
+  @apply font-silkaRegular flex-1 bg-white appearance-none border-2  border-transparent rounded py-2 px-4 text-gray-700 leading-tight;
+}
+
+input[type='text']:hover,
+textarea:hover,
+button:hover {
+  @apply border-gray-300;
+}
+
+input[type='text']:focus,
+textarea:focus,
+button:focus {
+  @apply outline-none shadow-outline border-gray-300;
+}
+
+input[type='submit'],
+button {
+  @apply font-silkaMedium ml-4 text-sm border-blue-400 border-2 flex-shrink-0 bg-blue-500 text-white font-bold py-2 px-4 rounded cursor-pointer;
+}
+
+input[type='submit']:hover,
+button:hover {
+  @apply border-white bg-blue-300;
+}
+
+input[type='submit']:focus,
+button:focus {
+  @apply outline-none shadow-outline;
+}
+
 @tailwind components;
 @tailwind utilities;
 @tailwind screens;
@@ -76,6 +109,10 @@ p {
 
 .max-width-1\/2 {
   max-width: 50%;
+}
+
+.section-min-height {
+  min-height: 70vh;
 }
 
 .trans {

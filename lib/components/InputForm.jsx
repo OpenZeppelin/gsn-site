@@ -34,9 +34,9 @@ export const InputForm = class _InputForm extends PureComponent {
         onSubmit={this.handleSubmitValue}
         className='my-10'
       >
-        <h3>
+        <label className='font-silkaRegular'>
           {this.props.title}
-        </h3>
+        </label>
 
         <div className='flex'>
           <Input
