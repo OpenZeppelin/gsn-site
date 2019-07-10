@@ -16,7 +16,7 @@ export default () => (
         <div
           className='w-full sm:flex flex-grow lg:items-center lg:w-auto'
         >
-          <div class='text-sm lg:flex-grow'></div>
+          <div className='text-sm lg:flex-grow'></div>
 
           <a href='https://github.com/tabookey/tabookey-gasless' className='inline-block font-silkaMedium text-bold text-sm text-white pl-16 pt-1 leading-none mt-4 lg:mt-0'>
             GitHub
