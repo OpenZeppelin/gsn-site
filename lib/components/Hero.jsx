@@ -13,7 +13,10 @@ export const Hero = function() {
               Turn your dapps into apps. Free your users. No more Metamask. No more gas.
             </h2>
 
-            <a href='#' className='font-silkaSemiBold shadow uppercase rounded tracking-wider bg-indigo-500 text-white p-2 px-4 inline-block'>
+            <a
+              href='#'
+              className='font-silkaSemiBold shadow uppercase rounded tracking-wider bg-indigo-500 hover:bg-indigo-600 text-white p-2 px-4 inline-block trans trans-slow'
+            >
               Use GSN in your application
             </a>
             <p className='font-light text-sm tracking-wide'>

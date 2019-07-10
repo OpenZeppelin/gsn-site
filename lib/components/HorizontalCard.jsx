@@ -5,7 +5,7 @@ export const HorizontalCard = ({ title, img, text, btnText, btnUrl }) => {
 
   return (
     <div class="card-custom-height w-full lg:flex">
-      <div class="bg-white flex flex-wrap shadow-md rounded flex flex-col justify-between">
+      <div class="bg-white flex flex-wrap shadow-md hover:shadow-lg rounded flex flex-col justify-between trans trans-fast">
         <div class="px-10 py-12 w-26">
           {img}
         </div>
