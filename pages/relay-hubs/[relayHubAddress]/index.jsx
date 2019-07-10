@@ -3,7 +3,6 @@ import Link from 'next/link'
 
 import { MainLayout } from 'lib/components/layout/MainLayout'
 import { Section } from 'lib/components/layout/Section'
-import { DynamicApolloWrapper } from 'lib/components/DynamicApolloWrapper'
 import { RelayHubForm } from 'lib/components/RelayHubForm'
 
 function RelayHubDashboard () {
@@ -12,14 +11,12 @@ function RelayHubDashboard () {
 
   return (
     <MainLayout>
-      <DynamicApolloWrapper>
-        <Section>
-          <p>
-            <Link href='/relay-hubs'>Relay Hubs</Link> &raquo; {relayHubAddress}
-          </p>
-          <RelayHubForm relayHubAddress={relayHubAddress} />
-        </Section>
-      </DynamicApolloWrapper>
+      <Section>
+        <p>
+          <Link href='/relay-hubs'>Relay Hubs</Link> &raquo; {relayHubAddress}
+        </p>
+        <RelayHubForm relayHubAddress={relayHubAddress} />
+      </Section>
     </MainLayout>
   )
 }
