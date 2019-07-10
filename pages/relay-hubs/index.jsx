@@ -1,4 +1,5 @@
 import React from 'react'
+import Link from 'next/link'
 
 import { MainLayout } from 'lib/components/layout/MainLayout'
 import { AddressLinkForm } from 'lib/components/AddressLinkForm'
@@ -8,7 +9,9 @@ const RelayHubsIndex = function() {
   return (
     <MainLayout>
       <Section>
-        <h1>Relay Tool</h1>
+        <p>
+          <Link href='/relay-hubs'><a>Relay Hubs</a></Link>
+        </p>
         <p>
           
         </p>
