@@ -1,7 +1,7 @@
 import React, { PureComponent } from 'react'
 import { withRouter } from 'next/router'
 
-import { isAddress } from 'lib/utils/isAddress'
+import { DynamicApolloWrapper } from 'lib/components/DynamicApolloWrapper'
 import { isUrl } from 'lib/utils/isUrl'
 import { MainLayout } from 'lib/components/layout/MainLayout'
 import { Section } from 'lib/components/layout/Section'
@@ -12,23 +12,40 @@ import {
   Submit,
   Field
 } from 'lib/components/form'
+import { RelayHubSelect } from 'lib/components/RelayHubSelect'
+import { RelayUrlSelect } from 'lib/components/RelayUrlSelect'
+import { addRecentRelayHub } from 'lib/services/addRecentRelayHub'
+import { addRecentRelayUrl } from 'lib/services/addRecentRelayUrl'
 
 const RelaysIndex = class _RelaysIndex extends PureComponent {
   constructor(props) {
     super(props)
     this.state = {
-      relayHubAddress: '',
-      relayUrl: ''
+      relayUrlOption: null,
+      relayHubOption: null
     }
   }
 
-  handleSubmit = (e) => {
+  handleSubmit = async (e) => {
     e.preventDefault()
 
-    const { relayHubAddress, relayUrl } = this.state
+    const { relayHubOption, relayUrlOption } = this.state
 
-    if (isAddress(relayHubAddress) && isUrl(relayUrl)) {
-      this.props.router.push(formatRelayUrl({ relayHubAddress, relayUrl }))
+    if (relayHubOption && relayUrlOption) {
+      await addRecentRelayHub({
+        relayHubAddress: relayHubOption.value,
+        networkId: relayHubOption.networkId
+      })
+      await addRecentRelayUrl({
+        relayUrl: relayUrlOption.value,
+        networkId: relayUrlOption.networkId
+      })
+      this.props.router.push(
+        formatRelayUrl({
+          relayHubAddress: relayHubOption.value,
+          relayUrl: relayUrlOption.value
+        })
+      )
     }
   }
 
@@ -41,33 +58,31 @@ const RelaysIndex = class _RelaysIndex extends PureComponent {
             To view and manage a GSN Relay please enter the Relay Hub address and the Relay url below.
           </p>
 
-          <form onSubmit={this.handleSubmit}>
-            <Field className='flex'>
-              <AddressInput
-                className='flex-1'
-                type='text'
-                required
-                placeholder='enter the Relay Hub address'
-                value={this.state.relayHubAddress}
-                onChange={(e) => this.setState({relayHubAddress: e.target.value}) }
-                />
-            </Field>
+          <DynamicApolloWrapper>
+            <form onSubmit={this.handleSubmit}>
+              <Field className='flex'>
+                <RelayHubSelect
+                  className='flex-1'
+                  placeholder='enter the Relay Hub address'
+                  value={this.state.relayHubOption}
+                  onChange={(relayHubOption) => this.setState({relayHubOption}) }
+                  />
+              </Field>
 
-            <Field className='flex'>
-              <UrlInput
-                className='flex-1'
-                type='text'
-                required
-                placeholder='enter the Relay url'
-                value={this.state.relayUrl}
-                onChange={(e) => this.setState({relayUrl: e.target.value})}
-                />
-            </Field>
+              <Field className='flex'>
+                <RelayUrlSelect
+                  className='flex-1'
+                  placeholder='enter the Relay url'
+                  value={this.state.relayUrlOption}
+                  onChange={(relayUrlOption) => this.setState({relayUrlOption})}
+                  />
+              </Field>
 
-            <Field className='flex'>
-              <Submit value='Go' />
-            </Field>
-          </form>
+              <Field className='flex'>
+                <Submit value='Go' />
+              </Field>
+            </form>
+          </DynamicApolloWrapper>
         </Section>
       </MainLayout>
     )

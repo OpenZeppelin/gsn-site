@@ -107,8 +107,6 @@ export const RecipientForm = react.withTransactionEe(withApollo(withSendTransact
     const { RelayRecipient, error, loading } = recipientQuery
     const { ethereumPermission } = ethereumPermissionQuery
 
-    console.log(networkId, account)
-
     let connect
     if (!ethereumPermission) {
       connect = <div>
@@ -128,7 +126,7 @@ export const RecipientForm = react.withTransactionEe(withApollo(withSendTransact
           Recipient balance is {balance ? ethers.utils.formatEther(balance) : '?'}
         </p>
         <p>
-          Relay Hub is {relayHubAddress ? <Link href={`/relay-hubs/${relayHubAddress}`}>{relayHubAddress}</Link> : '?'}
+          Relay Hub is {relayHubAddress ? <Link href={`/relay-hubs/${relayHubAddress}`}><a>{relayHubAddress}</a></Link> : '?'}
         </p>
 
         {connect}
