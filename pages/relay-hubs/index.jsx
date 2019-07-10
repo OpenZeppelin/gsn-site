@@ -8,9 +8,9 @@ const RelayHubsIndex = function() {
   return (
     <MainLayout>
       <Section>
-        <h1>Relay Tool</h1>
+        <h1>Relay Hub Tool</h1>
         <p>
-          
+          To view a Relay Hub enter the contract address below.
         </p>
         <AddressLinkForm
           title='Access Relay Hub'

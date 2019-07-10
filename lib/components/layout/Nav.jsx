@@ -53,7 +53,7 @@ export const Nav = class _Nav extends Component {
               <NavLink href='/recipients'>
                 Dapp Tool
               </NavLink>
-              <NavLink href='/relay-hubs'>
+              <NavLink href='/relays'>
                 Relay Tool
               </NavLink>
             </div>

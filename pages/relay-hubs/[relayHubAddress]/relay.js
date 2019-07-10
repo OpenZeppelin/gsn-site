@@ -22,13 +22,10 @@ function RelayDashboard() {
             relayUrl={relayUrl}
             >
               {(relayWrapperProps) => {
-                console.log(relayWrapperProps)
                 return (
                   <>
                     <p>
-                      <Link href='/relay-hubs'><a>Relay Hubs</a></Link> &raquo;&nbsp;
-                      <Link href={`/relay-hubs/${relayHubAddress}`}><a>{utils.shortenAddress(relayHubAddress)}</a></Link> &raquo;&nbsp;
-                      Relay &raquo;&nbsp;
+                      <Link href='/relays'><a>Relays</a></Link> &raquo;&nbsp;
                       {relayWrapperProps.relayAddress}
                     </p>
                   </>

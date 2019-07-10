@@ -1,6 +1,8 @@
 import React, { PureComponent } from 'react'
 import PropTypes from 'prop-types'
 
+import { Input, Submit } from 'lib/components/form'
+
 export const InputForm = class _InputForm extends PureComponent {
   static propTypes = {
     title: PropTypes.string.isRequired,
@@ -37,16 +39,18 @@ export const InputForm = class _InputForm extends PureComponent {
         </h3>
 
         <div className='flex'>
-          <input
-            className='flex-1 bg-white hover:border-gray-300 focus:outline-none focus:shadow-outline focus:border-gray-300 appearance-none border border-transparent rounded py-2 px-4 text-gray-700 leading-tight '
+          <Input
+            className='flex-1'
             type='text'
+            required
             placeholder={this.props.placeholder}
             value={this.state.value}
             onChange={(e) => this.setState({value: e.target.value}) }
           />
-          <input type='submit' value={this.props.buttonText}
+          <Submit
+            value={this.props.buttonText}
             disabled={!this.state.value}
-            className='ml-4 flex-shrink-0 bg-blue-500 hover:bg-blue-300 focus:outline-none focus:shadow-outline text-white font-bold py-2 px-4 rounded cursor-pointer'
+            className='ml-4 flex-shrink-0'
           />
         </div>
       </form>
