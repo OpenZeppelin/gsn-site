@@ -2,7 +2,6 @@ import React from 'react'
 
 import { Card } from 'lib/components/Card'
 
-import PillarLogo from '~/images/pillar-logo.svg'
 import PortisLogo from '~/images/portis-logo.svg'
 import OpenZeppelinLogo from '~/images/open-zeppelin-logo.svg'
 
@@ -42,9 +41,14 @@ export const BuildSeamlessApps = function() {
 
           <div className='max-w-auto lg:max-w-sm mt-6 lg:mt-20 mb-4 lg:px-6'>
             <Card
-              img={<PillarLogo className='w-2/3 lg:w-auto' />}
-              text='Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam in dolor eget est blandit tincidunt. Vestibulum venenatis quam et libero vulputate pharetra. Proin non euismod risus. Maecenas vel arcu eu nunc egestas scelerisque quis viverra orci.'
-              url='https://pillarproject.io'
+              img={<img
+                srcSet='/static/tabookey-logo.png 1x, /static/tabookey-logo@2x.png 2x'
+                src='/static/tabookey-logo.png'
+                alt='Tabookey logo'
+                className='mx-auto'
+              />}
+              text='TabooKey started this project. It invented the GSN (EIP 1613) so dapps have a trustless decentralized way of onboarding new users with no ETH to pay for gas fees, or even users with no wallet at all!'
+              url='https://www.tabookey.com'
             />
           </div>
         </div>

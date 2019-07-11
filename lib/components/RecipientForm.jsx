@@ -121,6 +121,7 @@ export const RecipientForm = react.withTransactionEe(withApollo(withSendTransact
       return '...'
     } else {
       const { balance, relayHubAddress } = RelayRecipient || {}
+
       return <>
         <p>
           Recipient balance is {balance ? ethers.utils.formatEther(balance) : '?'}
@@ -130,6 +131,7 @@ export const RecipientForm = react.withTransactionEe(withApollo(withSendTransact
         </p>
 
         {connect}
+
 
         <Query query={relayHubQuery} variables={{relayHubAddress}}>
           {({data, loading, error}) => {

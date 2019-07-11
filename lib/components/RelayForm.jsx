@@ -144,7 +144,7 @@ export const RelayForm = withFormProps(withRelay(
         return 'The address provided is not a valid relay'
       } else {
         let relayForm
-        if (!relay) { // then it has been registered as a Relay
+        if (!relay || relay.state.toString() === '1') { // then it needs to be registered
           relayForm = <RegisterRelayForm relayHubAddress={this.props.relayHubAddress} />
         }
 
