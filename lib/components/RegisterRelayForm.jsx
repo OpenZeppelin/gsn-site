@@ -2,9 +2,8 @@ import React, { PureComponent } from 'react'
 import PropTypes from 'prop-types'
 import { graphql } from 'react-apollo'
 import { queries } from 'dapp-core'
-import { ethers } from 'ethers'
 
-import { ConnectWallet } from 'lib/components/ConnectWallet'
+import { ErrorMsg } from 'lib/components/ErrorMsg'
 import { withFormProps } from 'lib/components/hoc/withFormProps'
 
 export const RegisterRelayForm = graphql(queries.networkAccountQuery, { name: 'networkAccountQuery' })(withFormProps(
@@ -50,7 +49,10 @@ export const RegisterRelayForm = graphql(queries.networkAccountQuery, { name: 'n
         return '...'
       } else if (error) {
         console.error(error)
-        return 'The address provided is not a valid relay'
+        return <ErrorMsg
+          title='The address provided is not a valid recipient.'
+          extraText='Perhaps your web3 browser is set to the wrong Ethereum network?'
+        />
       } else {
         return (
           <>

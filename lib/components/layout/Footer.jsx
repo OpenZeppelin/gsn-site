@@ -1,7 +1,7 @@
 import React from 'react'
 import Link from 'next/link'
 
-import DeltaCampWhiteLogo from '~/images/delta-camp-white-logo.svg'
+import DeltaCampWhiteLogo from '~/images/delta-camp-white-logo3.svg'
 import OpenZeppelinWhiteLogo from '~/images/open-zeppelin-white-logo.svg'
 
 export default () => (
@@ -38,8 +38,8 @@ export default () => (
         </div>
       </nav>
 
-      <p className='text-xxs text-white pt-6'>
-        Developed by <a href='https://delta.camp'><DeltaCampWhiteLogo className='inline-block' /></a>
+      <p className='text-xxs text-white pt-6 opacity-100'>
+        Developed by <a href='https://delta.camp'><DeltaCampWhiteLogo height='16' className='inline-block -my-2' /></a>
       </p>
       <p className='text-xxs text-white'>
         &copy; {new Date().getFullYear()}. All rights reserved.&nbsp; |&nbsp; Privacy&nbsp; |&nbsp; Terms of Service

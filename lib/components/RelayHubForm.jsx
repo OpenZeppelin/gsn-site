@@ -23,17 +23,23 @@ export const RelayHubForm = withRouter(class _RelayHubForm extends PureComponent
   render () {
     const { relayHubAddress } = this.props
     return (
-      <>
+      <div className='lg:w-2/3'>
+        <p className='pb-10'>
+          Use one of the following forms to view stats on a specific Relay which belongs to the currently selected Relay Hub: <strong>{relayHubAddress}</strong>
+        </p>
+
         <AddressLinkForm
+          id='relay-by-address'
           title='Lookup Relay by Address'
           formatUrl={(relayAddress) => formatRelayUrl({ relayHubAddress, relayAddress })}
-          />
+        />
         <InputForm
-          title='Lookup Relay by Url'
+          id='relay-by-url'
+          title='Lookup Relay by URL'
           onSubmit={this.handleRelayUrl}
-          placeholder='enter relay url'
-          />
-      </>
+          placeholder='Enter relay URL'
+        />
+      </div>
     )
   }
 })

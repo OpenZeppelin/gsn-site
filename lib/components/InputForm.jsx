@@ -5,6 +5,7 @@ import { Input, Submit } from 'lib/components/form'
 
 export const InputForm = class _InputForm extends PureComponent {
   static propTypes = {
+    id: PropTypes.string.isRequired,
     title: PropTypes.string.isRequired,
     placeholder: PropTypes.string,
     buttonText: PropTypes.string,
@@ -32,14 +33,15 @@ export const InputForm = class _InputForm extends PureComponent {
     return (
       <form
         onSubmit={this.handleSubmitValue}
-        className='my-10'
+        className='mb-10'
       >
-        <label className='font-silkaRegular'>
+        <label htmlFor={this.props.id}>
           {this.props.title}
         </label>
 
         <div className='flex'>
           <Input
+            id={this.props.id}
             className='flex-1'
             type='text'
             required

@@ -23,12 +23,10 @@ function RelayDashboard() {
             >
               {(relayWrapperProps) => {
                 return (
-                  <>
-                    <p>
-                      <Link href='/relays'><a>Relays</a></Link> &raquo;&nbsp;
-                      {relayWrapperProps.relayAddress}
-                    </p>
-                  </>
+                  <p className='pb-4 font-silkaRegular'>
+                    <Link href='/relays'><a>Relays</a></Link> &raquo;&nbsp;
+                    <span className='wrap-everything'>{relayWrapperProps.relayAddress}</span>
+                  </p>
                 )
               }}
           </RelayWrapper>

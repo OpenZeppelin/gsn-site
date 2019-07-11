@@ -5,13 +5,14 @@ import { InputForm } from './InputForm'
 
 export const AddressLinkForm = withRouter(class _AddressLinkForm extends PureComponent {
   static propTypes = {
+    id: PropTypes.string.isRequired,
     title: PropTypes.string.isRequired,
     formatUrl: PropTypes.func.isRequired,
     placeholder: PropTypes.string
   }
 
   static defaultProps = {
-    placeholder: 'enter an address'
+    placeholder: 'Enter an address'
   }
 
   handleSubmitAddress = (address) => {
@@ -23,6 +24,7 @@ export const AddressLinkForm = withRouter(class _AddressLinkForm extends PureCom
   render () {
     return (
       <InputForm
+        id={this.props.id}
         title={this.props.title}
         onSubmit={this.handleSubmitAddress}
         placeholder={this.props.placeholder}

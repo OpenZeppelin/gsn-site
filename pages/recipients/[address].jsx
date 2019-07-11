@@ -13,12 +13,15 @@ function RecipientDashboard() {
   return (
     <MainLayout>
       <Section>
-        <p>
-          <Link href='/recipients'><a>Recipients</a></Link> &raquo; {address}
+        <p className='pb-4 font-silkaRegular'>
+          <Link href='/recipients'><a>Recipients</a></Link> &raquo; <span className='wrap-everything'>{address}</span>
         </p>
-        <DynamicApolloWrapper>
-          <RecipientForm recipientAddress={address} />
-        </DynamicApolloWrapper>
+
+        <div className="lg:w-2/3">
+          <DynamicApolloWrapper>
+            <RecipientForm recipientAddress={address} />
+          </DynamicApolloWrapper>
+        </div>
       </Section>
     </MainLayout>
   )
