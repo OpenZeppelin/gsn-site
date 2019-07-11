@@ -43,8 +43,8 @@ const RecipientsIndex = class _RecipientsIndex extends PureComponent {
     return (
       <MainLayout>
         <Section>
-          <div className="lg:w-2/3">
-            <p>
+          <div className='lg:w-2/3'>
+            <p className='pb-4 font-silkaRegular text-gray-500'>
               <Link href='/recipients'><a>Recipients</a></Link>
             </p>
             <p>
@@ -53,21 +53,26 @@ const RecipientsIndex = class _RecipientsIndex extends PureComponent {
             <p>
               Enter the contract address below.  The contract must implement the <a href='https://github.com/tabookey/tabookey-gasless/blob/master/contracts/RelayRecipient.sol' target='_blank' rel='noopen' rel='noreferrer'>RelayRecipient</a> interface.
             </p>
-            <br/>
-            <form onSubmit={this.handleSubmit}>
-              <DynamicApolloWrapper>
-                <Field>
-                  <RecipientSelect
-                    value={this.state.recipientOption}
-                    onChange={this.handleChangeRelayHubOption}
-                  />
-                </Field>
-              </DynamicApolloWrapper>
-              <div className="text-right">
-                <Submit value='Go' />
-              </div>
-            </form>
           </div>
+          <form onSubmit={this.handleSubmit}>
+            <h3 className='font-silkaMedium mb-6'>
+              Lookup Recipient by Address
+            </h3>
+            <label htmlFor='relay-form-stake'>
+              Recipient's Contract Address
+            </label>
+
+            <DynamicApolloWrapper>
+              <Field>
+                <RecipientSelect
+                  value={this.state.recipientOption}
+                  onChange={this.handleChangeRelayHubOption}
+                />
+              </Field>
+
+              <Submit value='Go' />
+            </DynamicApolloWrapper>
+          </form>
         </Section>
       </MainLayout>
     )

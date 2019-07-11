@@ -39,22 +39,21 @@ export const InputForm = class _InputForm extends PureComponent {
           {this.props.title}
         </label>
 
-        <div className='flex'>
-          <Input
-            id={this.props.id}
-            className='flex-1'
-            type='text'
-            required
-            placeholder={this.props.placeholder}
-            value={this.state.value}
-            onChange={(e) => this.setState({value: e.target.value}) }
-          />
-          <Submit
-            value={this.props.buttonText}
-            disabled={!this.state.value}
-            className='ml-4 flex-shrink-0'
-          />
-        </div>
+        <Input
+          id={this.props.id}
+          className='flex-1'
+          type='text'
+          required
+          placeholder={this.props.placeholder}
+          value={this.state.value}
+          onChange={(e) => this.setState({value: e.target.value}) }
+        />
+        
+        <Submit
+          value={this.props.buttonText}
+          disabled={!this.state.value}
+          className='ml-4 flex-shrink-0'
+        />
       </form>
     )
   }

@@ -1,0 +1,19 @@
+@keyframes changeLetter {
+  0% {
+    content: attr(name);
+  }
+  50% {
+    color: white;
+  }
+  100% {
+    content: attr(title);
+  }
+}
+
+.animate-content::after {
+  content: attr(name);
+}
+
+.animate-content-enter::after {
+  animation: changeLetter 1s normal forwards ease-in-out;
+}

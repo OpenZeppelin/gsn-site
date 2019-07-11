@@ -12,8 +12,9 @@ function RelayHubDashboard () {
   return (
     <MainLayout>
       <Section>
-        <p className='pb-4 font-silkaRegular'>
-          <Link href='/relay-hubs'><a>Relay Hubs</a></Link> &raquo; <span className='wrap-everything'>{relayHubAddress}</span>
+        <p className='pb-4 font-silkaRegular text-gray-500'>
+          <Link href='/relay-hubs'><a>Relay Hubs</a></Link> &raquo;&nbsp;
+          <span className='wrap-everything text-gray-900'>{relayHubAddress}</span>
         </p>
         <RelayHubForm relayHubAddress={relayHubAddress} />
       </Section>

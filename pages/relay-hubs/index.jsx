@@ -21,6 +21,7 @@ const RelayHubsIndex = class _RelayHubsIndex extends PureComponent {
 
   handleSubmit = async (e) => {
     e.preventDefault()
+    
     if (this.state.relayHubOption) {
       await addRecentRelayHub({
         relayHubAddress: this.state.relayHubOption.value,

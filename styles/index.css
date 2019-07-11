@@ -63,15 +63,28 @@ p {
 }
 
 form {
-  @apply flex flex-col;
+  @apply flex flex-col bg-gray-200 mt-10 p-6 pt-4 border-4 border-white rounded;
+  clear: both;
+}
+
+@screen lg {
+  form {
+    @apply w-2/3;
+  }
+}
+
+form:after {
+  content: "";
+  display: table;
+  clear: both;
 }
 
 label {
-  @apply cursor-pointer font-silkaSemiBold text-gray-800 block pb-2;
+  @apply cursor-pointer font-silkaSemiBold text-gray-700 block pb-2;
 }
 
-label .light {
-  @apply font-silkaRegular text-gray-600;
+.light {
+  @apply font-silkaRegular text-gray-500;
 }
 
 input:not([type='submit']),
@@ -94,12 +107,12 @@ button:not(.burger):focus {
 
 input[type='submit'],
 button:not(.burger) {
-  @apply font-silkaMedium text-sm border-blue-400 border-2 flex-shrink-0 bg-blue-500 text-white font-bold py-2 px-4 rounded cursor-pointer;
+  @apply font-silkaMedium text-lg tracking-wide border-blue-400 border-2 flex-shrink-0 bg-blue-500 text-white font-bold py-2 px-4 rounded cursor-pointer;
 }
 
 input[type='submit']:hover,
 button:not(.burger):hover {
-  @apply border-blue-500 bg-blue-300;
+  @apply border-blue-300 bg-blue-300;
 }
 
 input[type='submit']:focus,
@@ -108,33 +121,38 @@ button:not(.burger):focus {
 }
 
 dt {
-  @apply font-silkaSemiBold text-orange-600;
+  @apply font-silkaSemiBold text-gray-800;
 }
 
 dd {
   @apply font-silkaRegular;
+  margin: 0 0 16px 0;
 }
 
 @screen lg {
   dl {
+    /* background: white;
+    border: 1px solid gray;
+    padding: 0 0 6px 0;
+    margin: 0; */
+    padding: 0;
+    margin: 0 0 6px 0;
     clear: both;
     width: 100%;
-    /* overflow: hidden; */
-    padding: 0;
-    margin: 0
+    min-height: 26px;
   }
 
   dt {
     float: left;
-    text-align: right;
-    width: 25%;
+    /* text-align: right; */
+    width: 20%;
     padding: 2px 10px 0 3px;
     margin: 0
   }
 
   dd {
     float: left;
-    width: 75%;
+    width: 80%;
     padding: 2px 3px 0;
     margin: 0
   }

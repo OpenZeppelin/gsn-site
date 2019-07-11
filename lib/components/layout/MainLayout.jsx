@@ -2,6 +2,7 @@ import Meta from './Meta'
 import Footer from './Footer'
 
 import '~/styles/index.css'
+import '~/styles/animations.css'
 import '~/styles/fonts.css'
 import '~/styles/loader.css'
 import '~/styles/transitions.css'

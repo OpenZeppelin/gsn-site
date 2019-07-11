@@ -2,6 +2,8 @@ import React, { PureComponent } from 'react'
 import PropTypes from 'prop-types'
 import { ethers } from 'ethers'
 
+import { Submit } from 'lib/components/form'
+import { ErrorMsg } from 'lib/components/ErrorMsg'
 import { ConnectWallet } from 'lib/components/ConnectWallet'
 import { relayHubTargetSubscription } from '../subscriptions/relayHubTargetSubscription'
 import { ZERO_ADDRESS } from 'lib/constants'
@@ -137,15 +139,25 @@ export const RelayForm = withFormProps(withRelay(
         </div>
       }
 
+      if (!this.props.relayAddress && !this.props.relayUrl) {
+        return <ErrorMsg
+          title='No Relay Address or Relay URL was provided.'
+          extraText='Please provide one or the other.'
+        />
+      }
+
       if (loading) {
         return '...'
       } else if (error) {
         console.error(error)
-        return 'The address provided is not a valid relay'
+        return <ErrorMsg
+          title='The address provided is not a valid relay.'
+          extraText='Perhaps your web3 browser is set to the wrong Ethereum network?'
+        />
       } else {
-        let relayForm
-        if (!relay || relay.state.toString() === '1') { // then it needs to be registered
-          relayForm = <RegisterRelayForm relayHubAddress={this.props.relayHubAddress} />
+        let registerRelayForm
+        if (relay === undefined || relay.state.toString() === '1') { // then it needs to be registered
+          registerRelayForm = <RegisterRelayForm relayHubAddress={this.props.relayHubAddress} />
         }
 
         const { owner, stake, balance } = RelayHub || {}
@@ -153,51 +165,93 @@ export const RelayForm = withFormProps(withRelay(
 
         return (
           <>
-            <p>
-              Owner: {owner ? owner.toString() : ZERO_ADDRESS}
-            </p>  
-            <p>
-              Stake: {stake ? ethers.utils.formatEther(stake) : '0'}
-            </p>
-            <p>
-              Balance: {balance ? ethers.utils.formatEther(balance) : '0'}
-            </p>
+            <dl>
+              <dt>Full Address / URL</dt>
+              <dd>{this.props.relayAddress || this.props.relayUrl}</dd>
+            </dl>
 
-            <p>
-              Unstake Delay: {unstakeDelay ? unstakeDelay.toString() : '?'}
-            </p>
+            <dl>
+              <dt>Owner</dt>
+              <dd>{owner ? owner.toString() : ZERO_ADDRESS}</dd>
+            </dl>
 
+            <dl>
+              <dt>Stake</dt>
+              <dd>{stake ? ethers.utils.formatEther(stake) : '0'}</dd>
+            </dl>
+
+            <dl>
+              <dt>Balance</dt>
+              <dd>{balance ? ethers.utils.formatEther(balance) : '0'}</dd>
+            </dl>
+
+            <dl>
+              <dt>Unstake Delay</dt>
+              <dd>{unstakeDelay ? unstakeDelay.toString() : '?'}</dd>
+            </dl>
+              
             {connect}
 
             <form onSubmit={this.handleSubmitDeposit}>
-              <h2>Deposit</h2>
+              <h3 className='font-silkaMedium mb-6 text-black'>
+                Increase Ether Balance
+              </h3>
+              <label htmlFor='relay-form-deposit'>
+                Deposit Amount <span className='light'>(In Ether)</span>
+              </label>
               <input
-                placeholder='deposit (eth)'
-                disabled={!ethereumPermission} type='number' value={this.state.deposit} onChange={(e) => this.setState({deposit: e.target.value})} />
-              <input disabled={!ethereumPermission} type='submit' value='Deposit' />
+                id='relay-form-deposit'
+                disabled={!ethereumPermission}
+                type='number'
+                value={this.state.deposit}
+                onChange={(e) => this.setState({deposit: e.target.value})}
+                className='mb-6'
+                required
+              />
+
+              <Submit
+                disabled={!ethereumPermission}
+                value='Deposit'
+              />
             </form>
 
             <form onSubmit={this.handleSubmitStake}>
-              <h2>Stake</h2>
-
+              <h3 className='font-silkaMedium mb-6'>
+                Increase Stake &amp; Update Stake Delay
+              </h3>
+              <label htmlFor='relay-form-stake'>
+                Stake Amount <span className='light'>(In Ether)</span>
+              </label>
               <input
-                placeholder='stake (eth)'
+                id='relay-form-stake'
                 disabled={!ethereumPermission}
                 type='number'
                 value={this.state.stake}
-                onChange={(e) => this.setState({stake: e.target.value})} />
+                onChange={(e) => this.setState({stake: e.target.value})}
+                className='mb-6'
+                required
+              />
 
+              <label htmlFor='relay-form-unstake-delay'>
+                Stake Delay <span className='light'>(In Seconds)</span>
+              </label>
               <input
-                placeholder='unstake delay (s)'
+                id='relay-form-unstake-delay'
                 disabled={!ethereumPermission}
                 type='number'
                 value={this.state.unstakeDelay}
-                onChange={(e) => this.setState({unstakeDelay: e.target.value})} />
+                onChange={(e) => this.setState({unstakeDelay: e.target.value})}
+                className='mb-6'
+                required
+              />
 
-              <input disabled={!ethereumPermission} type='submit' value='Stake' />
+              <Submit
+                disabled={!ethereumPermission}
+                value='Stake'
+              />
             </form>
 
-            {relayForm}
+            {registerRelayForm}
           </>
         )
       }

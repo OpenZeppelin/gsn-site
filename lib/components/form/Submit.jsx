@@ -1,15 +1,25 @@
-import React from 'react'
+import React, { PureComponent } from 'react'
+import PropTypes from 'prop-types'
 
-export function Submit(props) {
-  // const defaultClasses = 'bg-blue-500 hover:bg-blue-300 focus:outline-none focus:shadow-outline text-white font-bold py-2 px-4 rounded cursor-pointer'
-  // const className = `${defaultClasses} ${props.className || ''}`
-  const className = `${props.className || ''}`
-  const type = 'submit'
-  return (
-    <input
-      {...props}
-      className={className}
-      type={type}
-    />
-  )
+export const Submit = class _Submit extends PureComponent {
+  static propTypes = {
+    value: PropTypes.string.isRequired,
+    className: PropTypes.string,
+    disabled: PropTypes.bool,
+  }
+
+  render () {
+    const className = `${this.props.className || ''}`
+
+    return (
+      <div className='text-right mt-4'>
+        <input
+          {...this.props}
+          className={className}
+          type='submit'
+        />
+      </div>
+    )
+  }
+
 }

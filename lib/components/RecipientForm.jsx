@@ -5,6 +5,7 @@ import { graphql, withApollo, Query } from 'react-apollo'
 import { react } from 'dapp-core'
 import { ethers } from 'ethers'
 
+import { Submit } from 'lib/components/form'
 import { ConnectWallet } from 'lib/components/ConnectWallet'
 import { ErrorMsg } from 'lib/components/ErrorMsg'
 import { recipientQuery } from '../queries/recipientQuery'
@@ -160,8 +161,11 @@ export const RecipientForm = react.withTransactionEe(withApollo(withSendTransact
                 return (
                   <form
                     onSubmit={this.handleSubmitDeposit}
-                    className='w-1/2'
                   >
+                    <h3 className='font-silkaMedium mb-6 text-black'>
+                      Increase Ether Balance
+                    </h3>
+
                     <label
                       htmlFor='deposit-amount'
                     >
@@ -178,13 +182,10 @@ export const RecipientForm = react.withTransactionEe(withApollo(withSendTransact
                       onChange={(e) => this.setState({depositAmount: e.target.value})}
                     />
 
-                    <div className='text-right mt-2'>
-                      <input
-                        disabled={!ethereumPermission}
-                        type='submit'
-                        value='Deposit'
-                      />
-                    </div>
+                    <Submit
+                      disabled={!ethereumPermission}
+                      value='Deposit'
+                    />
                   </form>
                 )
               }

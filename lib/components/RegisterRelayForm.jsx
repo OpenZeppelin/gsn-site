@@ -3,6 +3,7 @@ import PropTypes from 'prop-types'
 import { graphql } from 'react-apollo'
 import { queries } from 'dapp-core'
 
+import { Submit } from 'lib/components/form'
 import { ErrorMsg } from 'lib/components/ErrorMsg'
 import { withFormProps } from 'lib/components/hoc/withFormProps'
 
@@ -56,25 +57,43 @@ export const RegisterRelayForm = graphql(queries.networkAccountQuery, { name: 'n
       } else {
         return (
           <>
-
             <form onSubmit={this.handleRegisterRelay}>
-              <h2>Register Relay</h2>
-              
-              <div>
-                Relay address: {account}
-              </div>
+              <h3 className='font-silkaMedium mb-6 text-black'>
+                Register Relay
+              </h3>
+              <span className='light mb-6'>
+                New Relay address: {account}
+              </span>
 
-              <div>
-                <label htmlFor='transaction-fee'>Transaction Fee (whole %)</label>
-                <input disabled={!ethereumPermission} type='number' value={this.state.transactionFee} onChange={(e) => this.setState({transactionFee: e.target.value })} />
-              </div>
+              <label
+                htmlFor='transaction-fee'
+              >
+                Transaction Fee <span className="light">(Whole %, ie. '2.5')</span>
+              </label>
+              <input
+                id='transaction-fee'
+                disabled={!ethereumPermission}
+                type='number'
+                value={this.state.transactionFee}
+                onChange={(e) => this.setState({transactionFee: e.target.value })}
+                className='mb-6'
+                required
+              />
 
-              <div>
-                <label htmlFor='transaction-fee'>URL</label>
-                <input disabled={!ethereumPermission} type='text' value={this.state.url} onChange={(e) => this.setState({url: e.target.value})} />
-              </div>
+              <label htmlFor='transaction-fee'>URL</label>
+              <input
+                disabled={!ethereumPermission}
+                type='text'
+                value={this.state.url}
+                onChange={(e) => this.setState({url: e.target.value})}
+                className='mb-6'
+                required
+              />
 
-              <input disabled={!ethereumPermission} type='submit' value='Register' />
+              <Submit 
+                disabled={!ethereumPermission}
+                value='Register'
+              />
             </form>
           </>
         )
