@@ -89,20 +89,61 @@ label {
 
 input:not([type='submit']),
 textarea,
-button:not(.burger) {
-  @apply font-silkaMedium flex-1 bg-white appearance-none border-2  border-transparent rounded py-2 px-4 text-gray-700 leading-tight;
+button:not(.burger),
+.react-select__control {
+  @apply font-silkaMedium text-lg flex-1 bg-white appearance-none border-b-2 border-transparent py-4 px-4 text-gray-700 leading-tight;
 }
 
 input:not([type='submit']):hover,
 textarea:hover,
-button:not(.burger):hover {
-  @apply border-gray-300;
+button:not(.burger):hover,
+.react-select__control:hover {
+  @apply border-b-2 border-blue-200;
 }
 
 input:not([type='submit']):focus,
 textarea:focus,
-button:not(.burger):focus {
-  @apply outline-none border-gray-500;
+button:not(.burger):focus,
+.react-select__control:focus {
+  @apply outline-none border-blue-500;
+}
+
+.react-select__control {
+  border: 0 !important;
+  border-bottom: 2px solid white !important;
+}
+
+.react-select__control:hover {
+  border-bottom: 2px solid rgb(62, 151, 235) !important;
+}
+
+.react-select__control:focus {
+  border: 0 !important;
+  border-bottom: 2px solid rgb(22, 121, 215) !important;
+}
+
+.react-select__option {
+  @apply font-silkaMedium leading-tight;
+  color: #63B3ED !important;
+  cursor: pointer;
+  background-color: #EBF8FF !important;
+  padding: 14px 20px !important;
+  border-top: 2px solid white;
+  min-height: 54px;
+}
+
+.react-select__option--is-selected {
+  color: white !important;
+  background-color: rgb(62, 151, 235) !important;
+}
+
+.react-select__menu {
+  border-radius: 0 !important;
+  margin-top: 0 !important;
+}
+
+.react-select__menu-list {
+  padding: 0 !important;
 }
 
 input[type='submit'],
@@ -207,4 +248,12 @@ dd {
 
 .wrap-everything {
   @apply whitespace-pre-line break-all;
+}
+
+
+.is-etherscan-arrow {
+  height: 20px;
+  position: relative;
+  top: -3px;
+  width: 25px;
 }

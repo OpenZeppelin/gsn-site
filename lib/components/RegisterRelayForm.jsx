@@ -58,7 +58,7 @@ export const RegisterRelayForm = graphql(queries.networkAccountQuery, { name: 'n
         return (
           <>
             <form onSubmit={this.handleRegisterRelay}>
-              <h3 className='font-silkaMedium mb-6 text-black'>
+              <h3 className='font-silkaMedium mb-8 text-black'>
                 Register Relay
               </h3>
               <span className='light mb-6'>

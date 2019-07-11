@@ -61,7 +61,7 @@ const RelayHubsIndex = class _RelayHubsIndex extends PureComponent {
                   id='relay-hubs-relay-hub-address'
                   value={this.state.relayHubOption}
                   onChange={this.handleChangeRelayHubOption}
-                  placeholder={`Select or type in the RelayHub's contract address`}
+                  placeholder={`Select or type in ...`}
                 />
               </Field>
 

@@ -68,7 +68,7 @@ const RelaysIndex = class _RelaysIndex extends Component {
                 <RelayHubSelect
                   id='relays-relay-hub-address'
                   className='flex-1'
-                  placeholder='Select or type in the Relay Hub address'
+                  placeholder='Select or type in ...'
                   value={this.state.relayHubOption}
                   onChange={(relayHubOption) => this.setState({relayHubOption}) }
                 />
@@ -81,7 +81,7 @@ const RelaysIndex = class _RelaysIndex extends Component {
                 <RelayUrlSelect
                   id='relays-relay-url'
                   className='flex-1'
-                  placeholder='Select or type in the Relay url'
+                  placeholder='Select or type in ...'
                   value={this.state.relayUrlOption}
                   onChange={(relayUrlOption) => this.setState({relayUrlOption})}
                 />

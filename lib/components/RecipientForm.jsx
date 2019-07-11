@@ -5,7 +5,7 @@ import { graphql, withApollo, Query } from 'react-apollo'
 import { react } from 'dapp-core'
 import { ethers } from 'ethers'
 
-import EthTextSymbol from 'lib/components/EthTextSymbol'
+import { EthTextSymbol } from 'lib/components/EthTextSymbol'
 import { Submit } from 'lib/components/form'
 import { ConnectWallet } from 'lib/components/ConnectWallet'
 import { ErrorMsg } from 'lib/components/ErrorMsg'
@@ -158,7 +158,7 @@ export const RecipientForm = react.withTransactionEe(withApollo(withSendTransact
                   <form
                     onSubmit={this.handleSubmitDeposit}
                   >
-                    <h3 className='font-silkaMedium mb-6 text-black'>
+                    <h3 className='font-silkaMedium mb-8 text-black'>
                       Increase Ether Balance
                     </h3>
 

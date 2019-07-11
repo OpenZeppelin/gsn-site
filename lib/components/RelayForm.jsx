@@ -2,6 +2,8 @@ import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { ethers } from 'ethers'
 
+import { EthTextSymbol } from 'lib/components/EthTextSymbol'
+import { EthUserLink } from 'lib/components/EthUserLink'
 import { Submit } from 'lib/components/form'
 import { ErrorMsg } from 'lib/components/ErrorMsg'
 import { ConnectWallet } from 'lib/components/ConnectWallet'
@@ -164,33 +166,43 @@ export const RelayForm = withFormProps(withRelay(
           <>
             <dl>
               <dt>Full Address / URL</dt>
-              <dd>{this.props.relayAddress || this.props.relayUrl}</dd>
+              <dd className='break-all'>
+                {this.props.relayAddress ?
+                  <EthUserLink address={this.props.relayAddress} /> :
+                  this.props.relayUrl
+                }
+              </dd>
             </dl>
 
             <dl>
               <dt>Owner</dt>
-              <dd>{owner ? owner.toString() : ZERO_ADDRESS}</dd>
+              <dd className='break-all'>
+                {owner ?
+                  <EthUserLink address={owner.toString()} /> :
+                  ZERO_ADDRESS
+                }
+              </dd>
             </dl>
 
             <dl>
               <dt>Stake</dt>
-              <dd>{stake ? ethers.utils.formatEther(stake) : '0'}</dd>
+              <dd>{stake ? ethers.utils.formatEther(stake) : '0'} <EthTextSymbol /></dd>
             </dl>
 
             <dl>
               <dt>Balance</dt>
-              <dd>{balance ? ethers.utils.formatEther(balance) : '0'}</dd>
+              <dd>{balance ? ethers.utils.formatEther(balance) : '0'} <EthTextSymbol /></dd>
             </dl>
 
             <dl>
               <dt>Unstake Delay</dt>
-              <dd>{unstakeDelay ? unstakeDelay.toString() : '?'}</dd>
+              <dd>{unstakeDelay ? unstakeDelay.toString() : '?'} <span className='light'>seconds</span></dd>
             </dl>
               
             {connect}
 
             <form onSubmit={this.handleSubmitDeposit}>
-              <h3 className='font-silkaMedium mb-6 text-black'>
+              <h3 className='font-silkaMedium mb-8 text-black'>
                 Increase Ether Balance
               </h3>
               <label htmlFor='relay-form-deposit'>

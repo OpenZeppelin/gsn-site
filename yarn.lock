@@ -2735,6 +2735,11 @@ fastparse@^1.1.1:
   resolved "https://registry.yarnpkg.com/fastparse/-/fastparse-1.1.2.tgz#91728c5a5942eced8531283c79441ee4122c35a9"
   integrity sha512-483XLLxTVIwWK3QTrMGRqUfUpoOs/0hbQrl2oz4J0pAcm3A3bu84wxTFqGqkJzewCLdME38xJLJAxBABfQT8sQ==
 
+feather-icons-react@^0.3.2:
+  version "0.3.2"
+  resolved "https://registry.yarnpkg.com/feather-icons-react/-/feather-icons-react-0.3.2.tgz#fd8f25a0f1b7fc10678839fe5eb2b61be4f92d60"
+  integrity sha512-nob+VhAw9LsTtJqZMDRMCUWTaTiRlIUiwnu9fekuykx9pKLLVb5ZWjPR9wdkFtTYm0lDu3Z2oNJCMhOqKec+QA==
+
 figgy-pudding@^3.5.1:
   version "3.5.1"
   resolved "https://registry.yarnpkg.com/figgy-pudding/-/figgy-pudding-3.5.1.tgz#862470112901c727a0e495a80744bd5baa1d6790"

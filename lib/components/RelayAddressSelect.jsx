@@ -63,6 +63,8 @@ class _RelayAddressSelect extends PureComponent {
     return (
       <Creatable
         {...newProps}
+        className='react-select'
+        classNamePrefix='react-select'
         allowCreateWhileLoading={true}
         formatCreateLabel={(inputValue) => `Use ${inputValue}...`}
         options={options}
