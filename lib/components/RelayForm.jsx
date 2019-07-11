@@ -1,4 +1,4 @@
-import React, { PureComponent } from 'react'
+import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { ethers } from 'ethers'
 
@@ -12,21 +12,18 @@ import { RegisterRelayForm } from './RegisterRelayForm'
 import { withRelay } from 'lib/components/hoc/withRelay'
 
 export const RelayForm = withFormProps(withRelay(
-  class _RelayHubForm extends PureComponent {
+  class _RelayHubForm extends Component {
+    state = {
+      stakeAmount: '',
+      depositAmount: '',
+      unstakeDelay: '',
+      relayAddress: ''
+    }
+
     static propTypes = {
       relayHubAddress: PropTypes.string.isRequired,
       relayAddress: PropTypes.string,
       relayUrl: PropTypes.string
-    }
-
-    constructor (props) {
-      super(props)
-      this.state = {
-        stake: '',
-        deposit: '',
-        unstakeDelay: '',
-        relayAddress: ''
-      }
     }
 
     componentDidMount () {
@@ -79,7 +76,7 @@ export const RelayForm = withFormProps(withRelay(
           contractName: 'RelayHub',
           method: 'stake',
           args: [this.props.relayAddress, this.state.unstakeDelay],
-          value: ethers.utils.parseEther(this.state.stake)
+          value: ethers.utils.parseEther(this.state.stakeAmount)
         }
       }).then(({ data }) => {
         this.props.ee(data.sendTransaction.id)
@@ -89,7 +86,7 @@ export const RelayForm = withFormProps(withRelay(
           .on('receipt', () => {
             console.log('accepted!')
             this.setState({
-              stake: ''
+              stakeAmount: ''
             })
           })
       })
@@ -102,7 +99,7 @@ export const RelayForm = withFormProps(withRelay(
         contractName: 'RelayHub',
         method: 'depositFor',
         args: [this.props.relayAddress],
-        value: ethers.utils.parseEther(this.state.deposit)
+        value: ethers.utils.parseEther(this.state.depositAmount)
       }
 
       this.props.sendTransaction({
@@ -115,7 +112,7 @@ export const RelayForm = withFormProps(withRelay(
           .on('receipt', () => {
             console.log('accepted!')
             this.setState({
-              deposit: ''
+              depositAmount: ''
             })
           })
       })
@@ -203,14 +200,14 @@ export const RelayForm = withFormProps(withRelay(
                 id='relay-form-deposit'
                 disabled={!ethereumPermission}
                 type='number'
-                value={this.state.deposit}
-                onChange={(e) => this.setState({deposit: e.target.value})}
+                value={this.state.depositAmount}
+                onChange={(e) => this.setState({depositAmount: e.target.value})}
                 className='mb-6'
                 required
               />
 
               <Submit
-                disabled={!ethereumPermission}
+                disabled={!ethereumPermission || this.state.depositAmount === ''}
                 value='Deposit'
               />
             </form>
@@ -226,8 +223,8 @@ export const RelayForm = withFormProps(withRelay(
                 id='relay-form-stake'
                 disabled={!ethereumPermission}
                 type='number'
-                value={this.state.stake}
-                onChange={(e) => this.setState({stake: e.target.value})}
+                value={this.state.stakeAmount}
+                onChange={(e) => this.setState({ stakeAmount: e.target.value })}
                 className='mb-6'
                 required
               />
@@ -246,7 +243,7 @@ export const RelayForm = withFormProps(withRelay(
               />
 
               <Submit
-                disabled={!ethereumPermission}
+                disabled={!ethereumPermission || this.state.stakeAmount === ''}
                 value='Stake'
               />
             </form>

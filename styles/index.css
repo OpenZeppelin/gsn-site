@@ -120,6 +120,11 @@ button:not(.burger):focus {
   @apply outline-none shadow-outline;
 }
 
+input[type='submit'][disabled],
+button:not(.burger)[disabled] {
+  @apply border-blue-200 border-2 bg-blue-200 text-white cursor-not-allowed;
+}
+
 dt {
   @apply font-silkaSemiBold text-gray-800;
 }

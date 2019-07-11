@@ -12,7 +12,7 @@ export const Submit = class _Submit extends PureComponent {
     const className = `${this.props.className || ''}`
 
     return (
-      <div className='text-right mt-4'>
+      <div className='text-right mt-2'>
         <input
           {...this.props}
           className={className}

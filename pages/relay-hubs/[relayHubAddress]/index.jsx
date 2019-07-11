@@ -16,7 +16,9 @@ function RelayHubDashboard () {
           <Link href='/relay-hubs'><a>Relay Hubs</a></Link> &raquo;&nbsp;
           <span className='wrap-everything text-gray-900'>{relayHubAddress}</span>
         </p>
-        <RelayHubForm relayHubAddress={relayHubAddress} />
+        <RelayHubForm
+          relayHubAddress={relayHubAddress}
+        />
       </Section>
     </MainLayout>
   )

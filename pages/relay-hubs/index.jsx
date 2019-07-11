@@ -1,5 +1,6 @@
 import React, { PureComponent } from 'react'
 import { withRouter } from 'next/router'
+import Link from 'next/link'
 
 import { MainLayout } from 'lib/components/layout/MainLayout'
 import { Section } from 'lib/components/layout/Section'
@@ -43,17 +44,32 @@ const RelayHubsIndex = class _RelayHubsIndex extends PureComponent {
     return (
       <MainLayout>
         <Section>
-          <h1>Relay Hub Tool</h1>
+          <p className='pb-4 font-silkaRegular text-gray-500'>
+            <Link href='/relay-hubs'><a>Relay Hubs</a></Link>
+          </p>
+
           <p>
-            To view a Relay Hub enter the contract address below.
+            To view a Relay Hub enter it's contract address below:
           </p>
           <form onSubmit={this.handleSubmit}>
             <DynamicApolloWrapper>
               <Field>
-                <RelayHubSelect value={this.state.relayHubOption} onChange={this.handleChangeRelayHubOption} />
+                <label htmlFor='relay-hubs-relay-hub-address'>
+                  Relay Hub address
+                </label>
+                <RelayHubSelect
+                  id='relay-hubs-relay-hub-address'
+                  value={this.state.relayHubOption}
+                  onChange={this.handleChangeRelayHubOption}
+                  placeholder={`Select or type in the RelayHub's contract address`}
+                />
               </Field>
+
+              <Submit
+                disabled={!this.state.relayHubOption}
+                value='Go'
+              />
             </DynamicApolloWrapper>
-            <Submit value='Go' />
           </form>
         </Section>
       </MainLayout>

@@ -38,6 +38,8 @@ const RelaysIndex = class _RelaysIndex extends Component {
           relayUrl: relayUrlOption.value
         })
       )
+    } else {
+      // alert('Please enter both a Relay Hub address and Relay URL')
     }
   }
 
@@ -85,7 +87,10 @@ const RelaysIndex = class _RelaysIndex extends Component {
                 />
               </Field>
 
-              <Submit value='Go' />
+              <Submit
+                disabled={!this.state.relayHubOption || !this.state.relayUrlOption}
+                value='Go'
+              />
             </form>
           </DynamicApolloWrapper>
         </Section>

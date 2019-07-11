@@ -7,6 +7,8 @@ import { Submit, Field } from 'lib/components/form'
 import { RelayAddressSelect } from 'lib/components/RelayAddressSelect'
 import { RelayUrlSelect } from 'lib/components/RelayUrlSelect'
 import { formatRelayUrl } from 'lib/utils/formatRelayUrl'
+import { addRecentRelayAddress } from 'lib/services/addRecentRelayAddress'
+import { addRecentRelayUrl } from 'lib/services/addRecentRelayUrl'
 
 export const RelayHubForm = withRouter(class _RelayHubForm extends Component {
   state = {
@@ -18,27 +20,53 @@ export const RelayHubForm = withRouter(class _RelayHubForm extends Component {
     relayHubAddress: PropTypes.string.isRequired
   }
 
-  handleRelayUrl = (relayUrl) => {
-    const { relayHubAddress } = this.props
+  handleRelayAddress = async (e) => {
+    e.preventDefault()
 
-    this.props.router.push(
-      formatRelayUrl({ relayHubAddress, relayUrl })
-    )
+    const { relayHubAddress } = this.props
+    const { relayAddressOption } = this.state
+
+    const relayAddress = relayAddressOption.value
+    const networkId = relayAddressOption.networkId
+
+    if (relayHubAddress && relayAddress) {
+      await addRecentRelayAddress({
+        relayAddress,
+        networkId
+      })
+
+      this.props.router.push(
+        formatRelayUrl({ relayHubAddress, relayAddress })
+      )
+    }
   }
 
-  handleRelayAddress = (relayAddress) => {
-    const url = this.props.formatUrl(relayAddress)
-    // console.log('navigating to: ', url)
-    this.props.router.push(url)
+  handleRelayUrl = async (e) => {
+    e.preventDefault()
+
+    const { relayHubAddress } = this.props
+    const { relayUrlOption } = this.state
+
+    const relayUrl = relayUrlOption.value
+    const networkId = relayUrlOption.networkId
+
+    if (relayHubAddress && relayUrl) {
+      await addRecentRelayUrl({
+        relayUrl,
+        networkId
+      })
+
+      this.props.router.push(
+        formatRelayUrl({ relayHubAddress, relayUrl })
+      )
+    }
   }
 
   render () {
-    const { relayHubAddress } = this.props
-
     return (
       <>
         <div className='lg:w-2/3'>
-          <p className='pb-4'>
+          <p>
             Use one of the following forms to view stats on a specific Relay which belongs to the currently selected Relay Hub.
           </p>
         </div>
@@ -61,6 +89,7 @@ export const RelayHubForm = withRouter(class _RelayHubForm extends Component {
             </Field>
 
             <Submit
+              disabled={!this.state.relayAddressOption}
               value='Go'
             />
           </DynamicApolloWrapper>
@@ -85,6 +114,7 @@ export const RelayHubForm = withRouter(class _RelayHubForm extends Component {
             </Field>
 
             <Submit
+              disabled={!this.state.relayUrlOption}
               value='Go' 
             />
           </DynamicApolloWrapper>

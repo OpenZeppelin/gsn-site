@@ -5,6 +5,7 @@ import { graphql, withApollo, Query } from 'react-apollo'
 import { react } from 'dapp-core'
 import { ethers } from 'ethers'
 
+import EthTextSymbol from 'lib/components/EthTextSymbol'
 import { Submit } from 'lib/components/form'
 import { ConnectWallet } from 'lib/components/ConnectWallet'
 import { ErrorMsg } from 'lib/components/ErrorMsg'
@@ -14,8 +15,6 @@ import { withSendTransaction } from './hoc/withSendTransaction'
 import { withEthereumPermissionQuery } from './hoc/withEthereumPermissionQuery'
 import { withNetworkAccountQuery } from './hoc/withNetworkAccountQuery'
 import { relayHubTargetSubscription } from '../subscriptions/relayHubTargetSubscription'
-
-import EthTextSymbol from 'lib/components/EthTextSymbol'
 
 export const RecipientForm = react.withTransactionEe(withApollo(withSendTransaction(
   withNetworkAccountQuery(
@@ -31,15 +30,12 @@ export const RecipientForm = react.withTransactionEe(withApollo(withSendTransact
     }
   })
 (class _RecipientForm extends PureComponent {
-  static propTypes = {
-    recipientAddress: PropTypes.string.isRequired
+  state = {
+    depositAmount: ''
   }
 
-  constructor (props) {
-    super(props)
-    this.state = {
-      depositAmount: ''
-    }
+  static propTypes = {
+    recipientAddress: PropTypes.string.isRequired
   }
 
   componentDidMount () {
@@ -179,11 +175,12 @@ export const RecipientForm = react.withTransactionEe(withApollo(withSendTransact
                       min='0'
                       max={ethers.utils.formatEther(maximumDeposit)}
                       value={this.state.depositAmount}
-                      onChange={(e) => this.setState({depositAmount: e.target.value})}
+                      onChange={(e) => this.setState({ depositAmount: e.target.value })}
+                      className='mb-2'
                     />
 
                     <Submit
-                      disabled={!ethereumPermission}
+                      disabled={!ethereumPermission || this.state.depositAmount === ''}
                       value='Deposit'
                     />
                   </form>
