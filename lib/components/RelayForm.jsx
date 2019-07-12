@@ -168,8 +168,6 @@ export const RelayForm = withFormProps(withRelay(
         const { owner, stake, balance } = RelayHub || {}
         const unstakeDelay = this.unstakeDelay() || '0'
 
-        console.log(this.props)
-
         return (
           <>
             <dl>
