@@ -7,7 +7,10 @@ import { Submit } from 'lib/components/form'
 import { ErrorMsg } from 'lib/components/ErrorMsg'
 import { withFormProps } from 'lib/components/hoc/withFormProps'
 
-export const RegisterRelayForm = graphql(queries.networkAccountQuery, { name: 'networkAccountQuery' })(withFormProps(
+export const RegisterRelayForm = graphql(
+  queries.networkAccountQuery,
+  { name: 'networkAccountQuery' }
+)(withFormProps(
   class _RegisterRelayForm extends PureComponent {
     static propTypes = {
       relayHubAddress: PropTypes.string.isRequired,

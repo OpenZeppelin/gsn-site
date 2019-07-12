@@ -124,15 +124,23 @@ button:not(.burger):focus,
 
 .react-select__option {
   @apply font-silkaMedium leading-tight;
+
+  background-color: white !important;
   color: #63B3ED !important;
-  cursor: pointer;
-  background-color: #EBF8FF !important;
+  cursor: pointer !important;
   padding: 14px 20px !important;
-  border-top: 2px solid white;
+  border-top: 2px solid #f3f3f3;
   min-height: 54px;
 }
 
+.react-select__option:hover {
+  background-color: #EBF8FF !important;
+  border-top: 2px solid white;
+  color: #63B3ED !important;
+}
+
 .react-select__option--is-selected {
+  border-top: 2px solid white;
   color: white !important;
   background-color: rgb(62, 151, 235) !important;
 }
