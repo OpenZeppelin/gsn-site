@@ -65,39 +65,9 @@ export const RelayHubForm = withRouter(class _RelayHubForm extends Component {
   render () {
     return (
       <>
-        <div className='lg:w-2/3'>
-          <p>
-            Use one of the following forms to view stats on a specific Relay which belongs to the currently selected Relay Hub.
-          </p>
-        </div>
-
-        <form
-          onSubmit={this.handleRelayAddress}
-        >
-          <label htmlFor='relay-by-address'>
-            Lookup Relay by Contract Address
-          </label>
-          <DynamicApolloWrapper>
-            <Field>
-              <RelayAddressSelect
-                id='relay-by-address'
-                className='flex-1'
-                placeholder='Select or type in ...'
-                value={this.state.relayAddressOption}
-                onChange={(relayAddressOption) => this.setState({ relayAddressOption })}
-              />
-            </Field>
-
-            <Submit
-              disabled={!this.state.relayAddressOption}
-              value='Go'
-            />
-          </DynamicApolloWrapper>
-        </form>
-
-
         <form
           onSubmit={this.handleRelayUrl}
+          className='mt-0'
         >
           <label htmlFor='relay-by-url'>
             Lookup Relay by URL
@@ -116,6 +86,31 @@ export const RelayHubForm = withRouter(class _RelayHubForm extends Component {
             <Submit
               disabled={!this.state.relayUrlOption}
               value='Go' 
+            />
+          </DynamicApolloWrapper>
+        </form>
+
+        <form
+          onSubmit={this.handleRelayAddress}
+          className='mt-2 sm:mt-10'
+        >
+          <label htmlFor='relay-by-address'>
+            Or Lookup Relay by Contract Address
+          </label>
+          <DynamicApolloWrapper>
+            <Field>
+              <RelayAddressSelect
+                id='relay-by-address'
+                className='flex-1'
+                placeholder='Select or type in ...'
+                value={this.state.relayAddressOption}
+                onChange={(relayAddressOption) => this.setState({ relayAddressOption })}
+              />
+            </Field>
+
+            <Submit
+              disabled={!this.state.relayAddressOption}
+              value='Go'
             />
           </DynamicApolloWrapper>
         </form>
