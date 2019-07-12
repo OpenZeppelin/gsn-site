@@ -4,6 +4,8 @@ import Link from 'next/link'
 import { MainLayout } from 'lib/components/layout/MainLayout'
 import { Section } from 'lib/components/layout/Section'
 import { RelayHubForm } from 'lib/components/RelayHubForm'
+import { EthereumNetworkStatus } from 'lib/components/EthereumNetworkStatus'
+import { DynamicApolloWrapper } from 'lib/components/DynamicApolloWrapper'
 
 function RelayHubDashboard () {
   const router = useRouter()
@@ -11,6 +13,7 @@ function RelayHubDashboard () {
 
   return (
     <MainLayout>
+      <EthereumNetworkStatus />
       <Section>
         <p className='pb-4 font-silkaRegular text-gray-500'>
           <Link href='/relay-hubs'><a>Relay Hubs</a></Link> &raquo;&nbsp;

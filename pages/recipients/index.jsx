@@ -5,6 +5,7 @@ import { withRouter } from 'next/router'
 import { MainLayout } from 'lib/components/layout/MainLayout'
 import { Section } from 'lib/components/layout/Section'
 import { RecipientSelect } from 'lib/components/RecipientSelect'
+import { EthereumNetworkStatus } from 'lib/components/EthereumNetworkStatus'
 import { DynamicApolloWrapper } from 'lib/components/DynamicApolloWrapper'
 import { addRecentRecipient } from 'lib/services/addRecentRecipient'
 import {
@@ -42,6 +43,7 @@ const RecipientsIndex = class _RecipientsIndex extends PureComponent {
   render () {
     return (
       <MainLayout>
+        <EthereumNetworkStatus />
         <Section>
           <div className='lg:w-2/3'>
             <p className='pb-4 font-silkaRegular text-gray-500'>

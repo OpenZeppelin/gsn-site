@@ -11,6 +11,7 @@ import { RelayHubSelect } from 'lib/components/RelayHubSelect'
 import { RelayUrlSelect } from 'lib/components/RelayUrlSelect'
 import { addRecentRelayHub } from 'lib/services/addRecentRelayHub'
 import { addRecentRelayUrl } from 'lib/services/addRecentRelayUrl'
+import { EthereumNetworkStatus } from 'lib/components/EthereumNetworkStatus'
 
 const RelaysIndex = class _RelaysIndex extends Component {
   state = {
@@ -46,6 +47,7 @@ const RelaysIndex = class _RelaysIndex extends Component {
   render() {
     return (
       <MainLayout>
+        <EthereumNetworkStatus />
         <Section>
           <p className='pb-4 font-silkaRegular text-gray-500'>
             <Link href='/relay-hubs'><a>Relays</a></Link>

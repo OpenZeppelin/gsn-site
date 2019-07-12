@@ -11,6 +11,7 @@ import {
   Submit,
   Field
 } from 'lib/components/form'
+import { EthereumNetworkStatus } from 'lib/components/EthereumNetworkStatus'
 
 const RelayHubsIndex = class _RelayHubsIndex extends PureComponent {
   constructor (props) {
@@ -43,6 +44,7 @@ const RelayHubsIndex = class _RelayHubsIndex extends PureComponent {
   render () {
     return (
       <MainLayout>
+        <EthereumNetworkStatus />
         <Section>
           <p className='pb-4 font-silkaRegular text-gray-500'>
             <Link href='/relay-hubs'><a>Relay Hubs</a></Link>
