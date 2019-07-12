@@ -5,7 +5,7 @@ import { graphql, Query } from 'react-apollo'
 import { react } from 'dapp-core'
 import { ethers } from 'ethers'
 
-import { USER_REJECTED_TX } from 'lib/constants'
+import { STATUS_IS_ZERO, USER_REJECTED_TX } from 'lib/constants'
 import { EthTextSymbol } from 'lib/components/EthTextSymbol'
 import { TxMessage } from 'lib/components/TxMessage'
 import { Submit } from 'lib/components/form'
@@ -39,7 +39,7 @@ export const RecipientForm = withFormProps(
     }
 
     componentDidMount () {
-      this.resetTxState({})
+      this.resetTxState()
       this.startSubscription()
     }
 
@@ -70,6 +70,7 @@ export const RecipientForm = withFormProps(
 
     handleSubmitDeposit = (e) => {
       e.preventDefault()
+      this.resetTxState()
 
       if (!this.state.depositAmount) {
         return
@@ -92,24 +93,30 @@ export const RecipientForm = withFormProps(
 
         this.props.ee(data.sendTransaction.id)
           .on('sent', function () {
-            _this.resetTxState({})
+            _this.resetTxState()
             _this.setState({
               depositAmountInFlight: true
             })
           })
           .on('receipt', () => {
-            _this.resetTxState({})
+            _this.resetTxState()
             _this.setState({
               depositAmountCompleted: true
             })
           })
           .on('error', function () {
             if (arguments[0].error === USER_REJECTED_TX) {
+              _this.resetTxState()
               return
             }
 
             console.log('There was an error', arguments)
-            _this.resetTxState({})
+            console.log(arguments[0].error)
+            if (arguments[0].error === STATUS_IS_ZERO) {
+              console.warn('Raise the gas amount and try again')
+            }
+
+            _this.resetTxState()
             _this.setState({
               depositAmountErrorMsg: true
             })
@@ -117,24 +124,14 @@ export const RecipientForm = withFormProps(
       })
     }
 
-    // .then(({ data }) => {
-    //   this.props.ee(data.sendTransaction.id)
-    //     .on('error', (t) => {
-    //       debug('error: ', t)
-    //     })
-    //     .on('receipt', (t) => {
-    //       debug('receipt: ', t)
-    //     })
-    // })
-
     relayHubAddress = () => {
       if (this.props.recipientQuery.RelayRecipient) {
         return this.props.recipientQuery.RelayRecipient.relayHubAddress
       }
     }
 
-    resetTxState = ({ alsoClearValue }) => {
-      if (alsoClearValue) {
+    resetTxState = ({ clearAll } = { clearAll: false }) => {
+      if (clearAll) {
         this.setState({
           depositAmount: ''
         })
@@ -239,7 +236,7 @@ export const RecipientForm = withFormProps(
                       />
 
                       <TxMessage
-                        txType={`Deposit`}
+                        txType={`Depositing`}
                         inWallet={this.state.depositAmountInWallet}
                         inFlight={this.state.depositAmountInFlight}
                         completed={this.state.depositAmountCompleted}

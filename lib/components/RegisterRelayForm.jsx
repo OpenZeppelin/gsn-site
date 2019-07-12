@@ -3,6 +3,8 @@ import PropTypes from 'prop-types'
 import { graphql } from 'react-apollo'
 import { queries } from 'dapp-core'
 
+import { STATUS_IS_ZERO, USER_REJECTED_TX } from 'lib/constants'
+import { TxMessage } from 'lib/components/TxMessage'
 import { Submit } from 'lib/components/form'
 import { ErrorMsg } from 'lib/components/ErrorMsg'
 import { withFormProps } from 'lib/components/hoc/withFormProps'
@@ -12,20 +14,19 @@ export const RegisterRelayForm = graphql(
   { name: 'networkAccountQuery' }
 )(withFormProps(
   class _RegisterRelayForm extends PureComponent {
+    state = {
+      transactionFee: '',
+      url: ''
+    }
+
     static propTypes = {
       relayHubAddress: PropTypes.string.isRequired,
     }
 
-    constructor (props) {
-      super(props)
-      this.state = {
-        transactionFee: '0',
-        url: ''
-      }
-    }
-
     handleRegisterRelay = (e) => {
       e.preventDefault()
+      this.resetRegisterTxState()
+
       this.props.sendTransaction({
         variables: {
           contractAddress: this.props.relayHubAddress,
@@ -34,14 +35,67 @@ export const RegisterRelayForm = graphql(
           args: [this.state.transactionFee, this.state.url]
         }
       }).then(({ data }) => {
+        const _this = this
+
+        _this.setState({
+          registerTxInWallet: true
+        })
+
         this.props.ee(data.sendTransaction.id)
-          .on('error', function () {
-            console.log('There was an error', arguments)
+          .on('sent', function () {
+            _this.resetStakeTxState()
+            _this.setState({
+              registerTxInFlight: true
+            })
           })
           .on('receipt', () => {
-            console.log('accepted!')
+            _this.resetStakeTxState()
+            _this.setState({
+              registerTxCompleted: true
+            })
           })
+          .on('error', function () {
+            if (arguments[0].error === USER_REJECTED_TX) {
+              _this.resetRegisterTxState()
+              return
+            }
+
+            console.log('There was an error', arguments)
+            console.log(arguments[0].error)
+            if (arguments[0].error === STATUS_IS_ZERO) {
+              console.warn('Raise the gas amount and try again')
+            }
+
+            _this.resetRegisterTxState()
+            _this.setState({
+              registerTxErrorMsg: true
+            })
+          })
+          
       })
+    }
+
+    resetRegisterTxState = ({ clearAll } = { clearAll: false }) => {
+      if (clearAll) {
+        this.setState({
+          transactionFee: '',
+          url: ''
+        })
+      }
+
+      this.setState({
+        registerTxInWallet: false,
+        registerTxInFlight: false,
+        registerTxErrorMsg: false,
+        registerTxCompleted: false
+      })
+    }
+
+    registerFormLocked = () => {
+      return this.state.registerTxInWallet ||
+        this.state.registerTxInFlight ||
+        this.state.registerTxCompleted ||
+        this.state.registerTxError
     }
 
     render () {
@@ -69,33 +123,46 @@ export const RegisterRelayForm = graphql(
               </span>
 
               <label
-                htmlFor='transaction-fee'
+                htmlFor='register-transaction-fee'
               >
                 Transaction Fee <span className="light">(Whole %, ie. '2.5')</span>
               </label>
               <input
-                id='transaction-fee'
-                disabled={!ethereumPermission}
+                id='register-transaction-fee'
+                disabled={!ethereumPermission || this.registerFormLocked()}
                 type='number'
                 value={this.state.transactionFee}
                 onChange={(e) => this.setState({transactionFee: e.target.value })}
-                className='mb-6'
+                className='mb-6 trans'
                 required
               />
 
-              <label htmlFor='transaction-fee'>URL</label>
+              <label htmlFor='register-url'>URL</label>
               <input
-                disabled={!ethereumPermission}
+                id='register-url'
+                disabled={!ethereumPermission || this.registerFormLocked()}
                 type='text'
                 value={this.state.url}
                 onChange={(e) => this.setState({url: e.target.value})}
-                className='mb-6'
+                className='mb-6 trans'
                 required
               />
 
               <Submit 
-                disabled={!ethereumPermission}
-                value='Register'
+                disabled={!ethereumPermission ||
+                  this.state.transactionFee === '' ||
+                  this.state.url === '' ||
+                  this.registerFormLocked()
+                }
+                value={this.state.registerTxInFlight ? `Registering ...` : `Register`}
+              />
+              <TxMessage
+                txType={`Registering`}
+                inWallet={this.state.registerTxInWallet}
+                inFlight={this.state.registerTxInFlight}
+                completed={this.state.registerTxCompleted}
+                error={this.state.registerTxErrorMsg}
+                resetTxState={this.resetRegisterTxState}
               />
             </form>
           </>

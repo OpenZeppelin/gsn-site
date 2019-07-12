@@ -44,8 +44,8 @@ const RecipientsIndex = class _RecipientsIndex extends PureComponent {
       <MainLayout>
         <Section>
           <div className='lg:w-2/3'>
-            <p className='pb-4 font-silkaRegular text-gray-500'>
-              <Link href='/recipients'><a>Recipients</a></Link>
+            <p className='pb-4 font-silkaRegular'>
+              Recipients
             </p>
             <p>
               Check your contract balances and make deposits using this <strong>Dapp Tool</strong>.  You'll want to make sure the contract has enough of an Ether balance to cover transaction costs for users.

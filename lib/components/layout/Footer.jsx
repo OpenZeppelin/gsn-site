@@ -30,7 +30,7 @@ export default () => (
             </a>
           </Link>
 
-          <Link href='/relay-hubs'>
+          <Link href='/relays'>
             <a href='#' className='block md:inline-block font-silkaMedium text-bold text-sm text-white pr-6 lg:pr-0 lg:pl-16 pt-1 leading-none mt-4 lg:mt-0'>
               Relayer Tool
             </a>

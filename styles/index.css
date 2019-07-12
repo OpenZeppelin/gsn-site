@@ -129,6 +129,18 @@ button:not(.burger)[disabled],
   border-bottom: 2px solid rgb(22, 121, 215) !important;
 }
 
+/* .react-select__menu-notice {
+  @apply font-silkaMedium leading-tight;
+
+  background-color: white !important;
+  color: #63B3ED !important;
+  cursor: pointer !important;
+  padding: 14px 20px !important;
+  border-top: 2px solid #f3f3f3;
+  min-height: 54px;
+} */
+
+.react-select__menu-notice,
 .react-select__option {
   @apply font-silkaMedium leading-tight;
 
