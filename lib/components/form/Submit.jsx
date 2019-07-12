@@ -9,7 +9,7 @@ export const Submit = class _Submit extends PureComponent {
   }
 
   render () {
-    const className = `${this.props.className || ''}`
+    const className = `${this.props.className} trans`
 
     return (
       <div className='text-right mt-2'>

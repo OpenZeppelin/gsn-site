@@ -8,7 +8,7 @@ import { EtherscanAddressLink } from 'lib/components/EtherscanAddressLink'
 
 export const EthereumNetworkStatus = function _EthereumNetworkStatus({ networkAccountQuery }) {
   return (
-    <div className='text-sm bg-indigo-900 p-3 text-indigo-100 text-center'>
+    <div className='text-sm bg-blue-700 p-3 text-white text-center font-silkaMedium tracking-wide'>
       <div className='container'>
         <DynamicApolloWrapper>
           <Query query={queries.networkAccountQuery}>
@@ -24,9 +24,9 @@ export const EthereumNetworkStatus = function _EthereumNetworkStatus({ networkAc
                   {error.message}
                 </div>
               } else {
-                content = <div>
-                  Using account {<EtherscanAddressLink address={account}>{account}</EtherscanAddressLink>} on network {networkIdToName(networkId)}
-                </div>
+                content = <span className='opacity-80 hover:opacity-100 trans'>
+                  Using account {<EtherscanAddressLink className='text-blue-300' address={account}>{account}</EtherscanAddressLink>} on network <strong className='font-silkaBold capitalize'>'{networkIdToName(networkId)}'</strong>
+                </span>
               }
 
               return content

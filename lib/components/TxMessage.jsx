@@ -4,12 +4,18 @@ export const TxMessage = class _TxMessage extends PureComponent {
   completelyResetState = (e) => {
     e.preventDefault()
 
-    this.props.resetTxState({ alsoClearValue: true })
+    this.props.resetTxState({ clearAll: true })
   }
 
   render () {
     let className = 'text-blue-600'
-    const { error, completed, inWallet, inFlight, txType, resetTxState } = this.props
+    const {
+      error,
+      completed,
+      inWallet,
+      inFlight,
+      txType
+    } = this.props
 
     if (inWallet) {
       className = 'text-purple-400'
@@ -27,7 +33,7 @@ export const TxMessage = class _TxMessage extends PureComponent {
       <span className={`${className} font-silkaMedium text-right mt-2`}>
         {error &&
           <>
-            {txType} not completed
+            {txType} not completed.
             <br /><span className='text-sm'>(see JS console for details)</span>
             <br /><a onClick={this.completelyResetState} href=''>Okay</a>
           </>

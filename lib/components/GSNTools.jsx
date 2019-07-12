@@ -31,7 +31,7 @@ export const GSNTools = function() {
               img={<ParticipateStar />}
               title='Participate in the network &gt;'
               text='Spin up your own relayer and earn fees for every transaction you put on the blockchain. Use this tool to add new relayers and edit their settings.'
-              btnUrl='/relay-hubs'
+              btnUrl='/relays'
               btnText='See Relayer Tool'
             />
           </div>

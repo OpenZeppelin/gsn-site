@@ -2,6 +2,8 @@ import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { ethers } from 'ethers'
 
+import { STATUS_IS_ZERO, USER_REJECTED_TX } from 'lib/constants'
+import { TxMessage } from 'lib/components/TxMessage'
 import { EthTextSymbol } from 'lib/components/EthTextSymbol'
 import { EthUserLink } from 'lib/components/EthUserLink'
 import { Submit } from 'lib/components/form'
@@ -73,6 +75,7 @@ export const RelayForm = withFormProps(withRelay(
 
     handleSubmitStake = (e) => {
       e.preventDefault()
+      this.resetStakeTxState()
       this.props.sendTransaction({
         variables: {
           contractAddress: this.props.relayHubAddress,
@@ -82,14 +85,40 @@ export const RelayForm = withFormProps(withRelay(
           value: ethers.utils.parseEther(this.state.stakeAmount)
         }
       }).then(({ data }) => {
+        const _this = this
+
+        _this.setState({
+          stakeAmountInWallet: true
+        })
+
         this.props.ee(data.sendTransaction.id)
-          .on('error', function () {
-            console.log('There was an error', arguments)
+          .on('sent', function () {
+            _this.resetStakeTxState()
+            _this.setState({
+              stakeAmountInFlight: true
+            })
           })
           .on('receipt', () => {
-            console.log('accepted!')
-            this.setState({
-              stakeAmount: ''
+            _this.resetStakeTxState()
+            _this.setState({
+              stakeAmountCompleted: true
+            })
+          })
+          .on('error', function () {
+            if (arguments[0].error === USER_REJECTED_TX) {
+              _this.resetStakeTxState()
+              return
+            }
+
+            console.log('There was an error', arguments)
+            console.log(arguments[0].error)
+            if (arguments[0].error === STATUS_IS_ZERO) {
+              console.warn('Raise the gas amount and try again')
+            }
+
+            _this.resetStakeTxState()
+            _this.setState({
+              stakeAmountErrorMsg: true
             })
           })
       })
@@ -97,6 +126,7 @@ export const RelayForm = withFormProps(withRelay(
 
     handleSubmitDeposit = (e) => {
       e.preventDefault()
+      this.resetDepositTxState()
       const variables = {
         contractAddress: this.props.relayHubAddress,
         contractName: 'RelayHub',
@@ -108,17 +138,87 @@ export const RelayForm = withFormProps(withRelay(
       this.props.sendTransaction({
         variables
       }).then(({ data }) => {
+        const _this = this
+
+        _this.setState({
+          depositAmountInWallet: true
+        })
+
         this.props.ee(data.sendTransaction.id)
-          .on('error', function () {
-            console.log('There was an error', arguments)
+          .on('sent', function () {
+            _this.resetDepositTxState()
+            _this.setState({
+              depositAmountInFlight: true
+            })
           })
           .on('receipt', () => {
-            console.log('accepted!')
-            this.setState({
-              depositAmount: ''
+            _this.resetDepositTxState()
+            _this.setState({
+              depositAmountCompleted: true
+            })
+          })
+          .on('error', function () {
+            if (arguments[0].error === USER_REJECTED_TX) {
+              _this.resetDepositTxState()
+              return
+            }
+
+            console.log('There was an error', arguments)
+            console.log(arguments[0].error)
+            if (arguments[0].error === STATUS_IS_ZERO) {
+              console.warn('Raise the gas amount and try again')
+            }
+
+            _this.resetDepositTxState()
+            _this.setState({
+              depositAmountErrorMsg: true
             })
           })
       })
+    }
+
+    resetDepositTxState = ({ clearAll } = { clearAll: false }) => {
+      if (clearAll) {
+        this.setState({
+          depositAmount: ''
+        })
+      }
+
+      this.setState({
+        depositAmountInWallet: false,
+        depositAmountInFlight: false,
+        depositAmountErrorMsg: false,
+        depositAmountCompleted: false
+      })
+    }
+
+    resetStakeTxState = ({ clearAll } = { clearAll: false }) => {
+      if (clearAll) {
+        this.setState({
+          stakeAmount: ''
+        })
+      }
+
+      this.setState({
+        stakeAmountInWallet: false,
+        stakeAmountInFlight: false,
+        stakeAmountErrorMsg: false,
+        stakeAmountCompleted: false
+      })
+    }
+
+    depositFormLocked = () => {
+      return this.state.depositAmountInWallet ||
+        this.state.depositAmountInFlight ||
+        this.state.depositAmountCompleted ||
+        this.state.depositAmountError
+    }
+
+    stakeFormLocked = () => {
+      return this.state.stakeAmountInWallet ||
+        this.state.stakeAmountInFlight ||
+        this.state.stakeAmountCompleted ||
+        this.state.stakeAmountError
     }
 
     render () {
@@ -220,17 +320,25 @@ export const RelayForm = withFormProps(withRelay(
               </label>
               <input
                 id='relay-form-deposit'
-                disabled={!ethereumPermission}
+                disabled={!ethereumPermission || this.depositFormLocked()}
                 type='number'
                 value={this.state.depositAmount}
                 onChange={(e) => this.setState({depositAmount: e.target.value})}
-                className='mb-6'
+                className='mb-6 trans'
                 required
               />
 
               <Submit
-                disabled={!ethereumPermission || this.state.depositAmount === ''}
-                value='Deposit'
+                disabled={!ethereumPermission || this.state.depositAmount === '' || this.depositFormLocked()}
+                value={this.state.depositAmountInFlight ? `Depositing ...` : `Deposit`}
+              />
+              <TxMessage
+                txType={`Depositing`}
+                inWallet={this.state.depositAmountInWallet}
+                inFlight={this.state.depositAmountInFlight}
+                completed={this.state.depositAmountCompleted}
+                error={this.state.depositAmountErrorMsg}
+                resetTxState={this.resetDepositTxState}
               />
             </form>
 
@@ -243,11 +351,11 @@ export const RelayForm = withFormProps(withRelay(
               </label>
               <input
                 id='relay-form-stake'
-                disabled={!ethereumPermission}
+                disabled={!ethereumPermission || this.stakeFormLocked()}
                 type='number'
                 value={this.state.stakeAmount}
                 onChange={(e) => this.setState({ stakeAmount: e.target.value })}
-                className='mb-6'
+                className='mb-6 trans'
                 required
               />
 
@@ -256,17 +364,25 @@ export const RelayForm = withFormProps(withRelay(
               </label>
               <input
                 id='relay-form-unstake-delay'
-                disabled={!ethereumPermission}
+                disabled={!ethereumPermission || this.stakeFormLocked()}
                 type='number'
                 value={this.state.unstakeDelay}
                 onChange={(e) => this.setState({unstakeDelay: e.target.value})}
-                className='mb-6'
+                className='mb-6 trans'
                 required
               />
 
               <Submit
-                disabled={!ethereumPermission || this.state.stakeAmount === ''}
-                value='Stake'
+                disabled={!ethereumPermission || this.state.stakeAmount === '' || this.stakeFormLocked()}
+                value={this.state.stakeAmountInFlight ? `Staking ...` : `Stake`}
+              />
+              <TxMessage
+                txType={`Staking`}
+                inWallet={this.state.stakeAmountInWallet}
+                inFlight={this.state.stakeAmountInFlight}
+                completed={this.state.stakeAmountCompleted}
+                error={this.state.stakeAmountErrorMsg}
+                resetTxState={this.resetStakeTxState}
               />
             </form>
 

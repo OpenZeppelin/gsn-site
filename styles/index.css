@@ -108,17 +108,22 @@ button:not(.burger):focus,
   @apply outline-none border-blue-500;
 }
 
-input:not([type='submit'])[disabled],
-textarea[disabled],
-button:not(.burger)[disabled],
-.react-select__control[disabled] {
-  @apply border-gray-200 bg-gray-400 text-gray-600 cursor-not-allowed;
-}
-
 .react-select__control {
   border: 0 !important;
   border-bottom: 2px solid white !important;
 }
+
+input:not([type='submit'])[disabled],
+textarea[disabled],
+button:not(.burger)[disabled],
+.react-select__control--is-disabled {
+  @apply border-gray-400 bg-gray-400 text-gray-700 cursor-not-allowed !important;
+}
+
+.react-select__control--is-disabled .react-select__indicators {
+  display: none;
+}
+
 
 .react-select__control:hover {
   border-bottom: 2px solid rgb(62, 151, 235) !important;
@@ -129,6 +134,18 @@ button:not(.burger)[disabled],
   border-bottom: 2px solid rgb(22, 121, 215) !important;
 }
 
+/* .react-select__menu-notice {
+  @apply font-silkaMedium leading-tight;
+
+  background-color: white !important;
+  color: #63B3ED !important;
+  cursor: pointer !important;
+  padding: 14px 20px !important;
+  border-top: 2px solid #f3f3f3;
+  min-height: 54px;
+} */
+
+.react-select__menu-notice,
 .react-select__option {
   @apply font-silkaMedium leading-tight;
 
@@ -272,4 +289,8 @@ dd {
   position: relative;
   top: -3px;
   width: 1.3em;
+}
+
+.is-selected {
+  @apply text-blue-600 bg-white !important;
 }
