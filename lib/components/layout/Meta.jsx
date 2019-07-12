@@ -30,6 +30,8 @@ export default () => {
         <meta property='og:type' content='website' />
         <meta property='og:image' content={`${url}/facebook_share_image_1200x630.png`} />
         <meta property='og:rich_attachment' content='true' />
+        <meta property='og:image:width' content='1200' />
+        <meta property='og:image:height' content='630' />
         
         <meta property='twitter:title' content={title} />
         <meta property='twitter:card' content='summary_large_image' />
