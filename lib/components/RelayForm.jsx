@@ -12,6 +12,7 @@ import { ZERO_ADDRESS } from 'lib/constants'
 import { withFormProps } from 'lib/components/hoc/withFormProps'
 import { RegisterRelayForm } from './RegisterRelayForm'
 import { withRelay } from 'lib/components/hoc/withRelay'
+import { RelayUrlTestForm } from 'lib/components/RelayUrlTestForm'
 
 export const RelayForm = withFormProps(withRelay(
   class _RelayHubForm extends Component {
@@ -121,12 +122,17 @@ export const RelayForm = withFormProps(withRelay(
     }
 
     render () {
-      const { relayBalancesQuery, ethereumPermissionQuery, relayQuery, relayAddress } = this.props
+      const { relayBalancesQuery, ethereumPermissionQuery, relayQuery } = this.props
       const { RelayHub, loading, error } = relayBalancesQuery || {}
 
       let relay
-      if (relayQuery && relayQuery.RelayHub) {
-        relay = relayQuery.RelayHub.relay
+      if (relayQuery) {
+        let { RelayHub, loading, error } = relayQuery
+        if (error) {
+          console.error(error)
+        } else if (RelayHub) {
+          relay = RelayHub.relay
+        }
       }
 
       const { ethereumPermission } = ethereumPermissionQuery || {}
@@ -198,6 +204,10 @@ export const RelayForm = withFormProps(withRelay(
               <dt>Unstake Delay</dt>
               <dd>{unstakeDelay ? unstakeDelay.toString() : '?'} <span className='light'>seconds</span></dd>
             </dl>
+
+            <form>
+              <RelayUrlTestForm relayUrl={this.props.relayUrl} />
+            </form>
               
             {connect}
 

@@ -1,7 +1,6 @@
 import React, { PureComponent } from 'react'
 import PropTypes from 'prop-types'
 
-import { relayAddressQuery } from 'lib/queries/relayAddressQuery'
 import { RelayUrlLink } from 'lib/components/RelayUrlLink'
 
 export const RelayUrlForm = class _RelayUrlForm extends PureComponent {

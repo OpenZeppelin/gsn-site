@@ -5,10 +5,10 @@ import Link from 'next/link'
 import parse from 'url-parse'
 
 import { formatRelayUrl } from 'lib/utils/formatRelayUrl'
-import { relayAddressQuery } from 'lib/queries/relayAddressQuery'
+import { relayServerInfoQuery } from 'lib/queries/relayServerInfoQuery'
 
-export const RelayUrlLink = graphql(relayAddressQuery, {
-  name: 'relayAddressQuery',
+export const RelayUrlLink = graphql(relayServerInfoQuery, {
+  name: 'relayServerInfoQuery',
   skip: (props) => {
     const parsed = parse(props.relayUrl, {})
     return !parsed.host
@@ -32,13 +32,13 @@ class _RelayUrlLink extends PureComponent {
   }
 
   render () {
-    const { relayAddressQuery, relayHubAddress } = this.props
-    const { relayAddress, loading, error } = relayAddressQuery || {}
+    const { relayServerInfoQuery, relayHubAddress } = this.props
+    const { RelayServerAddress } = relayServerInfoQuery || {}
 
-    if (relayAddress) {
+    if (RelayServerAddress) {
       return (
         <>
-          <Link href={formatRelayUrl({ relayHubAddress, relayAddress })}>
+          <Link href={formatRelayUrl({ relayHubAddress, relayAddress: RelayServerAddress })}>
             <a>Go to Relay</a>
           </Link>
         </>

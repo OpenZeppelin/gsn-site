@@ -3,6 +3,7 @@ import Creatable from 'react-select/creatable'
 import { graphql } from 'react-apollo'
 import { omit } from 'lodash'
 import PropTypes from 'prop-types'
+import classnames from 'classnames'
 
 import { recentRelayUrlsQuery } from 'lib/queries/recentRelayUrlsQuery'
 import { withNetworkAccountQuery } from 'lib/components/hoc/withNetworkAccountQuery'
@@ -42,7 +43,7 @@ class _RelayUrlSelect extends PureComponent {
   }
 
   render () {
-    const newProps = omit(this.props, ['onChange', 'onError'])
+    const newProps = omit(this.props, ['onChange', 'onError', 'className'])
 
     let options = []
 
@@ -59,11 +60,15 @@ class _RelayUrlSelect extends PureComponent {
       })
     }
 
+    const classNameProps = {
+      className: classnames('react-select', this.props.className),
+      classNamePrefix: 'react-select'
+    }
+
     return (
       <Creatable
         {...newProps}
-        className='react-select'
-        classNamePrefix='react-select'
+        {...classNameProps}
         allowCreateWhileLoading={true}
         formatCreateLabel={(inputValue) => `Use ${inputValue}...`}
         options={options}

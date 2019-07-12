@@ -83,7 +83,6 @@ export const RecipientForm = withFormProps(
           value: ethers.utils.parseEther(this.state.depositAmount).toString()
         }
       }).then(({ data }) => {
-        console.log(this.props)
 
         const _this = this
 
