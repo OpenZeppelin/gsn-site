@@ -7,6 +7,7 @@ import { Section } from 'lib/components/layout/Section'
 import { Submit, Field } from 'lib/components/form'
 import { RelayHubSelect } from 'lib/components/RelayHubSelect'
 import { addRecentRelayHub } from 'lib/services/addRecentRelayHub'
+import { EthereumNetworkStatus } from 'lib/components/EthereumNetworkStatus'
 
 const RelaysIndex = class _RelaysIndex extends Component {
   state = {
@@ -32,6 +33,7 @@ const RelaysIndex = class _RelaysIndex extends Component {
   render() {
     return (
       <MainLayout>
+        <EthereumNetworkStatus />
         <Section>
           <p className='pb-4 font-silkaRegular'>
             Relay Hubs

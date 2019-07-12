@@ -9,10 +9,6 @@ export default () => (
     <div className='container pt-16 pb-6'>
 
       <nav className='md:flex items-center justify-between flex-wrap py-4'>
-        <div className='md:flex items-center flex-shrink-0 text-blue-900 mr-6'>
-          <a href='https://openzeppelin.org'><OpenZeppelinWhiteLogo /></a>
-        </div>
-
         <div
           className='w-full sm:flex flex-grow lg:items-center lg:w-auto'
         >
@@ -39,7 +35,7 @@ export default () => (
       </nav>
 
       <p className='text-xxs text-white pt-6 opacity-100'>
-        Developed by <a href='https://delta.camp'><DeltaCampWhiteLogo height='16' className='inline-block -my-2' /></a>
+        Website developed by <a href='https://delta.camp' target='_blank' rel='noreferrer'><DeltaCampWhiteLogo height='16' className='inline-block -my-2' /></a>
       </p>
       <p className='text-xxs text-white'>
         &copy; {new Date().getFullYear()}. All rights reserved.&nbsp; |&nbsp; Privacy&nbsp; |&nbsp; Terms of Service

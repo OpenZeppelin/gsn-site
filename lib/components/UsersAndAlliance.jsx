@@ -26,7 +26,7 @@ export const UsersAndAlliance = function() {
 
           <div className='lg:w-2/3 mx-auto mb-24'>
             <blockquote className='font-silkaMedium text-white text-base sm:text-lg leading-relaxed'>
-              “The Burner Wallet is a quick web wallet used to move small amounts of crypto quickly. On page load an Ethereum keypair is automatically generated and used to sign transactions with an incredibly simple interface. Sending funds is as easy as a QR code scan.”
+              “The Burner Wallet is a quick web wallet used to move small amounts of crypto quickly. Thanks to the GSN sending funds is as easy as a QR code scan.”
             </blockquote>
             <p className='text-white my-8'>
               <img

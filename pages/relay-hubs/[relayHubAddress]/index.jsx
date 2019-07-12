@@ -3,6 +3,7 @@ import { withRouter } from 'next/router'
 import classnames from 'classnames'
 import Link from 'next/link'
 
+import { EthereumNetworkStatus } from 'lib/components/EthereumNetworkStatus'
 import { DynamicApolloWrapper } from 'lib/components/DynamicApolloWrapper'
 import { Field, Submit } from 'lib/components/form'
 import { MainLayout } from 'lib/components/layout/MainLayout'
@@ -21,6 +22,8 @@ const RelayHubDashboard = withRouter(
 
       return (
         <MainLayout>
+          <EthereumNetworkStatus />
+          
           <Section>
             <p className='pb-4 font-silkaRegular text-gray-500'>
               <Link href='/relays'><a>Relay Hubs</a></Link> &raquo;&nbsp;

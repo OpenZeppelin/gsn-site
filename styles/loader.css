@@ -14,8 +14,8 @@ span {
 .spinner-double-section-far {
   display: block;
   float: left;
-  width: 25px;
-  height: 25px;
+  width: 1.5625em;
+  height: 1.5625em;
   border-radius: 50%;
   border: 1.5625px solid var(--inactive);
   animation: spinner var(--speed) linear infinite;
@@ -24,10 +24,10 @@ span {
 
 .spinner-double-section-far:before,
 .spinner-double-section-far:after {
-  top: -6px;
-  left: -6px;
-  width: 33px;
-  height: 33px;
+  top: -0.375em;
+  left: -0.375em;
+  width: 2.065em;
+  height: 2.065em;
   content: '';
   position: absolute;
   display: block;

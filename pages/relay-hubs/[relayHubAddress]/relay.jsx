@@ -4,9 +4,10 @@ import Link from 'next/link'
 import { MainLayout } from 'lib/components/layout/MainLayout'
 import { Section } from 'lib/components/layout/Section'
 import { RelayForm } from 'lib/components/RelayForm'
-import { DynamicApolloWrapper } from 'lib/components/DynamicApolloWrapper'
 import { RelayWrapper } from 'lib/components/RelayWrapper'
 import { EnsName } from 'lib/components/EnsName'
+import { EthereumNetworkStatus } from 'lib/components/EthereumNetworkStatus'
+import { DynamicApolloWrapper } from 'lib/components/DynamicApolloWrapper'
 
 function RelayDashboard() {
   const router = useRouter()
@@ -14,6 +15,7 @@ function RelayDashboard() {
 
   return (
     <MainLayout>
+      <EthereumNetworkStatus />
       <Section>
         <DynamicApolloWrapper>
           <RelayWrapper
