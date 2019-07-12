@@ -164,6 +164,7 @@ button:not(.burger)[disabled],
 input[type='submit'],
 button:not(.burger) {
   @apply font-silkaMedium text-lg tracking-wide border-blue-400 border-2 flex-shrink-0 bg-blue-500 text-white font-bold py-2 px-4 rounded cursor-pointer;
+  min-width: 200px;
 }
 
 input[type='submit']:hover,

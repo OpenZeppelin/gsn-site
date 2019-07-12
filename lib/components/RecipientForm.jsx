@@ -31,10 +31,7 @@ export const RecipientForm = withFormProps(
     })
   (class _RecipientForm extends PureComponent {
     state = {
-      depositAmount: '',
-      depositAmountInFlight: false,
-      depositAmountErrorMsg: '',
-      depositAmountCompleted: false
+      depositAmount: ''
     }
 
     static propTypes = {
@@ -42,6 +39,7 @@ export const RecipientForm = withFormProps(
     }
 
     componentDidMount () {
+      this.resetTxState({})
       this.startSubscription()
     }
 
@@ -86,22 +84,22 @@ export const RecipientForm = withFormProps(
           value: ethers.utils.parseEther(this.state.depositAmount).toString()
         }
       }).then(({ data }) => {
-        console.log(this.props)
-
         const _this = this
+
+        _this.setState({
+          depositAmountInWallet: true
+        })
 
         this.props.ee(data.sendTransaction.id)
           .on('sent', function () {
+            _this.resetTxState({})
             _this.setState({
-              // depositAmount: '',
-              depositAmountInFlight: true,
-              depositAmountCompleted: false
+              depositAmountInFlight: true
             })
           })
           .on('receipt', () => {
+            _this.resetTxState({})
             _this.setState({
-              depositAmount: '',
-              depositAmountInFlight: false,
               depositAmountCompleted: true
             })
           })
@@ -111,11 +109,9 @@ export const RecipientForm = withFormProps(
             }
 
             console.log('There was an error', arguments)
+            _this.resetTxState({})
             _this.setState({
-              depositAmount: '',
-              depositAmountInFlight: false,
-              depositAmountErrorMsg: true,
-              depositAmountCompleted: false
+              depositAmountErrorMsg: true
             })
           })
       })
@@ -135,6 +131,28 @@ export const RecipientForm = withFormProps(
       if (this.props.recipientQuery.RelayRecipient) {
         return this.props.recipientQuery.RelayRecipient.relayHubAddress
       }
+    }
+
+    resetTxState = ({ alsoClearValue }) => {
+      if (alsoClearValue) {
+        this.setState({
+          depositAmount: ''
+        })
+      }
+
+      this.setState({
+        depositAmountInWallet: false,
+        depositAmountInFlight: false,
+        depositAmountErrorMsg: false,
+        depositAmountCompleted: false
+      })
+    }
+
+    formLocked = () => {
+      return this.state.depositAmountInWallet ||
+        this.state.depositAmountInFlight ||
+        this.state.depositAmountCompleted ||
+        this.state.depositAmountError
     }
 
     render () {
@@ -205,7 +223,7 @@ export const RecipientForm = withFormProps(
                       <input
                         required
                         id='deposit-amount'
-                        disabled={!ethereumPermission || this.state.depositAmountInFlight}
+                        disabled={!ethereumPermission || this.formLocked()}
                         type='number'
                         min='0'
                         step='.000000001'
@@ -216,40 +234,18 @@ export const RecipientForm = withFormProps(
                       />
 
                       <Submit
-                        disabled={!ethereumPermission || this.state.depositAmount === '' || this.state.depositAmountInFlight}
+                        disabled={!ethereumPermission || this.state.depositAmount === '' || this.formLocked()}
                         value={this.state.depositAmountInFlight ? `Depositing ...` : `Deposit`}
                       />
 
-                      {this.state.depositAmountErrorMsg && 
-                        <TxMessage className='text-red-600'>
-                          Deposit not completed
-                          <br /><span className='text-sm'>(see JS console for details)</span>
-                          <br /><a onClick={(e) => {
-                            e.preventDefault()
-                            this.setState({
-                              depositAmountErrorMsg: false
-                            })
-                          }} href=''>Okay</a>
-                        </TxMessage>
-                      }
-
-                      {this.state.depositAmountInFlight &&
-                        <TxMessage>
-                          Waiting for confirmation ...
-                        </TxMessage>
-                      }
-
-                      {this.state.depositAmountCompleted &&
-                        <TxMessage className='text-green-400'>
-                          Deposit completed.
-                          <br /><a onClick={(e) => {
-                            e.preventDefault()
-                            this.setState({
-                              depositAmountCompleted: false
-                            })
-                          }} href=''>Okay</a>
-                        </TxMessage>
-                      }
+                      <TxMessage
+                        txType={`Deposit`}
+                        inWallet={this.state.depositAmountInWallet}
+                        inFlight={this.state.depositAmountInFlight}
+                        completed={this.state.depositAmountCompleted}
+                        error={this.state.depositAmountErrorMsg}
+                        resetTxState={this.resetTxState}
+                      />
                     </form>
                   )
                 }
