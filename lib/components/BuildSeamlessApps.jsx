@@ -22,13 +22,6 @@ export const BuildSeamlessApps = function() {
         </div>
 
         <div className='flex flex-wrap lg:-mx-32'>
-          <div className='flex max-w-auto lg:max-w-sm mt-6 lg:mt-20 mb-20 lg:px-6'>
-            <Card
-              img={<PortisLogo className='w-2/3 lg:w-auto' />}
-              text='With the Portis SDK, DApps get a standard web3 provider, and thanks to E2E encryption, their users get a non-custodial wallet and can sign transactions. all using their existing browser, with a familiar email and password login flow - no installation required!'
-              url='https://developers.portis.io'
-            />
-          </div>
 
           <div className='flex card-custom-max-width max-w-auto lg:max-w-sm mt-6 lg:mt-10 mb-4 lg:px-6'>
             <Card
@@ -36,6 +29,14 @@ export const BuildSeamlessApps = function() {
               text='OpenZeppelin is a battle-tested library of reusable smart contracts for Ethereum and other blockchains. Reduce the risk of vulnerabilities in your applications by using standard, tested, community-reviewed code. Using industry standard contract security patterns and best practices.'
               url='https://openzeppelin.org'
               large
+            />
+          </div>
+
+          <div className='flex max-w-auto lg:max-w-sm mt-6 lg:mt-20 mb-20 lg:px-6 lg:order-first'>
+            <Card
+              img={<PortisLogo className='w-2/3 lg:w-auto' />}
+              text='With the Portis SDK, DApps get a standard web3 provider, and thanks to E2E encryption, their users get a non-custodial wallet and can sign transactions. all using their existing browser, with a familiar email and password login flow - no installation required!'
+              url='https://developers.portis.io'
             />
           </div>
 
