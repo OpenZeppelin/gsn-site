@@ -33,7 +33,8 @@ class _RelayUrlLink extends PureComponent {
 
   render () {
     const { relayServerInfoQuery, relayHubAddress } = this.props
-    const { RelayServerAddress } = relayServerInfoQuery || {}
+    const { relayServerInfo } = relayServerInfoQuery || {}
+    const { RelayServerAddress } = relayServerInfo || {}
 
     if (RelayServerAddress) {
       return (
