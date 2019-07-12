@@ -70,7 +70,7 @@ const RecipientsIndex = class _RecipientsIndex extends PureComponent {
                 />
               </Field>
 
-              <Submit value='Go' />
+              <Submit value='Go' disabled={!this.state.recipientOption} />
             </DynamicApolloWrapper>
           </form>
         </Section>
