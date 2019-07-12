@@ -5,7 +5,9 @@ import { graphql, Query } from 'react-apollo'
 import { react } from 'dapp-core'
 import { ethers } from 'ethers'
 
+import { USER_REJECTED_TX } from 'lib/constants'
 import { EthTextSymbol } from 'lib/components/EthTextSymbol'
+import { TxMessage } from 'lib/components/TxMessage'
 import { Submit } from 'lib/components/form'
 import { ConnectWallet } from 'lib/components/ConnectWallet'
 import { ErrorMsg } from 'lib/components/ErrorMsg'
@@ -29,9 +31,7 @@ export const RecipientForm = withFormProps(
     })
   (class _RecipientForm extends PureComponent {
     state = {
-      depositAmount: '',
-      depositAmountInFlight: false,
-      depositAmountErrorMsg: ''
+      depositAmount: ''
     }
 
     static propTypes = {
@@ -39,6 +39,7 @@ export const RecipientForm = withFormProps(
     }
 
     componentDidMount () {
+      this.resetTxState({})
       this.startSubscription()
     }
 
@@ -83,23 +84,32 @@ export const RecipientForm = withFormProps(
           value: ethers.utils.parseEther(this.state.depositAmount).toString()
         }
       }).then(({ data }) => {
-
         const _this = this
 
+        _this.setState({
+          depositAmountInWallet: true
+        })
+
         this.props.ee(data.sendTransaction.id)
-          .on('receipt', () => {
-            console.log('accepted!')
+          .on('sent', function () {
+            _this.resetTxState({})
             _this.setState({
-              depositAmount: '',
               depositAmountInFlight: true
             })
           })
-          .on('sent', function () {
-            console.log('SENT!')
+          .on('receipt', () => {
+            _this.resetTxState({})
+            _this.setState({
+              depositAmountCompleted: true
+            })
           })
           .on('error', function () {
-            console.log('There was an error', arguments)
+            if (arguments[0].error === USER_REJECTED_TX) {
+              return
+            }
 
+            console.log('There was an error', arguments)
+            _this.resetTxState({})
             _this.setState({
               depositAmountErrorMsg: true
             })
@@ -121,6 +131,28 @@ export const RecipientForm = withFormProps(
       if (this.props.recipientQuery.RelayRecipient) {
         return this.props.recipientQuery.RelayRecipient.relayHubAddress
       }
+    }
+
+    resetTxState = ({ alsoClearValue }) => {
+      if (alsoClearValue) {
+        this.setState({
+          depositAmount: ''
+        })
+      }
+
+      this.setState({
+        depositAmountInWallet: false,
+        depositAmountInFlight: false,
+        depositAmountErrorMsg: false,
+        depositAmountCompleted: false
+      })
+    }
+
+    formLocked = () => {
+      return this.state.depositAmountInWallet ||
+        this.state.depositAmountInFlight ||
+        this.state.depositAmountCompleted ||
+        this.state.depositAmountError
     }
 
     render () {
@@ -191,30 +223,29 @@ export const RecipientForm = withFormProps(
                       <input
                         required
                         id='deposit-amount'
-                        disabled={!ethereumPermission}
+                        disabled={!ethereumPermission || this.formLocked()}
                         type='number'
                         min='0'
                         step='.000000001'
                         max={ethers.utils.formatEther(maximumDeposit)}
                         value={this.state.depositAmount}
                         onChange={(e) => this.setState({ depositAmount: e.target.value })}
-                        className='mb-2'
+                        className='mb-2 trans'
                       />
 
                       <Submit
-                        disabled={!ethereumPermission || this.state.depositAmount === '' || this.state.depositAmountInFlight}
+                        disabled={!ethereumPermission || this.state.depositAmount === '' || this.formLocked()}
                         value={this.state.depositAmountInFlight ? `Depositing ...` : `Deposit`}
                       />
-                      {this.state.depositAmountErrorMsg && 
-                        <span className='text-red-600 text-sm font-silkaMedium'>
-                          There was an error. <a onClick={(e) => {
-                            e.preventDefault()
-                            this.setState({
-                              depositAmountErrorMsg: false
-                            })
-                          }} href=''>Okay</a>
-                        </span>
-                      }
+
+                      <TxMessage
+                        txType={`Deposit`}
+                        inWallet={this.state.depositAmountInWallet}
+                        inFlight={this.state.depositAmountInFlight}
+                        completed={this.state.depositAmountCompleted}
+                        error={this.state.depositAmountErrorMsg}
+                        resetTxState={this.resetTxState}
+                      />
                     </form>
                   )
                 }

@@ -108,6 +108,13 @@ button:not(.burger):focus,
   @apply outline-none border-blue-500;
 }
 
+input:not([type='submit'])[disabled],
+textarea[disabled],
+button:not(.burger)[disabled],
+.react-select__control[disabled] {
+  @apply border-gray-200 bg-gray-400 text-gray-600 cursor-not-allowed;
+}
+
 .react-select__control {
   border: 0 !important;
   border-bottom: 2px solid white !important;
@@ -157,6 +164,7 @@ button:not(.burger):focus,
 input[type='submit'],
 button:not(.burger) {
   @apply font-silkaMedium text-lg tracking-wide border-blue-400 border-2 flex-shrink-0 bg-blue-500 text-white font-bold py-2 px-4 rounded cursor-pointer;
+  min-width: 200px;
 }
 
 input[type='submit']:hover,
