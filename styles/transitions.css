@@ -6,11 +6,11 @@
   transition-property: background;
 }
 
-.trans-slow {
-  transition-duration: .5s;
+.trans-slower {
+  transition-duration: .75s;
 }
 
-.trans-slower {
+.trans-slow {
   transition-duration: .5s;
 }
 

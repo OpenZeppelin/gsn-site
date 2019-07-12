@@ -108,6 +108,13 @@ button:not(.burger):focus,
   @apply outline-none border-blue-500;
 }
 
+input:not([type='submit'])[disabled],
+textarea[disabled],
+button:not(.burger)[disabled],
+.react-select__control[disabled] {
+  @apply border-gray-200 bg-gray-400 text-gray-600 cursor-not-allowed;
+}
+
 .react-select__control {
   border: 0 !important;
   border-bottom: 2px solid white !important;
