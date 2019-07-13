@@ -12,7 +12,7 @@ export const BenefitColumns = function() {
       <div className='container'>
         <div className='flex flex-wrap items-baseline -mx-6 text-center'>
           <div className='w-auto lg:w-1/3 mb-10 lg:mb-4 px-6'>
-            <OpenSourceImg class='inline-block' />
+            <OpenSourceImg className='inline-block' />
             <h3 className='font-silkaMedium text-xl opacity-90 pt-4 pb-2'>
               Open Source Driven
             </h3>
@@ -21,7 +21,7 @@ export const BenefitColumns = function() {
             </p>
           </div>
           <div className='w-auto lg:w-1/3 mb-10 lg:mb-4 px-6'>
-            <TenXConversionImg class='inline-block' />
+            <TenXConversionImg className='inline-block' />
             <h3 className='font-silkaMedium text-xl opacity-90 pt-4 pb-2'>
               10x Your Conversion Rate
             </h3>
@@ -30,7 +30,7 @@ export const BenefitColumns = function() {
             </p>
           </div>
           <div className='w-auto lg:w-1/3 mb-10 lg:mb-4 px-6'>
-            <P2PRelayersImg class='inline-block' />
+            <P2PRelayersImg className='inline-block' />
             <h3 className='font-silkaMedium text-xl opacity-90 pt-4 pb-2'>
               P2P Relayers
             </h3>
