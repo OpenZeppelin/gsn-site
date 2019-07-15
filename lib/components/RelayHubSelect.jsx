@@ -90,6 +90,7 @@ class _RelayHubSelect extends PureComponent {
     return (
       <Creatable
         {...newProps}
+        placeholder='Select or type ...'
         className='react-select'
         classNamePrefix='react-select'
         allowCreateWhileLoading={true}

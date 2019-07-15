@@ -8,8 +8,8 @@ import { EtherscanAddressLink } from 'lib/components/EtherscanAddressLink'
 
 export const EthereumNetworkStatus = function _EthereumNetworkStatus({ networkAccountQuery }) {
   return (
-    <div className='text-sm bg-blue-700 p-3 text-white text-center font-silkaMedium tracking-wide'>
-      <div className='container'>
+    <div className='ethereum-network-status text-xs sm:text-sm bg-blue-700 p-3 text-white text-center font-silkaMedium tracking-wide leading-none sm:leading-normal'>
+      <div className='container spinner-small'>
         <DynamicApolloWrapper>
           <Query query={queries.systemInfoQuery}>
             {({ data }) => {
@@ -40,7 +40,13 @@ export const EthereumNetworkStatus = function _EthereumNetworkStatus({ networkAc
                       } else if (networkId) {
                         content =
                           <span className='trans'>
-                            <a href='#' onClick={() => web3.askEthereumPermissions()} className='text-white hover:text-blue-400'>Connect MetaMask</a>
+                            <a
+                              href='#'
+                              onClick={() => web3.askEthereumPermissions()} 
+                              className='underline text-white hover:text-blue-400'
+                            >
+                              Connect Wallet to send transactions
+                            </a>
                           </span>
                       } else {
                         content = '...'

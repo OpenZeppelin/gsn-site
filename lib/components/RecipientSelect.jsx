@@ -64,6 +64,7 @@ class _RecipientSelect extends PureComponent {
         {...newProps}
         className='react-select'
         classNamePrefix='react-select'
+        placeholder='Select or type ...'
         allowCreateWhileLoading={true}
         formatCreateLabel={(inputValue) => `Use ${inputValue}...`}
         options={options}
