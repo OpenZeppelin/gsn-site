@@ -2,7 +2,7 @@ import Head from 'next/head'
 
 export default () => {
   const url = `https://gsn-staging.netlify.com`
-  const description = 'The Gas Station Network is the final onboarding solution for Ethereum applications enabling you to pay for transaction gas fees on behalf of your users.'
+  const description = 'The Gas Station Network is the ultimate onboarding solution for Ethereum applications enabling you to pay for transaction gas fees on behalf of your users.'
   const keywords = 'zeppelin openzeppelin tabookey gsn gas station network deltacamp delta camp ethereum smart contract'
   const title = 'Gas Station Network'
   const twitterHandle = '@GSN'
