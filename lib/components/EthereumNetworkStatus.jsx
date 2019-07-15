@@ -11,36 +11,45 @@ export const EthereumNetworkStatus = function _EthereumNetworkStatus({ networkAc
     <div className='text-sm bg-blue-700 p-3 text-white text-center font-silkaMedium tracking-wide'>
       <div className='container'>
         <DynamicApolloWrapper>
-          <Query query={queries.networkAccountQuery}>
+          <Query query={queries.systemInfoQuery}>
             {({ data }) => {
-              const { networkId, account, loading, error } = data
+              const { hasWeb3Available } = data || {}
+              return (
+                <Query query={queries.networkAccountQuery}>
+                  {({ data }) => {
+                    const { networkId, account, loading, error } = data
 
-              let content
-              if (loading) {
-                content = '...'
-              } else if (error) {
-                console.error(error)
-                content = <div>
-                  {error.message}
-                </div>
-              } else {
+                    let content
+                    if (loading) {
+                      content = '...'
+                    } else if (error) {
+                      console.error(error)
+                      content = <div>
+                        {error.message}
+                      </div>
+                    } else {
+                      if (!hasWeb3Available) {
+                        content =
+                          <span>on network <strong className='font-silkaBold capitalize'>'{networkIdToName(networkId)}'</strong></span>
+                      } else if (networkId && account) {
+                        content =
+                          <span className='opacity-80 hover:opacity-100 trans'>
+                            Using account {<EtherscanAddressLink className='text-blue-300' address={account}>{utils.shortenAddress(account)}</EtherscanAddressLink>} on network <strong className='font-silkaBold capitalize'>'{networkIdToName(networkId)}'</strong>
+                          </span>
+                      } else if (networkId) {
+                        content =
+                          <span className='trans'>
+                            <a href='#' onClick={() => web3.askEthereumPermissions()} className='text-white hover:text-blue-400'>Connect MetaMask</a>
+                          </span>
+                      } else {
+                        content = '...'
+                      }
+                    }
 
-                if (networkId && account) {
-                  content =
-                    <span className='opacity-80 hover:opacity-100 trans'>
-                      Using account {<EtherscanAddressLink className='text-blue-300' address={account}>{utils.shortenAddress(account)}</EtherscanAddressLink>} on network <strong className='font-silkaBold capitalize'>'{networkIdToName(networkId)}'</strong>
-                    </span>
-                } else if (networkId) {
-                  content =
-                    <span className='trans'>
-                      <a href='#' onClick={() => web3.askEthereumPermissions()} className='text-white hover:text-blue-400'>Connect MetaMask</a>
-                    </span>
-                } else {
-                  content = '...'
-                }
-              }
-
-              return content
+                    return content
+                  }}
+                </Query>
+              )
             }}
           </Query>
         </DynamicApolloWrapper>
