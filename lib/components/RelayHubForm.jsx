@@ -70,7 +70,7 @@ export const RelayHubForm = withRouter(class _RelayHubForm extends Component {
           className='mt-0'
         >
           <label htmlFor='relay-by-url'>
-            Lookup Relay by URL
+            Access Relay by URL
           </label>
           <DynamicApolloWrapper>
             <Field>
@@ -94,7 +94,7 @@ export const RelayHubForm = withRouter(class _RelayHubForm extends Component {
           className='mt-2 sm:mt-10'
         >
           <label htmlFor='relay-by-address'>
-            Lookup Relay by Address
+            Access Relay by Address
           </label>
           <DynamicApolloWrapper>
             <Field>

@@ -61,7 +61,7 @@ const RelayHubDashboard = withRouter(
                   })
                 }}
               >
-                Lookup Relay
+                Access Relay
               </a>
               <a
                 href='' 
