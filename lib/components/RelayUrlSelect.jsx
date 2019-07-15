@@ -70,8 +70,6 @@ class _RelayUrlSelect extends PureComponent {
         {...newProps}
         {...classNameProps}
         placeholder='Select or type ...'
-        className='react-select'
-        classNamePrefix='react-select'
         allowCreateWhileLoading={true}
         formatCreateLabel={(inputValue) => `Use ${inputValue}...`}
         options={options}

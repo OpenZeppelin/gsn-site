@@ -37,7 +37,7 @@ function RelayDashboard() {
                         </span>
                       </a>
                     </Link> &raquo;&nbsp;
-                    <Link href='/relays'><a>Relays</a></Link> &raquo;&nbsp;
+                    Relays &raquo;&nbsp;
                     <span className='wrap-everything text-gray-900'>
                       {
                         relayWrapperProps.relayAddress ?

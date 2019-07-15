@@ -10,15 +10,24 @@ import { MainLayout } from 'lib/components/layout/MainLayout'
 import { Section } from 'lib/components/layout/Section'
 import { RelayHubForm } from 'lib/components/RelayHubForm'
 import { RelayAddressSelect } from 'lib/components/RelayAddressSelect'
+import { RelayHubRelayList } from '../../../lib/components/RelayHubRelayList';
 
 const RelayHubDashboard = withRouter(
   class _RelayHubDashboard extends Component {
     state = {
-      showRegisterControls: false
+      currentTab: 0,
     }
 
     render () {
       const { relayHubAddress } = this.props.router.query
+      let relays
+
+      if (this.state.currentTab === 1) {
+        relays =
+          <DynamicApolloWrapper>
+            <RelayHubRelayList relayHubAddress={relayHubAddress} />
+          </DynamicApolloWrapper>
+      }
 
       return (
         <MainLayout>
@@ -30,47 +39,46 @@ const RelayHubDashboard = withRouter(
               <span className='wrap-everything text-gray-900'>{relayHubAddress}</span>
             </p>
 
-
             <div className='lg:w-2/3 mb-10'>
               <p>
                 View stats on a specific Relay or register your new Relay node.
               </p>
             </div>
-    
+
             <nav>
               <a
                 href=''
                 className={classnames(
                   'bg-blue-600 font-silkaMedium text-xs sm:text-base p-2 px-4 sm:p-6 sm:px-10 inline-block border-r border-solid border-gray-100 text-white hover:text-blue-600 hover:bg-white trans trans-fast',
                   {
-                    'is-selected': !this.state.showRegisterControls
+                    'is-selected': this.state.currentTab === 0
                   }
                 )}
                 onClick={(e) => {
                   e.preventDefault()
                   this.setState({
-                    showRegisterControls: false
+                    currentTab: 0
                   })
                 }}
               >
-                Lookup Existing Relay
+                Lookup Relay
               </a>
               <a
                 href='' 
                 className={classnames(
                   'bg-blue-600 font-silkaMedium text-xs sm:text-base p-2 px-4 sm:p-6 sm:px-10 inline-block border-r border-solid border-gray-100 text-white hover:text-blue-600 hover:bg-white trans trans-fast',
                   {
-                    'is-selected': this.state.showRegisterControls
+                    'is-selected': this.state.currentTab === 1
                   }
                 )}
                 onClick={(e) => {
                   e.preventDefault()
                   this.setState({
-                    showRegisterControls: true
+                    currentTab: 1
                   })
                 }}
               >
-                Register New Relay
+                List Relays
               </a>
             </nav>
 
@@ -78,38 +86,15 @@ const RelayHubDashboard = withRouter(
 
               <div className={classnames(
                 {
-                  hidden: !this.state.showRegisterControls
+                  hidden: this.state.currentTab === 0
                 }
               )}>
-                <form
-                  className='mt-0'
-                  onSubmit={this.handleRelayAddress}
-                >
-                  <label htmlFor='relay-by-address'>
-                    New Relay's Address
-                  </label>
-                  <DynamicApolloWrapper>
-                    <Field>
-                      <RelayAddressSelect
-                        id='relay-by-address'
-                        className='flex-1'
-                        placeholder='Select or type ...'
-                        value={this.state.relayAddressOption}
-                        onChange={(relayAddressOption) => this.setState({ relayAddressOption })}
-                      />
-                    </Field>
-
-                    <Submit
-                      disabled={!this.state.relayAddressOption}
-                      value='Go'
-                    />
-                  </DynamicApolloWrapper>
-                </form>
+                {relays}
               </div>
 
               <div className={classnames(
                 {
-                  hidden: this.state.showRegisterControls
+                  hidden: this.state.currentTab === 1
                 }
               )}>
                 <RelayHubForm

@@ -23,7 +23,15 @@ export const RelayUrlTestForm = class _RelayUrlTestForm extends PureComponent {
     }
   }
 
+  componentDidMount = () => {
+    this.checkRelayUrlDefault()
+  }
+
   componentDidUpdate = () => {
+    this.checkRelayUrlDefault()
+  }
+
+  checkRelayUrlDefault = () => {
     if (this.props.relayUrl && !this.state.relayUrlOption) {
       this.setState({
         relayUrlOption: {
