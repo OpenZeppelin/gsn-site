@@ -13,7 +13,8 @@ export const EthereumNetworkStatus = function _EthereumNetworkStatus({ networkAc
         <DynamicApolloWrapper>
           <Query query={queries.systemInfoQuery}>
             {({ data }) => {
-              const { hasWeb3Available } = data || {}
+              const { systemInfo } = data || {}
+              const { hasWeb3Available } = systemInfo || {}
               return (
                 <Query query={queries.networkAccountQuery}>
                   {({ data }) => {
