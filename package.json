@@ -37,7 +37,7 @@
     "export": "next export",
     "apply-registry": "$(npm bin)/apply-registry -o artifacts",
     "reset-local": "rm -rf networks/1234.json && rm -rf build/contracts",
-    "dist": "next build && next export"
+    "dist": "yarn build && next export"
   },
   "devDependencies": {
     "autoprefixer": "^9.6.1",
