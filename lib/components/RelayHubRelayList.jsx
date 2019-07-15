@@ -31,32 +31,50 @@ export const RelayHubRelayList = graphql(relayHubEventsQuery, {
       const relays = allEvents ? projectActiveRelays(allEvents) : []
 
       return (
-        <div>
-          <div className='flex'>
+        <div className='p-1'>
+          <div className='hidden sm:flex p-4'>
             <div className='w-1/4'>
-              <b>Address</b>
+              <span className='font-silkaMedium'>Address</span>
             </div>
 
-            <div className='w-3/4'>
-              <b>URL</b>
+            <div className='w-2/4'>
+              <span className='font-silkaMedium'>URL</span>
+            </div>
+
+            <div className='w-1/4'>
+              <span className='font-silkaMedium'>View</span>
             </div>
           </div>
-          {relays.map(({ address, url }) => {
+
+          {relays.concat(relays).map(({ address, url }) => {
             return (
-              <div key={address} className='flex pb-4'>
-                
+              <div key={address} className='sm:flex mb-2 p-4 border-2 border-gray-100 hover:bg-gray-300 trans'>
                 <div className='w-1/4'>
-                  <Link href={`/relay-hubs/${relayHubAddress}/relay?relayAddress=${address}`}>
-                    <a>
+                  <Link
+                    href={`/relay-hubs/${relayHubAddress}/relay?relayAddress=${address}`}
+                  >
+                    <a className='font-silkaMedium'>
                       {utils.shortenAddress(address)}
                     </a>
                   </Link>
                 </div>
 
-                <div className='w-3/4'>
-                  <Link href={`/relay-hubs/${relayHubAddress}/relay?relayUrl=${url}`}>
-                    <a>
+                <div className='w-2/4'>
+                  <Link
+                    href={`/relay-hubs/${relayHubAddress}/relay?relayUrl=${url}`}
+                  >
+                    <a className='font-silkaMedium'>
                       {url}
+                    </a>
+                  </Link>
+                </div>
+
+                <div className='w-1/4'>
+                  <Link
+                    href={`/relay-hubs/${relayHubAddress}/relay?relayUrl=${url}`}
+                  >
+                    <a className='font-silkaMedium text-xs rounded bg-blue-600 hover:bg-blue-500 text-white hover:text-white p-2 mt-2 block sm:inline text-center'>
+                      See Details
                     </a>
                   </Link>
                 </div>

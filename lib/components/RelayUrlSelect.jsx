@@ -1,12 +1,10 @@
 import React, { PureComponent } from 'react'
-import Creatable from 'react-select/creatable'
 import { graphql } from 'react-apollo'
-import { omit } from 'lodash'
 import PropTypes from 'prop-types'
-import classnames from 'classnames'
 
 import { recentRelayUrlsQuery } from 'lib/queries/recentRelayUrlsQuery'
 import { withNetworkAccountQuery } from 'lib/components/hoc/withNetworkAccountQuery'
+import { GSNSelect } from 'lib/components/GSNSelect'
 import { isUrl } from 'lib/utils/isUrl'
 
 export const RelayUrlSelect = withNetworkAccountQuery(
@@ -24,29 +22,13 @@ export const RelayUrlSelect = withNetworkAccountQuery(
   })(
 class _RelayUrlSelect extends PureComponent {
   static propTypes = {
-    onChange: PropTypes.func,
-    onError: PropTypes.func
-  }
-
-  onChange = (option) => {
-    let newOption = {...option}
-    if (!newOption.networkId) {
-      newOption.networkId = this.props.networkAccountQuery.networkId
-    }
-    if (isUrl(newOption.value)) {
-      if (this.props.onChange) {
-        this.props.onChange(newOption)
-      }
-    } else if (this.props.onError) {
-      this.props.onError(newOption)
-    }
+    handleChange: PropTypes.func.isRequired,
+    value: PropTypes.object
   }
 
   render () {
-    const newProps = omit(this.props, ['onChange', 'onError', 'className'])
-
     let options = []
-
+    
     const { recentRelayUrlsQuery } = this.props
     const { recentRelayUrls } = recentRelayUrlsQuery || {}
 
@@ -60,22 +42,11 @@ class _RelayUrlSelect extends PureComponent {
       })
     }
 
-    const classNameProps = {
-      className: classnames('react-select', this.props.className),
-      classNamePrefix: 'react-select'
-    }
-
-    return (
-      <Creatable
-        {...newProps}
-        {...classNameProps}
-        placeholder='Select or type ...'
-        allowCreateWhileLoading={true}
-        formatCreateLabel={(inputValue) => `Use ${inputValue}...`}
-        options={options}
-        onChange={this.onChange}
-      />
-    )
+    return <GSNSelect
+      {...this.props}
+      options={options}
+      valid={isUrl}
+      typeName='URL'
+    />
   }
-}
-))
+}))

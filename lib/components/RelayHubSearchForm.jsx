@@ -60,7 +60,7 @@ export const RelayHubSearchForm = withNetworkAccountQuery(class _RelaysIndex ext
             className='flex-1'
             placeholder='Select or type ...'
             value={this.state.relayHubOption}
-            onChange={(relayHubOption) => this.setState({ relayHubOption })}
+            handleChange={(relayHubOption) => this.setState({ relayHubOption })}
           />
         </Field>
 

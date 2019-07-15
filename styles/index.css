@@ -317,11 +317,6 @@ dd {
   @apply text-blue-600 bg-white !important;
 }
 
-.spinner-small .loading-indicator {
-  margin-top: -2px;
-  transform: scale3d(0.7, 0.7, 0.7);
-}
-
 .ethereum-network-status {
   height: 50px;
 }

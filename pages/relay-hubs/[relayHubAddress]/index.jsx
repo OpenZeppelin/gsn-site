@@ -6,11 +6,9 @@ import { utils } from 'dapp-core'
 
 import { EthereumNetworkStatus } from 'lib/components/EthereumNetworkStatus'
 import { DynamicApolloWrapper } from 'lib/components/DynamicApolloWrapper'
-import { Field, Submit } from 'lib/components/form'
 import { MainLayout } from 'lib/components/layout/MainLayout'
 import { Section } from 'lib/components/layout/Section'
 import { RelayHubForm } from 'lib/components/RelayHubForm'
-import { RelayAddressSelect } from 'lib/components/RelayAddressSelect'
 import { RelayHubRelayList } from '../../../lib/components/RelayHubRelayList';
 
 const RelayHubDashboard = withRouter(
@@ -62,7 +60,7 @@ const RelayHubDashboard = withRouter(
                   })
                 }}
               >
-                Access Relay
+                Access a Relay
               </a>
               <a
                 href='' 
@@ -79,7 +77,7 @@ const RelayHubDashboard = withRouter(
                   })
                 }}
               >
-                List Relays
+                List All Relays
               </a>
             </nav>
 

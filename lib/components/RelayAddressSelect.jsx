@@ -1,11 +1,10 @@
 import React, { PureComponent } from 'react'
-import Creatable from 'react-select/creatable'
 import { graphql } from 'react-apollo'
-import { omit } from 'lodash'
 import PropTypes from 'prop-types'
 
 import { recentRelayAddressesQuery } from 'lib/queries/recentRelayAddressesQuery'
 import { withNetworkAccountQuery } from 'lib/components/hoc/withNetworkAccountQuery'
+import { GSNSelect } from 'lib/components/GSNSelect'
 import { isAddress } from 'lib/utils/isAddress'
 
 export const RelayAddressSelect = withNetworkAccountQuery(
@@ -23,28 +22,11 @@ export const RelayAddressSelect = withNetworkAccountQuery(
   })(
 class _RelayAddressSelect extends PureComponent {
   static propTypes = {
-    onChange: PropTypes.func,
-    onError: PropTypes.func
-  }
-
-  onChange = (option) => {
-    let newOption = {...option}
-    if (!newOption.networkId) {
-      newOption.networkId = this.props.networkAccountQuery.networkId
-    }
-    if (isAddress(newOption.value)) {
-      if (this.props.onChange) {
-        this.props.onChange(newOption)
-      }
-    } else if (this.props.onError) {
-      this.props.onError(newOption)
-      // error toast?
-    }
+    handleChange: PropTypes.func.isRequired,
+    value: PropTypes.object
   }
 
   render () {
-    const newProps = omit(this.props, ['onChange', 'onError'])
-
     let options = []
 
     const { recentRelayAddressesQuery } = this.props
@@ -60,18 +42,11 @@ class _RelayAddressSelect extends PureComponent {
       })
     }
 
-    return (
-      <Creatable
-        {...newProps}
-        placeholder='Select or type ...'
-        className='react-select'
-        classNamePrefix='react-select'
-        allowCreateWhileLoading={true}
-        formatCreateLabel={(inputValue) => `Use ${inputValue}...`}
-        options={options}
-        onChange={this.onChange}
-      />
-    )
+    return <GSNSelect
+      {...this.props}
+      options={options}
+      valid={isAddress}
+      typeName='address'
+    />
   }
-}
-))
+}))
