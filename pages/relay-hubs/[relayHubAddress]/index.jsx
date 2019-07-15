@@ -86,7 +86,7 @@ const RelayHubDashboard = withRouter(
                   onSubmit={this.handleRelayAddress}
                 >
                   <label htmlFor='relay-by-address'>
-                    New Relay's Contract Address
+                    New Relay's Address
                   </label>
                   <DynamicApolloWrapper>
                     <Field>
