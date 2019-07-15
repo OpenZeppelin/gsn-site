@@ -35,9 +35,26 @@ export const UsersAndAlliance = function() {
                 className='inline-block mr-4'
                 width='49'
               />
-              <strong className='font-helveticaNeueBold block sm:inline mt-4 sm:mt-0'>Austin Griffith</strong> <span className='invisible sm:visible'>|</span> Creator of the <a href='https://github.com/austintgriffith/burner-wallet' className='text-blue-300 hover:text-indigo-300'>Burner Wallet</a>.
+              <strong className='font-helveticaNeueBold block sm:inline mt-4 sm:mt-0'>Austin Griffith</strong> <span className='invisible sm:visible'>|</span> Creator of the <a href='https://github.com/austintgriffith/burner-wallet' className='text-blue-300 hover:text-indigo-300' target='_blank' rel='noreferrer'>Burner Wallet</a>.
             </p>
           </div>
+
+
+          <div className='lg:w-2/3 mx-auto mb-24'>
+            <blockquote className='font-silkaMedium text-white text-base sm:text-lg leading-relaxed'>
+              “History rhymes  -  and abstracting gas away from first-person Ethereum transactions is like abstracting the friction of dial-up away from internet connectivity as it moved to always-on. Groundhog has been a champion of meta-transactions since the beginning and the Gas Station Network is a crucial and inevitable next step in generalizing gasless transaction relaying.”
+            </blockquote>
+            <p className='text-white my-8'>
+              <img
+                src='/static/AndrewRedden.png'
+                alt='Andrew Redden photo'
+                className='inline-block mr-4'
+                width='49'
+              />
+              <strong className='font-helveticaNeueBold block sm:inline mt-4 sm:mt-0'>Andrew Redden</strong> <span className='invisible sm:visible'>|</span> CTO of <a href='https://groundhog.network/' className='text-blue-300 hover:text-indigo-300' target='_blank' rel='noreferrer'>Groundhog</a>.
+            </p>
+          </div>
+          
         </div>
       </div>
     </div>    
