@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import { withRouter } from 'next/router'
 import classnames from 'classnames'
 import Link from 'next/link'
+import { utils } from 'dapp-core'
 
 import { EthereumNetworkStatus } from 'lib/components/EthereumNetworkStatus'
 import { DynamicApolloWrapper } from 'lib/components/DynamicApolloWrapper'
@@ -36,7 +37,7 @@ const RelayHubDashboard = withRouter(
           <Section>
             <p className='pb-4 font-silkaRegular text-gray-500'>
               <Link href='/relays'><a>Relay Hubs</a></Link> &raquo;&nbsp;
-              <span className='wrap-everything text-gray-900'>{relayHubAddress}</span>
+              <span className='wrap-everything text-gray-900'>{utils.shortenAddress(relayHubAddress)}</span>
             </p>
 
             <div className='lg:w-2/3 mb-10'>

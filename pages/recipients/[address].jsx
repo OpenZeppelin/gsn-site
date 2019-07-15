@@ -1,5 +1,6 @@
 import { useRouter } from 'next/router'
 import Link from 'next/link'
+import { utils } from 'dapp-core'
 
 import { DynamicApolloWrapper } from 'lib/components/DynamicApolloWrapper'
 import { EthereumNetworkStatus } from 'lib/components/EthereumNetworkStatus'
@@ -17,7 +18,7 @@ function RecipientDashboard() {
       <Section>
         <p className='pb-4 font-silkaRegular text-gray-500'>
           <Link href='/recipients'><a>Recipients</a></Link> &raquo;&nbsp;
-          <span className='wrap-everything text-gray-900'>{address}</span>
+          <span className='wrap-everything text-gray-900'>{utils.shortenAddress(address)}</span>
         </p>
 
         <DynamicApolloWrapper>
