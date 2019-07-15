@@ -56,15 +56,17 @@ class _RelayHubSelect extends PureComponent {
     let networkRelayHubAddress
     if (networkId) {
       networkRelayHubAddress = abiMapping.getAddress('RelayHub', parseInt(networkId, 10))
-      const option = {
-        label: networkRelayHubAddress,
-        value: networkRelayHubAddress,
-        networkId
+      if (networkRelayHubAddress) {
+        const option = {
+          label: networkRelayHubAddress,
+          value: networkRelayHubAddress,
+          networkId
+        }
+        options.push({
+          label: `Relay Hub for ${networkIdToName(networkId)}`,
+          options: [option]
+        })
       }
-      options.push({
-        label: `Relay Hub for ${networkIdToName(networkId)}`,
-        options: [option]
-      })
     }
 
     if (recentRelayHubs) {
