@@ -1,6 +1,6 @@
 import React from 'react'
 import { Query } from 'react-apollo'
-import { queries } from 'dapp-core'
+import { queries, web3, utils } from 'dapp-core'
 
 import { DynamicApolloWrapper } from 'lib/components/DynamicApolloWrapper'
 import { networkIdToName } from 'lib/utils/networkIdToName'
@@ -24,9 +24,20 @@ export const EthereumNetworkStatus = function _EthereumNetworkStatus({ networkAc
                   {error.message}
                 </div>
               } else {
-                content = <span className='opacity-80 hover:opacity-100 trans'>
-                  Using account {<EtherscanAddressLink className='text-blue-300' address={account}>{account}</EtherscanAddressLink>} on network <strong className='font-silkaBold capitalize'>'{networkIdToName(networkId)}'</strong>
-                </span>
+
+                if (networkId && account) {
+                  content =
+                    <span className='opacity-80 hover:opacity-100 trans'>
+                      Using account {<EtherscanAddressLink className='text-blue-300' address={account}>{utils.shortenAddress(account)}</EtherscanAddressLink>} on network <strong className='font-silkaBold capitalize'>'{networkIdToName(networkId)}'</strong>
+                    </span>
+                } else if (networkId) {
+                  content =
+                    <span className='trans'>
+                      <a href='#' onClick={() => web3.askEthereumPermissions()} className='text-white hover:text-blue-400'>Connect MetaMask</a>
+                    </span>
+                } else {
+                  content = '...'
+                }
               }
 
               return content
