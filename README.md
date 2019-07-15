@@ -40,11 +40,7 @@ To mint Ether to yourself on the ganache instance, use the command:
 
 Replace `0x1234...` with your address.
 
-To run the local server, run:
-
-```
-$ yarn dev
-```
+In your browser simply use the network `Localhost 8545`.  You may need to reset the account.
 
 # Production Deployment
 
