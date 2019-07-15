@@ -30,7 +30,7 @@ Once the dependencies are set up you can run:
 ./restart-relay.sh
 ```
 
-This will start up a local ganache, deploy the contracts, create a sample recipient, and create a relay.
+This will start up a local ganache, deploy the contracts, create a sample recipient, and create a relay.  You may need to run this command a couple of times; it was a little flakey at the time of this writing.
 
 To mint Ether to yourself on the ganache instance, use the command:
 
@@ -41,6 +41,14 @@ To mint Ether to yourself on the ganache instance, use the command:
 Replace `0x1234...` with your address.
 
 In your browser simply use the network `Localhost 8545`.  You may need to reset the account.
+
+You'll find Tabookey has cleverly deployed consistent addresses.
+
+| Role | Address | Description |
+| ---- | ------- | ----------- |
+| RelayHub | [0xCfEB869F69431e42cdB54A4F4f105C19C080A601](http://localhost:3000/relay-hubs/0xCfEB869F69431e42cdB54A4F4f105C19C080A601) | Main RelayHub contract |
+| SampleRecipient | [0x254dffcd3277C0b1660F6d42EFbB754edaBAbC2B](http://localhost:3000/recipients/0x254dffcd3277C0b1660F6d42EFbB754edaBAbC2B) | Example contract that handles meta tx |
+| Relay | [0xeE90C66Ed6Aaafbf2DBcd34c84c395905B5C8f20](http://localhost:3000/relay-hubs/0xCfEB869F69431e42cdB54A4F4f105C19C080A601/relay?relayAddress=0xeE90C66Ed6Aaafbf2DBcd34c84c395905B5C8f20) | Relay deployed to http://localhost:8090 |
 
 # Production Deployment
 
