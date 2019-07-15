@@ -1,28 +1,44 @@
 # Gas Station Network Site
 
-The official front end for the Gas Station Network.  The current staging site is [here](https://gsn-staging.netlify.com)
-
-You can run the project against a local Tabookey-Gasless instance. More on that project [here](https://github.com/tabookey/tabookey-gasless)
+The official front end for the Gas Station Network.  The staging site is [here](https://gsn-staging.netlify.com).
 
 # Local Setup
 
-1. tabookey-gasless Setup:
-
-In your local tabookey-gassless project install the dependencies with `yarn` (or `npm`).
-
-Make sure Docker is installed and ready, then run `yarn gsn-dock-relay-ganache`.
-
-Leave the tabookey-gasless server running and look at the CLI output for the RelayHub contract address. It will look something like:
-
-`2019/07/08 17:32:20 RelayHttpServer.go:244: Using RelayHub address: 0x9C57C0F1965D2259...`
-
-The address starting with "0x9C..." is what we need to copy and paste into the app to use.
-
-2. Install 'gsn-site' dependencies:
+The GSN site can be run locally using just a few commands:
 
 ```
-$ yarn
+# install dependencies
+yarn
 ```
+
+```
+# Start up the local server
+yarn dev
+```
+
+Now navigate to `http://localhost:3000` in your browser.  You'll be able to build against test nets such as Rinkeby.
+
+For full control over the smart contracts you'll want to setup the Gas Station Network locally.
+
+## Gas Station Network Test Environment
+
+Setup a local clone of [tabookey-gasless](https://github.com/tabookey/tabookey-gasless).  
+
+Once the dependencies are set up you can run:
+
+```
+./restart-relay.sh
+```
+
+This will start up a local ganache, deploy the contracts, create a sample recipient, and create a relay.
+
+To mint Ether to yourself on the ganache instance, use the command:
+
+```
+./scripts/ganache-fund.js 10 0x1234...
+```
+
+Replace `0x1234...` with your address.
 
 To run the local server, run:
 
