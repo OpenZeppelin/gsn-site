@@ -5,6 +5,7 @@ import { queries } from 'dapp-core'
 
 import { STATUS_IS_ZERO, USER_REJECTED_TX } from 'lib/constants'
 import { TxMessage } from 'lib/components/TxMessage'
+import { ConnectWalletText } from 'lib/components/ConnectWalletText'
 import { Submit } from 'lib/components/form'
 import { ErrorMsg } from 'lib/components/ErrorMsg'
 import { withFormProps } from 'lib/components/hoc/withFormProps'
@@ -103,6 +104,11 @@ export const RegisterRelayForm = graphql(
       const { ethereumPermission, loading, error } = ethereumPermissionQuery || {}
       const { account } = networkAccountQuery || {}
 
+      let connectWalletText
+      if (!ethereumPermission) {
+        connectWalletText = <ConnectWalletText />
+      }
+
       if (loading) {
         return '...'
       } else if (error) {
@@ -118,10 +124,12 @@ export const RegisterRelayForm = graphql(
               <h3 className='font-silkaMedium mb-8 text-black'>
                 Register Relay
               </h3>
-              <span className='light mb-6'>
-                New Relay address: {account}
-              </span>
+              {connectWalletText}
 
+              {account && <span className='light mb-8'>
+                New Relay address: {account}
+              </span>}
+              
               <label
                 htmlFor='register-transaction-fee'
               >

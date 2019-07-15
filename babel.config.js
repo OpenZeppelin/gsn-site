@@ -7,7 +7,7 @@ module.exports = function (api) {
 
   const plugins = [
     [
-       'inline-react-svg'
+      'inline-react-svg'
     ],
     [
       'babel-plugin-root-import'

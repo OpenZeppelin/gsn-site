@@ -16,7 +16,7 @@ export const GSNTools = function() {
         </div>
 
         <div className='flex flex-wrap lg:-mx-32'>
-          <div className='lg:max-w-1/2 mt-16 mb-4 lg:px-6'>
+          <div className='lg:max-w-1/2 mt-4 sm:mt-16 mb-4 lg:px-6'>
             <HorizontalCard
               img={<ManageStar />}
               title='Manage your application &gt;'

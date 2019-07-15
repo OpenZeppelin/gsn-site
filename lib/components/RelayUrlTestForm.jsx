@@ -54,19 +54,23 @@ export const RelayUrlTestForm = class _RelayUrlTestForm extends PureComponent {
     return (
       <dl>
         <h3 className='font-silkaMedium mb-8 text-black'>
-          Relay Server Ready
+          Relay Server Status
         </h3>
+        <label htmlFor='relay-by-url'>
+          Relay URL
+        </label>
         <dd className='mb-0'>
-          <div className='flex items-center'>
-            <RelayUrlSelect
-              value={relayUrlOption}
-              onChange={this.handleChangeRelayUrl}
-              className='flex-1'
-              isDisabled={relayUrlOption}
+          <RelayUrlSelect
+            value={relayUrlOption}
+            onChange={this.handleChangeRelayUrl}
+            className='flex-1'
+            isDisabled={relayUrlOption}
+          />
+
+          <div className='flex mt-4'>
+            <RelayUrlTestBadge
+              relayUrl={relayUrlOption ? relayUrlOption.value : null}
             />
-          </div>
-          <div className='flex mt-2'>
-            <RelayUrlTestBadge relayUrl={relayUrlOption ? relayUrlOption.value : null} />
           </div>
         </dd>
       </dl>
