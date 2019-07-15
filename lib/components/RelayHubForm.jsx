@@ -95,7 +95,7 @@ export const RelayHubForm = withRouter(class _RelayHubForm extends Component {
           className='mt-2 sm:mt-10'
         >
           <label htmlFor='relay-by-address'>
-            Or Lookup Relay by Contract Address
+            Or Lookup Relay by Address
           </label>
           <DynamicApolloWrapper>
             <Field>
