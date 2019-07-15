@@ -49,7 +49,7 @@ The app can currently be deployed to Netlify.  Url re-write rules are required s
 To build the production version of the site run:
 
 ```
-$ yarn build
+$ yarn dist
 ```
 
 # Configuring the built-in RelayHub addresses
