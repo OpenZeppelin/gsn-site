@@ -65,10 +65,6 @@ class _RelayHubSelect extends PureComponent {
         label: `Relay Hub for ${networkIdToName(networkId)}`,
         options: [option]
       })
-
-      if (!newProps.value) {
-        newProps.value = option
-      }
     }
 
     if (recentRelayHubs) {
