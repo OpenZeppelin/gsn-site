@@ -8,7 +8,7 @@ import OpenZeppelinLogo from '~/images/open-zeppelin-logo.svg'
 export const BuildSeamlessApps = function() {
   return (
     <div
-      className='pt-20 pb-20 bg-gray-100'
+      className='pt-20 lg:pb-20 bg-gray-100'
     >
       <div className='container'>
         <div className='lg:w-9/12 mx-auto text-center mb-8'>

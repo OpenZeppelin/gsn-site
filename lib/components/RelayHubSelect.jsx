@@ -7,6 +7,8 @@ import PropTypes from 'prop-types'
 import { recentRelayHubsQuery } from 'lib/queries/recentRelayHubsQuery'
 import { withNetworkAccountQuery } from 'lib/components/hoc/withNetworkAccountQuery'
 import { isAddress } from 'lib/utils/isAddress'
+import { abiMapping } from 'lib/apollo/abiMapping'
+import { networkIdToName } from 'lib/utils/networkIdToName'
 
 export const RelayHubSelect = withNetworkAccountQuery(
   graphql(recentRelayHubsQuery, {
@@ -42,20 +44,46 @@ class _RelayHubSelect extends PureComponent {
   }
 
   render () {
+    const { recentRelayHubsQuery, networkAccountQuery } = this.props
+    const { recentRelayHubs } = recentRelayHubsQuery || {}
+    const { networkId } = networkAccountQuery || {}
+
     const newProps = omit(this.props, ['onChange', 'onError'])
+
 
     let options = []
 
-    const { recentRelayHubsQuery } = this.props
-    const { recentRelayHubs } = recentRelayHubsQuery || {}
+    let networkRelayHubAddress
+    if (networkId) {
+      networkRelayHubAddress = abiMapping.getAddress('RelayHub', parseInt(networkId, 10))
+      const option = {
+        label: networkRelayHubAddress,
+        value: networkRelayHubAddress,
+        networkId
+      }
+      options.push({
+        label: `Relay Hub for ${networkIdToName(networkId)}`,
+        options: [option]
+      })
+
+      if (!newProps.value) {
+        newProps.value = option
+      }
+    }
 
     if (recentRelayHubs) {
-      options = recentRelayHubs.map(({ relayHubAddress, networkId }) => {
-        return {
-          label: relayHubAddress,
-          value: relayHubAddress,
-          networkId
-        }
+      options.push({
+        label: 'Recent RelayHubs',
+        options: recentRelayHubs.reduce((accumulator, { relayHubAddress, networkId }) => {
+          if (relayHubAddress !== networkRelayHubAddress) {
+            accumulator.push({
+              label: relayHubAddress,
+              value: relayHubAddress,
+              networkId
+            })
+          }
+          return accumulator
+        }, [])
       })
     }
 
