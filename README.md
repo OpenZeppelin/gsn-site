@@ -2,6 +2,16 @@
 
 The official front end for the Gas Station Network.  The staging site is [here](https://gsn-staging.netlify.com).
 
+## GSN Test Environment
+
+The Gas Station Network is currently deployed to Rinkeby.  The addresses are:
+
+| Role | Address | Description |
+| ---- | ------- | ----------- |
+| RelayHub | [0x4FC8ac0210527bCA8c5C66a595Da78B428862276](https://gsn-staging.netlify.com/relay-hubs/0x4FC8ac0210527bCA8c5C66a595Da78B428862276) | Main RelayHub contract |
+| SampleRecipient | [0x9C7bd19648BF9538eE9986b0E2BF18daaA80601c](https://gsn-staging.netlify.com/recipients/0x9C7bd19648BF9538eE9986b0E2BF18daaA80601c) | Example contract that handles meta tx |
+| Relay | [0xeE90C66Ed6Aaafbf2DBcd34c84c395905B5C8f20](https://gsn-staging.netlify.com/relay-hubs/0x4FC8ac0210527bCA8c5C66a595Da78B428862276/relay?relayUrl=https://rinkeby-01.gsn.openzeppelin.org) | Relay deployed to https://rinkeby-01.gsn.openzeppelin.org |
+
 # Local Setup
 
 The GSN site can be run locally using just a few commands:
@@ -9,6 +19,13 @@ The GSN site can be run locally using just a few commands:
 ```
 # install dependencies
 yarn
+```
+
+```
+# Setup environment variables.  See the file for more info.
+cp .envrc.example .envrc
+# allow environment variables
+direnv allow
 ```
 
 ```
@@ -20,7 +37,7 @@ Now navigate to [localhost:3000](http://localhost:3000) in your browser.  You'll
 
 For full control over the smart contracts you'll want to setup the Gas Station Network locally.
 
-## Gas Station Network Test Environment
+## Gas Station Network Local Test Environment
 
 Setup a local clone of [tabookey-gasless](https://github.com/tabookey/tabookey-gasless).  
 

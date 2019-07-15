@@ -1,0 +1,3 @@
+# When the application is loaded on a non-web3 browser this is the network that the browser will use.
+# Note: this is passed directly to ethers.js so you'll want to make sure ethers understand the name.
+export DEFAULT_ETHEREUM_NETWORK_NAME=rinkeby
