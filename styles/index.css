@@ -97,7 +97,16 @@ input:not([type='submit']),
 textarea,
 button:not(.burger),
 .react-select__control {
-  @apply font-silkaMedium text-lg flex-1 bg-white appearance-none border-b-2 border-transparent py-4 px-4 text-gray-700 leading-tight;
+  @apply font-silkaMedium text-lg flex-1 bg-white appearance-none border-b-2 border-transparent p-1 text-gray-700 leading-tight;
+}
+
+@screen sm {
+  input:not([type='submit']),
+  textarea,
+  button:not(.burger),
+  .react-select__control {
+    @apply p-4;
+  }
 }
 
 input:not([type='submit']):hover,

@@ -8,7 +8,7 @@ import OpenZeppelinLogo from '~/images/open-zeppelin-logo.svg'
 export const BuildSeamlessApps = function() {
   return (
     <div
-      className='pt-20 lg:pb-20 bg-gray-100'
+      className='pt-20 pb-2 sm:pb-20 bg-gray-100'
     >
       <div className='container'>
         <div className='lg:w-9/12 mx-auto text-center mb-8'>
@@ -23,7 +23,7 @@ export const BuildSeamlessApps = function() {
 
         <div className='flex flex-wrap lg:-mx-32'>
 
-          <div className='flex card-custom-max-width max-w-auto lg:max-w-sm mt-6 lg:mt-10 mb-4 lg:px-6'>
+          <div className='flex card-custom-max-width  my-6 order-1 sm:mt-4 sm:px-6 lg:order-2 lg:max-w-sm'>
             <Card
               img={<OpenZeppelinLogo className='w-2/3 lg:w-auto' />}
               text='OpenZeppelin is a battle-tested library of reusable smart contracts for Ethereum and other blockchains. Reduce the risk of vulnerabilities in your applications by using standard, tested, community-reviewed code. Using industry standard contract security patterns and best practices.'
@@ -32,7 +32,7 @@ export const BuildSeamlessApps = function() {
             />
           </div>
 
-          <div className='flex max-w-auto lg:max-w-sm mt-6 lg:mt-20 mb-20 lg:px-6 lg:order-first'>
+          <div className='flex max-w-auto mt-6 mb-6 order-2 sm:px-6 lg:my-20 lg:order-1 lg:max-w-sm'>
             <Card
               img={<PortisLogo className='w-2/3 lg:w-auto' />}
               text='With the Portis SDK, DApps get a standard web3 provider, and thanks to E2E encryption, their users get a non-custodial wallet and can sign transactions. all using their existing browser, with a familiar email and password login flow - no installation required!'
@@ -40,7 +40,7 @@ export const BuildSeamlessApps = function() {
             />
           </div>
 
-          <div className='flex max-w-auto lg:max-w-sm mt-6 lg:mt-20 mb-20 lg:px-6'>
+          <div className='flex max-w-auto mt-6 order-3 sm:px-6 lg:my-20 lg:max-w-sm'>
             <Card
               img={<img
                 srcSet='/static/tabookey-logo.png 1x, /static/tabookey-logo@2x.png 2x'

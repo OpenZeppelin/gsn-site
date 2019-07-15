@@ -43,7 +43,7 @@ export const EthereumNetworkStatus = function _EthereumNetworkStatus({ networkAc
                             <a
                               href='#'
                               onClick={() => web3.askEthereumPermissions()} 
-                              className='underline text-white hover:text-blue-400'
+                              className='underline text-white hover:text-blue-200'
                             >
                               Connect Wallet to send transactions
                             </a>
