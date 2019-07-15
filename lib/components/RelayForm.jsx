@@ -9,6 +9,7 @@ import { EthUserLink } from 'lib/components/EthUserLink'
 import { Submit } from 'lib/components/form'
 import { ErrorMsg } from 'lib/components/ErrorMsg'
 import { ConnectWallet } from 'lib/components/ConnectWallet'
+import { ConnectWalletText } from 'lib/components/ConnectWalletText'
 import { relayHubTargetSubscription } from '../subscriptions/relayHubTargetSubscription'
 import { ZERO_ADDRESS } from 'lib/constants'
 import { withFormProps } from 'lib/components/hoc/withFormProps'
@@ -237,11 +238,11 @@ export const RelayForm = withFormProps(withRelay(
 
       const { ethereumPermission } = ethereumPermissionQuery || {}
 
-      let connect
+      let connect,
+        connectWalletText
       if (!ethereumPermission) {
-        connect = <div>
-          <ConnectWallet />
-        </div>
+        connect = <ConnectWallet />
+        connectWalletText = <ConnectWalletText />
       }
 
       if (!this.props.relayAddress && !this.props.relayUrl) {
@@ -262,7 +263,9 @@ export const RelayForm = withFormProps(withRelay(
       } else {
         let registerRelayForm
         if (relay === undefined || relay.state.toString() === '1') { // then it needs to be registered
-          registerRelayForm = <RegisterRelayForm relayHubAddress={this.props.relayHubAddress} />
+          registerRelayForm = <RegisterRelayForm
+            relayHubAddress={this.props.relayHubAddress}
+          />
         }
 
         const { owner, stake, balance } = RelayHub || {}
@@ -305,16 +308,22 @@ export const RelayForm = withFormProps(withRelay(
               <dd>{unstakeDelay ? unstakeDelay.toString() : '?'} <span className='light'>seconds</span></dd>
             </dl>
 
+            {!ethereumPermission && (
+              <div className='mt-6 mb-12'>
+                {connect}
+              </div>
+            )}
+
             <form>
               <RelayUrlTestForm relayUrl={this.props.relayUrl} />
             </form>
-              
-            {connect}
 
             <form onSubmit={this.handleSubmitDeposit}>
               <h3 className='font-silkaMedium mb-8 text-black'>
                 Increase Ether Balance
               </h3>
+              {connectWalletText}
+
               <label htmlFor='relay-form-deposit'>
                 Deposit Amount <span className='light'>(In Ether)</span>
               </label>
@@ -327,7 +336,7 @@ export const RelayForm = withFormProps(withRelay(
                 className='mb-6 trans'
                 required
               />
-
+            
               <Submit
                 disabled={!ethereumPermission || this.state.depositAmount === '' || this.depositFormLocked()}
                 value={this.state.depositAmountInFlight ? `Depositing ...` : `Deposit`}
@@ -343,9 +352,11 @@ export const RelayForm = withFormProps(withRelay(
             </form>
 
             <form onSubmit={this.handleSubmitStake}>
-              <h3 className='font-silkaMedium mb-6'>
+              <h3 className='font-silkaMedium mb-8'>
                 Increase Stake &amp; Update Stake Delay
               </h3>
+              {connectWalletText}
+
               <label htmlFor='relay-form-stake'>
                 Stake Amount <span className='light'>(In Ether)</span>
               </label>

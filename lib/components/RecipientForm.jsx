@@ -10,6 +10,7 @@ import { EthTextSymbol } from 'lib/components/EthTextSymbol'
 import { TxMessage } from 'lib/components/TxMessage'
 import { Submit } from 'lib/components/form'
 import { ConnectWallet } from 'lib/components/ConnectWallet'
+import { ConnectWalletText } from 'lib/components/ConnectWalletText'
 import { ErrorMsg } from 'lib/components/ErrorMsg'
 import { recipientQuery } from '../queries/recipientQuery'
 import { relayHubQuery } from '../queries/relayHubQuery'
@@ -162,11 +163,11 @@ export const RecipientForm = withFormProps(
       const { RelayRecipient, error, loading } = recipientQuery
       const { ethereumPermission } = ethereumPermissionQuery
 
-      let connect
+      let connect,
+        connectWalletText
       if (!ethereumPermission) {
-        connect = <div>
-          <ConnectWallet />
-        </div>
+        connect = <ConnectWallet />
+        connectWalletText = <ConnectWalletText />
       }
 
       if (error) {
@@ -191,7 +192,11 @@ export const RecipientForm = withFormProps(
             <dd>{balance ? ethers.utils.formatEther(balance) : '?'} <EthTextSymbol /></dd>
           </dl>
 
-          {connect}
+          {!ethereumPermission && (
+            <div className='mt-6 mb-12'>
+              {connect}
+            </div>
+          )}
 
           <div className='mt-12'>
             <Query query={relayHubQuery} variables={{relayHubAddress}}>
@@ -211,6 +216,8 @@ export const RecipientForm = withFormProps(
                       <h3 className='font-silkaMedium mb-8 text-black'>
                         Increase Ether Balance
                       </h3>
+
+                      {connectWalletText}
 
                       <label
                         htmlFor='deposit-amount'
