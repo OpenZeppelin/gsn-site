@@ -16,7 +16,7 @@ yarn
 yarn dev
 ```
 
-Now navigate to (localhost:3000)[http://localhost:3000] in your browser.  You'll be able to build against test nets such as Rinkeby.
+Now navigate to [localhost:3000](http://localhost:3000) in your browser.  You'll be able to build against test nets such as Rinkeby.
 
 For full control over the smart contracts you'll want to setup the Gas Station Network locally.
 
