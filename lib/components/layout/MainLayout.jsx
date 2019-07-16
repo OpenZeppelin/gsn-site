@@ -1,11 +1,11 @@
 import Meta from './Meta'
 import Footer from './Footer'
 
-import '~/styles/index.css'
-import '~/styles/animations.css'
-import '~/styles/fonts.css'
-import '~/styles/loader.css'
-import '~/styles/transitions.css'
+import 'assets/styles/index.css'
+import 'assets/styles/animations.css'
+import 'assets/styles/fonts.css'
+import 'assets/styles/loader.css'
+import 'assets/styles/transitions.css'
 
 export const MainLayout = ({ children }) => (
   <div>

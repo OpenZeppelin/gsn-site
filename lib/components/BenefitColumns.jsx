@@ -1,8 +1,8 @@
 import React from 'react'
 
-import OpenSourceImg from '~/images/open-source.svg'
-import TenXConversionImg from '~/images/ten-x-conversion.svg'
-import P2PRelayersImg from '~/images/p2p-relayers.svg'
+import OpenSourceImg from 'assets/images/open-source.svg'
+import TenXConversionImg from 'assets/images/ten-x-conversion.svg'
+import P2PRelayersImg from 'assets/images/p2p-relayers.svg'
 
 export const BenefitColumns = function() {
   return (
@@ -10,9 +10,9 @@ export const BenefitColumns = function() {
       className='pt-32 pb-20 bg-white'
     >
       <div className='container'>
-        <div className='flex flex-wrap items-baseline -mx-6 text-center'>
+        <div className='flex flex-wrap items-baseline -mx-6'>
           <div className='w-auto lg:w-1/3 mb-10 lg:mb-4 px-6'>
-            <OpenSourceImg className='inline-block' />
+            <img src={OpenSourceImg} className='inline-block' />
             <h3 className='font-silkaMedium text-xl opacity-90 pt-4 pb-2'>
               Open Source Driven
             </h3>
@@ -21,7 +21,7 @@ export const BenefitColumns = function() {
             </p>
           </div>
           <div className='w-auto lg:w-1/3 mb-10 lg:mb-4 px-6'>
-            <TenXConversionImg className='inline-block' />
+            <img src={TenXConversionImg} className='inline-block' />
             <h3 className='font-silkaMedium text-xl opacity-90 pt-4 pb-2'>
               10x Your Conversion Rate
             </h3>
@@ -30,7 +30,7 @@ export const BenefitColumns = function() {
             </p>
           </div>
           <div className='w-auto lg:w-1/3 mb-10 lg:mb-4 px-6'>
-            <P2PRelayersImg className='inline-block' />
+            <img src={P2PRelayersImg} className='inline-block' />
             <h3 className='font-silkaMedium text-xl opacity-90 pt-4 pb-2'>
               P2P Relayers
             </h3>
