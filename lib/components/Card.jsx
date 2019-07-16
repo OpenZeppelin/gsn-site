@@ -11,7 +11,7 @@ export const Card = ({ img, text, url, large }) => {
         {img}
       </div>
 
-      <div className={`${horizontalPadding} ${verticalPadding}`}>
+      <div className={`${horizontalPadding} ${verticalPadding} lg-card-description-padding-override`}>
         <p className='text-sm'>
           {text}
         </p>

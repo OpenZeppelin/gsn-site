@@ -326,3 +326,23 @@ dd {
     height: 43px;
   }
 }
+
+/* custom css for the build seamless apps cards to stack side by side
+    in this very specific window width range */
+@media (min-width: 960px) and (max-width: 1140px) {
+  .lg-margin-override {
+    margin-left: -4rem;
+    margin-right: -4rem;
+  }
+
+  .lg-card-width-and-padding-override {
+    max-width: 33%;
+    padding-left: 0.5rem;
+    padding-right: 0.5rem;
+  }
+
+  .lg-card-description-padding-override {
+    padding-left: 2rem;
+    padding-right: 2rem;
+  }
+}
