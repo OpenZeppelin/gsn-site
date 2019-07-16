@@ -68,7 +68,7 @@ const RecipientsIndex = class _RecipientsIndex extends PureComponent {
               <Field>
                 <RecipientSelect
                   value={this.state.recipientOption}
-                  onChange={this.handleChangeRelayHubOption}
+                  handleChange={this.handleChangeRelayHubOption}
                 />
               </Field>
 

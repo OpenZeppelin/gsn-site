@@ -1,7 +1,5 @@
 import React, { PureComponent } from 'react'
-import Creatable from 'react-select/creatable'
 import { graphql } from 'react-apollo'
-import { omit } from 'lodash'
 import PropTypes from 'prop-types'
 
 import { recentRelayHubsQuery } from 'lib/queries/recentRelayHubsQuery'
@@ -9,6 +7,7 @@ import { withNetworkAccountQuery } from 'lib/components/hoc/withNetworkAccountQu
 import { isAddress } from 'lib/utils/isAddress'
 import { abiMapping } from 'lib/apollo/abiMapping'
 import { networkIdToName } from 'lib/utils/networkIdToName'
+import { GSNSelect } from 'lib/components/GSNSelect'
 
 export const RelayHubSelect = withNetworkAccountQuery(
   graphql(recentRelayHubsQuery, {
@@ -25,33 +24,30 @@ export const RelayHubSelect = withNetworkAccountQuery(
   })(
 class _RelayHubSelect extends PureComponent {
   static propTypes = {
-    onChange: PropTypes.func,
-    onError: PropTypes.func
+    handleChange: PropTypes.func.isRequired,
+    value: PropTypes.object
   }
 
-  onChange = (option) => {
-    let newOption = {...option}
-    if (!newOption.networkId) {
-      newOption.networkId = this.props.networkAccountQuery.networkId
-    }
-    if (isAddress(newOption.value)) {
-      if (this.props.onChange) {
-        this.props.onChange(newOption)
-      }
-    } else if (this.props.onError) {
-      this.props.onError(newOption)
-    }
-  }
+  // onChange = (option) => {
+  //   let newOption = {...option}
+  //   if (!newOption.networkId) {
+  //     newOption.networkId = this.props.networkAccountQuery.networkId
+  //   }
+  //   if (isAddress(newOption.value)) {
+  //     if (this.props.onChange) {
+  //       this.props.onChange(newOption)
+  //     }
+  //   } else {
+  //   }
+  // }
 
   render () {
+    let options = []
+    
     const { recentRelayHubsQuery, networkAccountQuery } = this.props
     const { recentRelayHubs } = recentRelayHubsQuery || {}
     const { networkId } = networkAccountQuery || {}
 
-    const newProps = omit(this.props, ['onChange', 'onError'])
-
-
-    let options = []
 
     let networkRelayHubAddress
     if (networkId) {
@@ -85,18 +81,11 @@ class _RelayHubSelect extends PureComponent {
       })
     }
 
-    return (
-      <Creatable
-        {...newProps}
-        placeholder='Select or type ...'
-        className='react-select'
-        classNamePrefix='react-select'
-        allowCreateWhileLoading={true}
-        formatCreateLabel={(inputValue) => `Use ${inputValue}...`}
-        options={options}
-        onChange={this.onChange}
-      />
-    )
+    return <GSNSelect
+      {...this.props}
+      options={options}
+      valid={isAddress}
+      typeName='address'
+    />
   }
-}
-))
+}))

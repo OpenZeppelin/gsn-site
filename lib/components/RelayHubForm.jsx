@@ -78,7 +78,7 @@ export const RelayHubForm = withRouter(class _RelayHubForm extends Component {
                 id='relay-by-url'
                 className='flex-1'
                 value={this.state.relayUrlOption}
-                onChange={(relayUrlOption) => this.setState({ relayUrlOption })}
+                handleChange={(relayUrlOption) => this.setState({ relayUrlOption })}
               />
             </Field>
 
@@ -103,7 +103,7 @@ export const RelayHubForm = withRouter(class _RelayHubForm extends Component {
                 className='flex-1'
                 placeholder='Select or type ...'
                 value={this.state.relayAddressOption}
-                onChange={(relayAddressOption) => this.setState({ relayAddressOption })}
+                handleChange={(relayAddressOption) => this.setState({ relayAddressOption })}
               />
             </Field>
 

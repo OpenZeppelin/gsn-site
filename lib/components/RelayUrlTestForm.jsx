@@ -62,7 +62,7 @@ export const RelayUrlTestForm = class _RelayUrlTestForm extends PureComponent {
         <dd className='mb-0'>
           <RelayUrlSelect
             value={relayUrlOption}
-            onChange={this.handleChangeRelayUrl}
+            handleChange={this.handleChangeRelayUrl}
             className='flex-1'
             isDisabled={relayUrlOption}
           />

@@ -1,12 +1,11 @@
 import React, { PureComponent } from 'react'
-import Creatable from 'react-select/creatable'
 import { graphql } from 'react-apollo'
-import { omit } from 'lodash'
 import PropTypes from 'prop-types'
 
 import { recentRecipientsQuery } from 'lib/queries/recentRecipientsQuery'
 import { withNetworkAccountQuery } from 'lib/components/hoc/withNetworkAccountQuery'
 import { isAddress } from 'lib/utils/isAddress'
+import { GSNSelect } from 'lib/components/GSNSelect'
 
 export const RecipientSelect = withNetworkAccountQuery(
   graphql(recentRecipientsQuery, {
@@ -23,29 +22,13 @@ export const RecipientSelect = withNetworkAccountQuery(
   })(
 class _RecipientSelect extends PureComponent {
   static propTypes = {
-    onChange: PropTypes.func,
-    onError: PropTypes.func
-  }
-
-  onChange = (option) => {
-    let newOption = {...option}
-    if (!newOption.networkId) {
-      newOption.networkId = this.props.networkAccountQuery.networkId
-    }
-    if (isAddress(newOption.value)) {
-      if (this.props.onChange) {
-        this.props.onChange(newOption)
-      }
-    } else if (this.props.onError) {
-      this.props.onError(newOption)
-    }
+    handleChange: PropTypes.func.isRequired,
+    value: PropTypes.object
   }
 
   render () {
-    const newProps = omit(this.props, ['onChange', 'onError'])
-
     let options = []
-
+    
     const { recentRecipientsQuery } = this.props
     const { recentRecipients } = recentRecipientsQuery || {}
 
@@ -59,18 +42,11 @@ class _RecipientSelect extends PureComponent {
       })
     }
 
-    return (
-      <Creatable
-        {...newProps}
-        className='react-select'
-        classNamePrefix='react-select'
-        placeholder='Select or type ...'
-        allowCreateWhileLoading={true}
-        formatCreateLabel={(inputValue) => `Use ${inputValue}...`}
-        options={options}
-        onChange={this.onChange}
-      />
-    )
+    return <GSNSelect
+      {...this.props}
+      options={options}
+      valid={isAddress}
+      typeName='address'
+    />
   }
-}
-))
+}))

@@ -40,3 +40,21 @@ span {
   border-top-color: transparent;
   border-bottom-color: var(--active);
 }
+
+.spinner-small .loading-indicator {
+  margin-top: -2px;
+  transform: scale3d(0.9, 0.9, 0.9);
+}
+
+.spinner-small .spinner-double-section-far {
+  border-color: white;
+}
+
+.spinner-small .spinner-double-section-far:before,
+.spinner-small .spinner-double-section-far:after {
+  border-top-color: white;
+}
+
+.spinner-small .spinner-double-section-far:after {
+  border-bottom-color: white;
+}

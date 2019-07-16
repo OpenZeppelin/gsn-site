@@ -48,12 +48,12 @@ const RelayHubDashboard = withRouter(
               <Tabs.Tab
                 isSelected={this.state.currentTab === 0}
                 onClick={() => this.setState({ currentTab: 0 })}>
-                Access Relay
+                Access a Relay
               </Tabs.Tab>
               <Tabs.Tab
                 isSelected={this.state.currentTab === 1}
                 onClick={() => this.setState({ currentTab: 1 })}>
-                List Relays
+                List all Relays
               </Tabs.Tab>
             </Tabs>
 
