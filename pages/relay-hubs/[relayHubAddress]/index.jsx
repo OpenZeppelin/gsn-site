@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { withRouter } from 'next/router'
+import { useRouter } from 'next/router'
 import Link from 'next/link'
 import { utils } from 'dapp-core'
 
@@ -11,67 +11,62 @@ import { RelayHubForm } from 'lib/components/RelayHubForm'
 import { RelayHubRelayList } from '../../../lib/components/RelayHubRelayList';
 import { Tabs } from 'lib/components/Tabs'
 
-const RelayHubDashboard = withRouter(
-  class _RelayHubDashboard extends Component {
-    state = {
-      currentTab: 0,
-    }
+const RelayHubDashboard = function () {
+  const router = useRouter()
+  let { relayHubAddress, listRelays } = router.query
+  listRelays = listRelays === 'true'
+  
+  let relays
 
-    render () {
-      const { relayHubAddress } = this.props.router.query
-      let relays
-
-      if (this.state.currentTab === 1) {
-        relays =
-          <DynamicApolloWrapper>
-            <RelayHubRelayList relayHubAddress={relayHubAddress} />
-          </DynamicApolloWrapper>
-      }
-
-      return (
-        <MainLayout>
-          <EthereumNetworkStatus />
-          
-          <Section>
-            <p className='pb-4 font-silkaRegular text-gray-500'>
-              <Link href='/relays'><a>Relay Hubs</a></Link> &raquo;&nbsp;
-              <span className='wrap-everything text-gray-900'>{utils.shortenAddress(relayHubAddress)}</span>
-            </p>
-
-            <div className='lg:w-2/3 mb-10'>
-              <p>
-                View stats on a specific Relay or register your new Relay node.
-              </p>
-            </div>
-
-            <Tabs>
-              <Tabs.Tab
-                isSelected={this.state.currentTab === 0}
-                onClick={() => this.setState({ currentTab: 0 })}>
-                Access a Relay
-              </Tabs.Tab>
-              <Tabs.Tab
-                isSelected={this.state.currentTab === 1}
-                onClick={() => this.setState({ currentTab: 1 })}>
-                List all Relays
-              </Tabs.Tab>
-            </Tabs>
-
-            <Tabs.Content>
-              <Tabs.ContentPane isSelected={this.state.currentTab === 0}>
-                <RelayHubForm
-                  relayHubAddress={relayHubAddress}
-                />
-              </Tabs.ContentPane>
-              <Tabs.ContentPane isSelected={this.state.currentTab === 1}>
-                {relays}
-              </Tabs.ContentPane>
-            </Tabs.Content>
-          </Section>
-        </MainLayout>
-      )
-    }
+  if (listRelays) {
+    relays =
+      <DynamicApolloWrapper>
+        <RelayHubRelayList relayHubAddress={relayHubAddress} />
+      </DynamicApolloWrapper>
   }
-)
+
+  return (
+    <MainLayout>
+      <EthereumNetworkStatus />
+      
+      <Section>
+        <p className='pb-4 font-silkaRegular text-gray-500'>
+          <Link href='/relays'><a>Relay Hubs</a></Link> &raquo;&nbsp;
+          <span className='wrap-everything text-gray-900'>{utils.shortenAddress(relayHubAddress)}</span>
+        </p>
+
+        <div className='lg:w-2/3 mb-10'>
+          <p>
+            View stats on a specific Relay or register your new Relay node.
+          </p>
+        </div>
+
+        <Tabs>
+          <Tabs.Tab
+            isSelected={!listRelays}
+            onClick={() => router.push(`/relay-hubs/${relayHubAddress}`)}>
+            Access a Relay
+          </Tabs.Tab>
+          <Tabs.Tab
+            isSelected={listRelays}
+            onClick={() => router.push(`/relay-hubs/${relayHubAddress}?listRelays=true`)}>
+            List all Relays
+          </Tabs.Tab>
+        </Tabs>
+
+        <Tabs.Content>
+          <Tabs.ContentPane isSelected={!listRelays}>
+            <RelayHubForm
+              relayHubAddress={relayHubAddress}
+            />
+          </Tabs.ContentPane>
+          <Tabs.ContentPane isSelected={listRelays}>
+            {relays}
+          </Tabs.ContentPane>
+        </Tabs.Content>
+      </Section>
+    </MainLayout>
+  )
+}
 
 export default RelayHubDashboard;
