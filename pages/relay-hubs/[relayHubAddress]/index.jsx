@@ -1,17 +1,15 @@
 import React, { Component } from 'react'
 import { withRouter } from 'next/router'
-import classnames from 'classnames'
 import Link from 'next/link'
 import { utils } from 'dapp-core'
 
 import { EthereumNetworkStatus } from 'lib/components/EthereumNetworkStatus'
 import { DynamicApolloWrapper } from 'lib/components/DynamicApolloWrapper'
-import { Field, Submit } from 'lib/components/form'
 import { MainLayout } from 'lib/components/layout/MainLayout'
 import { Section } from 'lib/components/layout/Section'
 import { RelayHubForm } from 'lib/components/RelayHubForm'
-import { RelayAddressSelect } from 'lib/components/RelayAddressSelect'
 import { RelayHubRelayList } from '../../../lib/components/RelayHubRelayList';
+import { Tabs } from 'lib/components/Tabs'
 
 const RelayHubDashboard = withRouter(
   class _RelayHubDashboard extends Component {
@@ -46,63 +44,29 @@ const RelayHubDashboard = withRouter(
               </p>
             </div>
 
-            <nav>
-              <a
-                href=''
-                className={classnames(
-                  'bg-blue-600 font-silkaMedium text-xs sm:text-base p-2 px-4 sm:p-6 sm:px-10 inline-block border-r border-solid border-gray-100 text-white hover:text-blue-600 hover:bg-white trans trans-fast',
-                  {
-                    'is-selected': this.state.currentTab === 0
-                  }
-                )}
-                onClick={(e) => {
-                  e.preventDefault()
-                  this.setState({
-                    currentTab: 0
-                  })
-                }}
-              >
+            <Tabs>
+              <Tabs.Tab
+                isSelected={this.state.currentTab === 0}
+                onClick={() => this.setState({ currentTab: 0 })}>
                 Access Relay
-              </a>
-              <a
-                href='' 
-                className={classnames(
-                  'bg-blue-600 font-silkaMedium text-xs sm:text-base p-2 px-4 sm:p-6 sm:px-10 inline-block border-r border-solid border-gray-100 text-white hover:text-blue-600 hover:bg-white trans trans-fast',
-                  {
-                    'is-selected': this.state.currentTab === 1
-                  }
-                )}
-                onClick={(e) => {
-                  e.preventDefault()
-                  this.setState({
-                    currentTab: 1
-                  })
-                }}
-              >
+              </Tabs.Tab>
+              <Tabs.Tab
+                isSelected={this.state.currentTab === 1}
+                onClick={() => this.setState({ currentTab: 1 })}>
                 List Relays
-              </a>
-            </nav>
+              </Tabs.Tab>
+            </Tabs>
 
-            <div className='bg-white py-0 sm:py-6 sm:px-10 sm:pb-20 border-t-2 border-gray-100'>
-
-              <div className={classnames(
-                {
-                  hidden: this.state.currentTab === 0
-                }
-              )}>
-                {relays}
-              </div>
-
-              <div className={classnames(
-                {
-                  hidden: this.state.currentTab === 1
-                }
-              )}>
+            <Tabs.Content>
+              <Tabs.ContentPane isSelected={this.state.currentTab === 0}>
                 <RelayHubForm
                   relayHubAddress={relayHubAddress}
                 />
-              </div>
-            </div>
+              </Tabs.ContentPane>
+              <Tabs.ContentPane isSelected={this.state.currentTab === 1}>
+                {relays}
+              </Tabs.ContentPane>
+            </Tabs.Content>
           </Section>
         </MainLayout>
       )
