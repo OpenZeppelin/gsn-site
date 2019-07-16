@@ -2,8 +2,8 @@ import React from 'react'
 
 import { Card } from 'lib/components/Card'
 
-import PortisLogo from '~/images/portis-logo.svg'
-import OpenZeppelinLogo from '~/images/open-zeppelin-logo.svg'
+import PortisLogo from 'assets/images/portis-logo.svg'
+import OpenZeppelinLogo from 'assets/images/open-zeppelin-logo.svg'
 
 export const BuildSeamlessApps = function() {
   return (
@@ -25,7 +25,7 @@ export const BuildSeamlessApps = function() {
 
           <div className='flex card-custom-max-width  my-6 order-1 sm:mt-4 sm:px-6 lg:order-2 lg:max-w-sm'>
             <Card
-              img={<OpenZeppelinLogo className='w-2/3 lg:w-auto' />}
+              img={<img src={OpenZeppelinLogo} className='w-2/3 lg:w-auto' />}
               text='OpenZeppelin is a battle-tested library of reusable smart contracts for Ethereum and other blockchains. Reduce the risk of vulnerabilities in your applications by using standard, tested, community-reviewed code. Using industry standard contract security patterns and best practices.'
               url='https://openzeppelin.org'
               large
@@ -34,7 +34,7 @@ export const BuildSeamlessApps = function() {
 
           <div className='flex max-w-auto mt-6 mb-6 order-2 sm:px-6 lg:my-20 lg:order-1 lg:max-w-sm'>
             <Card
-              img={<PortisLogo className='w-2/3 lg:w-auto' />}
+              img={<img src={PortisLogo} className='w-2/3 lg:w-auto' />}
               text='With the Portis SDK, DApps get a standard web3 provider, and thanks to E2E encryption, their users get a non-custodial wallet and can sign transactions. all using their existing browser, with a familiar email and password login flow - no installation required!'
               url='https://developers.portis.io'
             />

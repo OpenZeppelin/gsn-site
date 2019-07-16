@@ -1,9 +1,9 @@
 import React from 'react'
 
-import OpenZeppelinColorLogo from '~/images/open-zeppelin-color-logo.svg'
-import PortisLogo from '~/images/portis-logo.svg'
-import PillarLogo from '~/images/pillar-logo.svg'
-import GroundhogLogo from '~/images/groundhog-logo.svg'
+import OpenZeppelinColorLogo from 'assets/images/open-zeppelin-color-logo.svg'
+import PortisLogo from 'assets/images/portis-logo.svg'
+import PillarLogo from 'assets/images/pillar-logo.svg'
+import GroundhogLogo from 'assets/images/groundhog-logo.svg'
 
 export const GSNAlliance = function() {
   return (
@@ -18,7 +18,7 @@ export const GSNAlliance = function() {
         <div className='flex flex-wrap justify-center items-center content-center -mx-6 mt-20'>
           <div className='md:w-1/4 mb-20 px-20 sm:px-12 md:px-6'>
             <a href='https://openzeppelin.org'>
-              <OpenZeppelinColorLogo className='mx-auto hover:opacity-80 trans trans-fast' />
+              <img src={OpenZeppelinColorLogo} className='mx-auto hover:opacity-80 trans trans-fast' />
             </a>
           </div>
           <div className='md:w-1/4 mb-20 px-20 sm:px-12 md:px-6 md:-mt-1'>
@@ -33,17 +33,17 @@ export const GSNAlliance = function() {
           </div>
           <div className='md:w-1/4 mb-20 px-20 sm:px-12 md:px-6'>
             <a href='https://www.portis.io'>
-              <PortisLogo className='mx-auto hover:opacity-80 trans trans-fast' width='98' height='30' />
+              <img src={PortisLogo} className='mx-auto hover:opacity-80 trans trans-fast' width='98' height='30' />
             </a>
           </div>
           <div className='md:w-1/4 mb-20 px-20 sm:px-12 md:px-6'>
             <a href='https://pillarproject.io'>
-              <PillarLogo className='mx-auto hover:opacity-80 trans trans-fast' />
+              <img src={PillarLogo} className='mx-auto hover:opacity-80 trans trans-fast' />
             </a>
           </div>
           <div className='md:w-1/4 mb-20 px-20 sm:px-12 md:px-6'>
             <a href='https://groundhog.network'>
-              <GroundhogLogo className='mx-auto hover:opacity-80 trans trans-fast' />
+              <img src={GroundhogLogo} className='mx-auto hover:opacity-80 trans trans-fast' />
             </a>
           </div>
           <div className='md:w-1/4 mb-20 px-20 sm:px-12 md:px-6 md:-mt-1'>

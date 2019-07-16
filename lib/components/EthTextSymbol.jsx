@@ -1,8 +1,13 @@
 import React from 'react'
 
-import EthSymbol from '~/images/eth-symbol.svg'
+import EthSymbol from 'assets/images/eth-symbol.svg'
 
 export const EthTextSymbol = () => {
-  return <EthSymbol className='inline-block -mt-1' width='16' height='16' />
+  return <img
+    src={EthSymbol}
+    className='inline-block -mt-1 text-white fill-current'
+    width='12'
+    height='12'
+  />
 }
   

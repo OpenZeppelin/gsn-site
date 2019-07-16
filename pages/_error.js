@@ -8,11 +8,11 @@ import { MainLayout } from 'lib/components/layout/MainLayout'
 import { Section } from 'lib/components/layout/Section'
 import { EthereumNetworkStatus } from 'lib/components/EthereumNetworkStatus'
 
-import '~/styles/index.css'
-import '~/styles/animations.css'
-import '~/styles/fonts.css'
-import '~/styles/loader.css'
-import '~/styles/transitions.css'
+import 'assets/styles/index.css'
+import 'assets/styles/animations.css'
+import 'assets/styles/fonts.css'
+import 'assets/styles/loader.css'
+import 'assets/styles/transitions.css'
 
 export default withRouter(class Error extends React.Component {
   static getInitialProps({ res, err }) {

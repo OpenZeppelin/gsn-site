@@ -4,6 +4,7 @@ import { graphql, Query } from 'react-apollo'
 import { ethers } from 'ethers'
 
 import { STATUS_IS_ZERO, USER_REJECTED_TX } from 'lib/constants'
+import { ConnectWalletText } from 'lib/components/ConnectWalletText'
 import { TxMessage } from 'lib/components/TxMessage'
 import { Submit } from 'lib/components/form'
 import { ErrorMsg } from 'lib/components/ErrorMsg'
