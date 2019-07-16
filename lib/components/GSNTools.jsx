@@ -16,20 +16,20 @@ export const GSNTools = function() {
         </div>
 
         <div className='flex flex-wrap lg:-mx-32'>
-          <div className='lg:max-w-1/2 mt-4 sm:mt-16 mb-4 lg:px-6'>
+          <div className='lg:max-w-1/2 mt-4 sm:mt-16 mb-4 lg:px-6 text-center sm:text-left'>
             <HorizontalCard
               img={<img src={ManageStar} />}
-              title='Manage your application &gt;'
+              title='Manage your application'
               text='In order to pay the gas for the transactions on behalf of your users, you need to maintain an ETH balance. Use this tool to add your application and top up your balance.'
               btnUrl='/recipients'
               btnText='See Dapp Tool'
             />
           </div>
 
-          <div className='lg:max-w-1/2 mt-16 mb-4 lg:px-6'>
+          <div className='lg:max-w-1/2 mt-16 mb-4 lg:px-6 text-center sm:text-left'>
             <HorizontalCard
               img={<img src={ParticipateStar} />}
-              title='Participate in the network &gt;'
+              title='Participate in the network'
               text='Spin up your own relayer and earn fees for every transaction you put on the blockchain. Use this tool to add new relayers and edit their settings.'
               btnUrl='/relays'
               btnText='See Relayer Tool'

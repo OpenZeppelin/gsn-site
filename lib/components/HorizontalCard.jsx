@@ -6,12 +6,12 @@ export const HorizontalCard = ({ title, img, text, btnText, btnUrl }) => {
   return (
     <div className="card-custom-height w-full lg:flex">
       <div className="bg-white flex flex-wrap shadow-md hover:shadow-lg rounded flex flex-col justify-between trans trans-fast">
-        <div className="px-8 py-6 lg:px-10 lg:py-12 lg:w-26">
+        <div className="px-8 py-6 lg:px-10 lg:py-12 lg:w-26 m-auto sm:m-0">
           {img}
         </div>
         
-        <div className="w-auto px-8 py-2 lg:pt-8 lg:pr-48 mb-8">
-          <div className="text-gray-900 font-silkaMedium text-lg lg:text-xl mb-4">
+        <div className="w-auto px-4 sm:px-8 py-2 lg:pt-8 lg:pr-48 mb-8">
+          <div className="text-gray-900 font-silkaMedium text-base sm:text-xl mb-4">
             <Link
               href={btnUrl}
             >
