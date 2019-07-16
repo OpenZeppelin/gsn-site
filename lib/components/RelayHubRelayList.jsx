@@ -46,7 +46,7 @@ export const RelayHubRelayList = graphql(relayHubEventsQuery, {
             </div>
           </div>
 
-          {relays.concat(relays).map(({ address, url }) => {
+          {relays.map(({ address, url }) => {
             return (
               <div key={address} className='sm:flex mb-2 p-4 border-2 border-gray-100 hover:bg-gray-300 trans'>
                 <div className='w-1/4'>

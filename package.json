@@ -13,7 +13,7 @@
     "apollo-client": "^2.6.3",
     "apollo-link-ethereum": "^0.0.37",
     "apollo-link-ethereum-mutations-ethersjs": "^0.0.39",
-    "apollo-link-ethereum-resolver-ethersjs": "^0.0.37",
+    "apollo-link-ethereum-resolver-ethersjs": "^0.0.39",
     "babel-plugin-inline-react-svg": "^1.1.0",
     "classnames": "^2.2.6",
     "dapp-core": "^0.7.2",
