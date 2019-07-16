@@ -42,7 +42,7 @@ const RecipientsIndex = class _RecipientsIndex extends PureComponent {
 
   render () {
     return (
-      <MainLayout>
+      <MainLayout title='Lookup Recipients'>
         <EthereumNetworkStatus />
         <Section>
           <div className='lg:w-2/3'>

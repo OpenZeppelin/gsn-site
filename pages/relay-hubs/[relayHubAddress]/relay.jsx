@@ -13,8 +13,16 @@ function RelayDashboard() {
   const router = useRouter()
   const { relayHubAddress, relayAddress, relayUrl } = router.query
 
+  let title = `Relay`
+  if (relayAddress) {
+    title = `${title} - Address: "${relayAddress}"`
+  }
+  if (relayUrl) {
+    title = `${title} - URL: "${relayUrl}"`
+  }
+
   return (
-    <MainLayout>
+    <MainLayout title={title}>
       <EthereumNetworkStatus />
       <Section>
         <DynamicApolloWrapper>

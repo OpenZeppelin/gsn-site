@@ -26,7 +26,7 @@ const RelayHubDashboard = function () {
   }
 
   return (
-    <MainLayout>
+    <MainLayout title={`RelayHub '${relayHubAddress}' - Relay Access`}>
       <EthereumNetworkStatus />
       
       <Section>

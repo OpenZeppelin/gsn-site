@@ -160,7 +160,6 @@ export const RecipientDepositForm = withFormProps(
                 return (
                   <form
                     onSubmit={this.handleSubmitDeposit}
-                    className='mt-0'
                   >
                     <h3 className='font-silkaMedium mb-8 text-black'>
                       Increase Ether Balance

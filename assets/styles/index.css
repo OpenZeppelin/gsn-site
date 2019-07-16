@@ -109,6 +109,11 @@ button:not(.burger),
   }
 }
 
+.react-select__group-heading {
+  @apply font-silkaMedium p-2 px-4 bg-gray-200 text-white;
+  margin: -9px 0px -5px !important;
+}
+
 input:not([type='submit']):hover,
 textarea:hover,
 button:not(.burger):hover,

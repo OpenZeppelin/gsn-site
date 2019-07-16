@@ -21,7 +21,7 @@ const RelaysIndex = class _RelaysIndex extends Component {
 
   render() {
     return (
-      <MainLayout>
+      <MainLayout title='Relay Access'>
         <EthereumNetworkStatus />
         <Section>
           <p className='pb-4 font-silkaRegular'>

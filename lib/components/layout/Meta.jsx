@@ -1,16 +1,18 @@
 import Head from 'next/head'
 
-export default () => {
+export const Meta = ({ title }) => {
+  const defaultTitle = 'Gas Station Network'
+  title = title ? `${title} - ${defaultTitle}` : defaultTitle
+
   const url = `https://gsn-staging.netlify.com`
   const description = 'The Gas Station Network is the ultimate onboarding solution for Ethereum applications enabling you to pay for transaction gas fees on behalf of your users.'
   const keywords = 'zeppelin openzeppelin tabookey gsn gas station network deltacamp delta camp ethereum smart contract'
-  const title = 'Gas Station Network'
   const twitterHandle = '@GSN'
 
   return (
     <div>
       <Head>
-        <title>GSN - Gas Station Network</title>
+        <title>{title}</title>
 
         <meta name='viewport' content='width=device-width,initial-scale=1,shrink-to-fit=no' />
         <meta charSet='utf-8' />

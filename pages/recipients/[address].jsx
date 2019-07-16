@@ -13,7 +13,7 @@ function RecipientDashboard() {
   const { address } = router.query
 
   return (
-    <MainLayout>
+    <MainLayout title={`Recipient '${address}'`}>
       <EthereumNetworkStatus />      
       <Section>
         <p className='pb-4 font-silkaRegular text-gray-500'>
