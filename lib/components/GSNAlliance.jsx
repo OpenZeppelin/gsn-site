@@ -3,6 +3,7 @@ import React from 'react'
 import OpenZeppelinColorLogo from 'assets/images/open-zeppelin-color-logo.svg'
 import PortisLogo from 'assets/images/portis-logo.svg'
 import PillarLogo from 'assets/images/pillar-logo.svg'
+import EFLogo from 'assets/images/ethfund.svg'
 import GroundhogLogo from 'assets/images/groundhog-logo.svg'
 
 export const GSNAlliance = function() {
@@ -44,6 +45,11 @@ export const GSNAlliance = function() {
           <div className='md:w-1/4 mb-20 px-20 sm:px-12 md:px-6'>
             <a href='https://groundhog.network'>
               <img src={GroundhogLogo} className='mx-auto hover:opacity-80 trans trans-fast' />
+            </a>
+          </div>
+          <div className='md:w-1/4 mb-20 px-20 sm:px-12 md:px-6'>
+            <a href='https://ethereum.foundation/'>
+              <img src={EFLogo} className='mx-auto hover:opacity-80 trans trans-fast' />
             </a>
           </div>
           <div className='md:w-1/4 mb-20 px-20 sm:px-12 md:px-6 md:-mt-1'>
