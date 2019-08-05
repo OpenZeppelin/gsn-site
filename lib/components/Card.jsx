@@ -1,4 +1,5 @@
 import React from 'react'
+import Link from 'next/link'
 
 export const Card = ({ img, text, url, large }) => {
 
@@ -15,6 +16,20 @@ export const Card = ({ img, text, url, large }) => {
         <p className='text-sm'>
           {text}
         </p>
+      </div>
+
+
+      <div className='text-center flex justify-center'>
+        <Link
+          href={url}
+        >
+          <a
+            className='uppercase font-silkaMedium flex-shrink-0 text-xs bg-white border-solid border border-blue-900 hover:bg-black focus:outline-none focus:border-blue-400 text-blue-900 hover:text-white font-bold py-2 px-4 rounded-lg cursor-pointer tracking-wider'
+            title={'See More'}
+          >
+            See More
+          </a>
+        </Link>
       </div>
     </a>
   )

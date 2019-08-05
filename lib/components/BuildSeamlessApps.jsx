@@ -25,8 +25,13 @@ export const BuildSeamlessApps = function() {
           <div className='flex card-custom-max-width lg-card-width-and-padding-override my-6 order-1 sm:mt-4 sm:px-6 lg:order-2 lg:max-w-sm'>
             <Card
               img={<img src={OpenZeppelinLogo} />}
-              text='OpenZeppelin is a battle-tested library of reusable smart contracts for Ethereum and other blockchains. Reduce the risk of vulnerabilities in your applications by using standard, tested, community-reviewed code. Using industry standard contract security patterns and best practices.'
-              url='https://openzeppelin.org'
+              text={<div>
+                      <b>OpenZeppelin</b> is a professional platform to develop blockchain based applications. <br/><br />
+                      <b>OpenZeppelin SDK</b> makes smart contract development easy. Save hours of development time by compiling, upgrading, deploying, and interacting with smart contracts with our CLI. <br/><br/>
+                      <b>Connect GSN</b> with our contracts, SDK and Starter Kits and start creating a seamless app today. <br/>
+                    </div>
+                    }
+              url='https://docs.openzeppelin.com/openzeppelin/'
               large
             />
           </div>
@@ -53,6 +58,6 @@ export const BuildSeamlessApps = function() {
           </div>
         </div>
       </div>
-    </div>    
+    </div>
   )
 }
