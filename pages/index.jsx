@@ -6,6 +6,7 @@ import { BuildSeamlessApps } from 'lib/components/BuildSeamlessApps'
 import { GSNAlliance } from 'lib/components/GSNAlliance'
 import { GSNTools } from 'lib/components/GSNTools'
 import { Hero } from 'lib/components/Hero'
+import { SignUpForm } from 'lib/components/SignUpForm'
 import { UsersAndAlliance } from 'lib/components/UsersAndAlliance'
 
 const Home = function() {
@@ -14,6 +15,7 @@ const Home = function() {
       <Hero />
       <BenefitColumns />
       <BuildSeamlessApps />
+      <SignUpForm />
       <GSNTools />
       <UsersAndAlliance />
       <GSNAlliance />
