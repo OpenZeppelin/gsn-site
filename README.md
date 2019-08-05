@@ -8,7 +8,7 @@ The Gas Station Network is currently deployed to Rinkeby.  The addresses are:
 
 | Role | Address | Description |
 | ---- | ------- | ----------- |
-| RelayHub | [0x4FC8ac0210527bCA8c5C66a595Da78B428862276](https://gsn-staging.netlify.com/relay-hubs/0x4FC8ac0210527bCA8c5C66a595Da78B428862276) | Main RelayHub contract |
+| RelayHub | [0xd216153c06e857cd7f72665e0af1d7d82172f494](https://gsn-staging.netlify.com/relay-hubs/0x4FC8ac0210527bCA8c5C66a595Da78B428862276) | Main RelayHub contract |
 | SampleRecipient | [0x9C7bd19648BF9538eE9986b0E2BF18daaA80601c](https://gsn-staging.netlify.com/recipients/0x9C7bd19648BF9538eE9986b0E2BF18daaA80601c) | Example contract that handles meta tx |
 | Relay | [0xeE90C66Ed6Aaafbf2DBcd34c84c395905B5C8f20](https://gsn-staging.netlify.com/relay-hubs/0x4FC8ac0210527bCA8c5C66a595Da78B428862276/relay?relayUrl=https://rinkeby-01.gsn.openzeppelin.org) | Relay deployed to https://rinkeby-01.gsn.openzeppelin.org |
 
