@@ -32,7 +32,7 @@ export const HorizontalCard = ({ title, img, text, btnText, btnUrl }) => {
             href={btnUrl}
           >
             <a
-              className='uppercase font-silkaMedium flex-shrink-0 text-xs bg-white border-solid border border-blue-900 hover:bg-black focus:outline-none focus:border-blue-400 text-blue-900 hover:text-white font-bold rounded-lg cursor-pointer tracking-wider'
+              className='uppercase font-silkaMedium flex-shrink-0 text-xs bg-white border-solid border border-blue-900 hover:bg-black focus:outline-none focus:border-blue-400 text-blue-900 hover:text-white font-bold py-2 px-4 rounded-lg cursor-pointer tracking-wider'
               title={btnText}
             >
               {btnText}
