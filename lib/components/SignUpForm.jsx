@@ -33,16 +33,16 @@ export class SignUpForm extends React.Component {
         <div className='container'>
           <div className='flex justify-center items-center flex-row mb-1 rounded flex-wrap'>
             <form onSubmit={this.handleSubmit}>
-              <h3 class='font-bold text-center'> Sign up to stay up to date with the GSN launch </h3>
+              <h3 className='font-bold text-center'> Sign up to stay up to date with the GSN launch </h3>
               {!success &&
                 <div className="flex justify-center items-center flex-wrap">
-                  <input class="mt-2 md:mr-4 sm:mr-0 rounded p-2 w-full" value={email} onChange={this.handleChange}
+                  <input className="mt-2 md:mr-4 sm:mr-0 rounded p-2 w-full" value={email} onChange={this.handleChange}
                     type="email" name="email" placeholder="Enter your email..." />
-                  <button class="mt-2 rounded" type="submit">Sign up</button>
+                  <button className="mt-2 rounded" type="submit">Sign up</button>
                 </div>
               }
               {success &&
-                <p class="text-center font-bold"> You are signed up! </p>
+                <p className="text-center font-bold"> You are signed up! </p>
               }
             </form>
           </div>

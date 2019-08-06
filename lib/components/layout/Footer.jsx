@@ -16,9 +16,6 @@ export default () => (
           <a href='https://github.com/tabookey/tabookey-gasless' className='block md:inline-block font-silkaMedium text-bold text-sm text-white pr-6 lg:pr-0 lg:pl-16 pt-1 leading-none mt-4 lg:mt-0'>
             GitHub
           </a>
-          <a href='#' className='block md:inline-block font-silkaMedium text-bold text-sm text-white pr-6 lg:pr-0 lg:pl-16 pt-1 leading-none mt-4 lg:mt-0'>
-            Products
-          </a>
           <Link href='/recipients'>
             <a href='#' className='block md:inline-block font-silkaMedium text-bold text-sm text-white pr-6 lg:pr-0 lg:pl-16 pt-1 leading-none mt-4 lg:mt-0'>
               Dapp Tool

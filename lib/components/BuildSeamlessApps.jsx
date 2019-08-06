@@ -25,11 +25,11 @@ export const BuildSeamlessApps = function() {
           <div className='flex card-custom-max-width lg-card-width-and-padding-override my-6 order-1 sm:mt-4 sm:px-6 lg:order-2 lg:max-w-sm'>
             <Card
               img={<img src={OpenZeppelinLogo} />}
-              text={<div>
+              text={<p className="text-sm">
                       <b>OpenZeppelin</b> is a professional platform to develop blockchain based applications. <br/><br />
                       <b>OpenZeppelin SDK</b> makes smart contract development easy. Save hours of development time by compiling, upgrading, deploying, and interacting with smart contracts with our CLI. <br/><br/>
                       <b>Connect GSN</b> with our contracts, SDK and Starter Kits and start creating a seamless app today. <br/>
-                    </div>
+                    </p>
                     }
               url='https://docs.openzeppelin.com/openzeppelin/'
               large
@@ -39,7 +39,7 @@ export const BuildSeamlessApps = function() {
           <div className='flex max-w-auto lg-card-width-and-padding-override mt-6 mb-6 order-2 sm:px-6 lg:my-20 lg:order-1 lg:max-w-sm'>
             <Card
               img={<img src={PortisLogo} />}
-              text='With the Portis SDK, DApps get a standard web3 provider, and thanks to E2E encryption, their users get a non-custodial wallet and can sign transactions. all using their existing browser, with a familiar email and password login flow - no installation required!'
+              text={<p className="text-sm">With the Portis SDK, DApps get a standard web3 provider, and thanks to E2E encryption, their users get a non-custodial wallet and can sign transactions. all using their existing browser, with a familiar email and password login flow - no installation required!</p>}
               url='https://developers.portis.io'
             />
           </div>
@@ -52,7 +52,7 @@ export const BuildSeamlessApps = function() {
                 alt='Tabookey logo'
                 className='mx-auto'
               />}
-              text='TabooKey started this project. It invented the GSN (EIP 1613) so dapps have a trustless decentralized way of onboarding new users with no ETH to pay for gas fees, or even users with no wallet at all!'
+              text={<p className="text-sm">TabooKey started this project. It invented the GSN (EIP 1613) so dapps have a trustless decentralized way of onboarding new users with no ETH to pay for gas fees, or even users with no wallet at all!</p>}
               url='https://www.tabookey.com'
             />
           </div>
