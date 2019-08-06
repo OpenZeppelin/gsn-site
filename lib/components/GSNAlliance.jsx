@@ -79,6 +79,6 @@ export const GSNAlliance = function() {
         </p>
 
       </div>
-    </div>    
+    </div>
   )
 }
