@@ -155,8 +155,7 @@ export const RecipientDepositForm = withFormProps(
                 console.error(error)
                 return <></>
               } else {
-                const { maximumDeposit } = data.RelayHub
-                
+
                 return (
                   <form
                     onSubmit={this.handleSubmitDeposit}
@@ -179,7 +178,7 @@ export const RecipientDepositForm = withFormProps(
                       type='number'
                       min='0'
                       step='.000000001'
-                      max={ethers.utils.formatEther(maximumDeposit)}
+                      max={ethers.utils.parseEther('2')}
                       value={this.state.depositAmount}
                       onChange={(e) => this.setState({ depositAmount: e.target.value })}
                       className='mb-2 trans'
