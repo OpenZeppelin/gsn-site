@@ -269,7 +269,11 @@ export const RelayForm = withFormProps(withRelay(
         }
 
         const { relay, balance } = RelayHub || {}
-        const { owner, totalStake } = relay
+        let owner = null
+        let stake = 0
+        if (relay)
+          owner = relay.owner
+          stake =relay.totalStake
         const unstakeDelay = this.unstakeDelay() || '0'
 
         return (
@@ -296,7 +300,7 @@ export const RelayForm = withFormProps(withRelay(
 
             <dl>
               <dt>Stake</dt>
-              <dd>{totalStake ? ethers.utils.formatEther(totalStake) : '0'} <EthTextSymbol /></dd>
+              <dd>{stake ? ethers.utils.formatEther(stake) : '0'} <EthTextSymbol /></dd>
             </dl>
 
             <dl>
