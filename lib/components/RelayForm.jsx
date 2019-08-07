@@ -271,9 +271,10 @@ export const RelayForm = withFormProps(withRelay(
         const { relay, balance } = RelayHub || {}
         let owner = null
         let stake = 0
-        if (relay)
+        if (relay) {
           owner = relay.owner
           stake =relay.totalStake
+        }
         const unstakeDelay = this.unstakeDelay() || '0'
 
         return (
