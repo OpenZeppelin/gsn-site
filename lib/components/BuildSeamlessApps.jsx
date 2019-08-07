@@ -28,7 +28,7 @@ export const BuildSeamlessApps = function() {
               text={<p className="text-sm">
                       <b>OpenZeppelin</b> is a professional platform to develop blockchain based applications. <br/><br />
                       <b>OpenZeppelin SDK</b> makes smart contract development easy. Save hours of development time by compiling, upgrading, deploying, and interacting with smart contracts with our CLI. <br/><br/>
-                      <b>Connect GSN</b> with our contracts, SDK and Starter Kits and start creating a seamless app today. <br/>
+                      <b>Integrate GSN</b> easily with our contract library, our web3 provider and test helpers. <br/>
                     </p>
                     }
               url='https://docs.openzeppelin.com/openzeppelin/'
