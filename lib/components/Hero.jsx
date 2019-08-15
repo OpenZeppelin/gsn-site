@@ -19,7 +19,7 @@ export const Hero = function() {
             Use GSN in your app
           </a>
           <a
-            href='https://github.com/OpenZeppelin/openzeppelin-gsn-provider'
+            href='https://github.com/tabookey/tabookey-gasless'
             className='font-silkaSemiBold shadow uppercase rounded tracking-wider bg-blue-500 hover:bg-blue-600 ml-10 text-white hover:text-white p-2 px-4 inline-block trans trans-slow'
           >
             Checkout the Code
