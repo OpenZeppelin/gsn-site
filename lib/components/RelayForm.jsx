@@ -133,7 +133,8 @@ export const RelayForm = withFormProps(withRelay(
         contractName: 'RelayHub',
         method: 'depositFor',
         args: [this.props.relayAddress],
-        value: ethers.utils.parseEther(this.state.depositAmount)
+        value: ethers.utils.parseEther(this.state.depositAmount),
+        gasLimit: 50000
       }
 
       this.props.sendTransaction({
