@@ -16,11 +16,14 @@ export const Hero = function() {
             href='https://github.com/OpenZeppelin/openzeppelin-gsn-provider'
             className='font-silkaSemiBold shadow uppercase rounded tracking-wider bg-indigo-500 hover:bg-indigo-600 text-white hover:text-white p-2 px-4 inline-block trans trans-slow'
           >
-            Use GSN in your application
+            Use GSN in your app
           </a>
-          <p className='font-light text-sm tracking-wide'>
-            Check out the <a href='https://github.com/tabookey/tabookey-gasless'>GitHub Repo</a>
-          </p>
+          <a
+            href='https://github.com/OpenZeppelin/openzeppelin-gsn-provider'
+            className='font-silkaSemiBold shadow uppercase rounded tracking-wider bg-blue-500 hover:bg-blue-600 ml-10 text-white hover:text-white p-2 px-4 inline-block trans trans-slow'
+          >
+            Checkout the Code
+          </a>
         </div>
       </div>
     </div>

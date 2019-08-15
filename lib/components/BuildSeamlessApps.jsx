@@ -22,29 +22,19 @@ export const BuildSeamlessApps = function() {
         </div>
 
         <div className='flex flex-wrap lg:-mx-32 lg-margin-override'>
-          <div className='flex card-custom-max-width lg-card-width-and-padding-override my-6 order-1 sm:mt-4 sm:px-6 lg:order-2 lg:max-w-sm'>
+          <div className='flex max-w-auto lg-card-width-and-padding-override mt-6 mb-6 order-2 sm:px-6 lg:my-20 lg:order-2 lg:max-w-sm'>
             <Card
               img={<img src={OpenZeppelinLogo} />}
               text={<p className="text-sm">
                       <b>OpenZeppelin</b> is a professional platform to develop blockchain based applications. <br/><br />
                       <b>OpenZeppelin SDK</b> makes smart contract development easy. Save hours of development time by compiling, upgrading, deploying, and interacting with smart contracts with our CLI. <br/><br/>
-                      <b>Integrate GSN</b> easily with our contract library, our web3 provider and test helpers. <br/>
                     </p>
                     }
               url='https://docs.openzeppelin.com/openzeppelin/'
-              large
             />
           </div>
 
-          <div className='flex max-w-auto lg-card-width-and-padding-override mt-6 mb-6 order-2 sm:px-6 lg:my-20 lg:order-1 lg:max-w-sm'>
-            <Card
-              img={<img src={PortisLogo} />}
-              text={<p className="text-sm">With the Portis SDK, DApps get a standard web3 provider, and thanks to E2E encryption, their users get a non-custodial wallet and can sign transactions. all using their existing browser, with a familiar email and password login flow - no installation required!</p>}
-              url='https://developers.portis.io'
-            />
-          </div>
-
-          <div className='flex max-w-auto lg-card-width-and-padding-override mt-6 order-3 sm:px-6 lg:my-20 lg:max-w-sm'>
+          <div className='flex max-w-auto lg-card-width-and-padding-override mt-6 order-2 sm:px-6 lg:my-20 lg:max-w-sm'>
             <Card
               img={<img
                 srcSet='/static/tabookey-logo.png 1x, /static/tabookey-logo@2x.png 2x'
@@ -56,6 +46,15 @@ export const BuildSeamlessApps = function() {
               url='https://www.tabookey.com'
             />
           </div>
+
+          <div className='flex max-w-auto lg-card-width-and-padding-override mt-6 mb-6 order-3 sm:px-6 lg:my-20 lg:order-1 lg:max-w-sm'>
+            <Card
+              img={<img src={PortisLogo} />}
+              text={<p className="text-sm">With the Portis SDK, DApps get a standard web3 provider, and thanks to E2E encryption, their users get a non-custodial wallet and can sign transactions. all using their existing browser, with a familiar email and password login flow - no installation required!</p>}
+              url='https://developers.portis.io'
+            />
+          </div>
+
         </div>
       </div>
     </div>
