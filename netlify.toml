@@ -15,6 +15,7 @@
   from = "https://gsn.openzeppelin.com/*"
   to = "https://gsn.ethereum.org/:splat"
   status = 301
+  force = true
 
 [[redirects]]
   from = "/static/*"
