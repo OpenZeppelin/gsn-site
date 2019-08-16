@@ -51,7 +51,7 @@ export const BuildSeamlessApps = function() {
             <Card
               img={<img src={PortisLogo} />}
               text={<p className="text-sm">With the Portis SDK, DApps get a standard web3 provider, and thanks to E2E encryption, their users get a non-custodial wallet and can sign transactions. all using their existing browser, with a familiar email and password login flow - no installation required!</p>}
-              url='https://developers.portis.io'
+              url='https://docs.portis.io/#/gas-relay'
             />
           </div>
 
