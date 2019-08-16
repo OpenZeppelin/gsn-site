@@ -52,7 +52,8 @@ export const RecipientDepositForm = withFormProps(
           contractName: 'RelayHub',
           method: 'depositFor',
           args: [this.props.recipientAddress],
-          value: ethers.utils.parseEther(this.state.depositAmount).toString()
+          value: ethers.utils.parseEther(this.state.depositAmount).toString(),
+          gasLimit: 50000
         }
       }).then(({ data }) => {
         const _this = this
