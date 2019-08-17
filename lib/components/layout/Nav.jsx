@@ -12,7 +12,7 @@ export const Nav = class _Nav extends Component {
   toggleMenu = () => {
     this.setState({ menuOpen: !this.state.menuOpen })
   }
-  
+
   render () {
     return (
       <div className='container'>
@@ -51,7 +51,7 @@ export const Nav = class _Nav extends Component {
                 Dapp Tool
               </NavLink>
               <NavLink href='/relays'>
-                Relay Tool
+                Relayer Tool
               </NavLink>
             </div>
           </div>

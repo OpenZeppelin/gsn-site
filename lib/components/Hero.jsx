@@ -13,7 +13,7 @@ export const Hero = function() {
           </h2>
 
           <a
-            href='https://github.com/OpenZeppelin/openzeppelin-gsn-provider'
+            href='https://docs.openzeppelin.com/sdk/2.5/gsn-dapp'
             className='font-silkaSemiBold shadow uppercase rounded tracking-wider bg-indigo-500 hover:bg-indigo-600 text-white hover:text-white p-2 px-4 inline-block trans trans-slow'
           >
             Use GSN in your app
