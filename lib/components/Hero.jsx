@@ -11,19 +11,20 @@ export const Hero = function() {
           <h2 className='text-sm md:text-md opacity-80 subpixel-antialiased tracking-wide mt-2 mb-4 py-4'>
             Turn your dapps into apps. Free your users. No more Metamask. No more gas.
           </h2>
-
-          <a
-            href='https://docs.openzeppelin.com/openzeppelin/gsn/getting-started'
-            className='font-silkaSemiBold shadow uppercase rounded tracking-wider mr-10  bg-indigo-500 hover:bg-indigo-600 text-white hover:text-white p-2 px-4 inline-block trans trans-slow'
-          >
-            Use GSN in your app
-          </a>
-          <a
-            href='https://github.com/tabookey/tabookey-gasless'
-            className='font-silkaSemiBold shadow uppercase rounded tracking-wider bg-blue-500 hover:bg-blue-600 mt-5 text-white hover:text-white p-2 px-4 inline-block trans trans-slow'
-          >
-            Checkout the Code
-          </a>
+          <div className="m-auto justify-center flex flex-wrap sm:justify-between flex-row space-between max-w-md">
+            <a
+              href='https://docs.openzeppelin.com/openzeppelin/gsn/getting-started'
+              className='font-silkaSemiBold shadow uppercase rounded tracking-wider bg-indigo-500 hover:bg-indigo-600 mt-5 text-white hover:text-white p-2 px-4 inline-block trans trans-slow'
+            >
+              Use GSN in your app
+            </a>
+            <a
+              href='https://github.com/tabookey/tabookey-gasless'
+              className='font-silkaSemiBold shadow uppercase rounded tracking-wider bg-blue-500 hover:bg-blue-600 mt-5 text-white hover:text-white p-2 px-4 inline-block trans trans-slow'
+            >
+              Checkout the Code
+            </a>
+          </div>
         </div>
       </div>
     </div>
