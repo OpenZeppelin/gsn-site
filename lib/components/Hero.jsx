@@ -14,13 +14,13 @@ export const Hero = function() {
 
           <a
             href='https://docs.openzeppelin.com/sdk/2.5/gsn-dapp'
-            className='font-silkaSemiBold shadow uppercase rounded tracking-wider bg-indigo-500 hover:bg-indigo-600 text-white hover:text-white p-2 px-4 inline-block trans trans-slow'
+            className='font-silkaSemiBold shadow uppercase rounded tracking-wider mr-10 bg-indigo-500 hover:bg-indigo-600 text-white hover:text-white p-2 px-4 inline-block trans trans-slow'
           >
             Use GSN in your app
           </a>
           <a
             href='https://github.com/tabookey/tabookey-gasless'
-            className='font-silkaSemiBold shadow uppercase rounded tracking-wider bg-blue-500 hover:bg-blue-600 ml-10 text-white hover:text-white p-2 px-4 inline-block trans trans-slow'
+            className='font-silkaSemiBold shadow uppercase rounded tracking-wider bg-blue-500 hover:bg-blue-600 mt-5 text-white hover:text-white p-2 px-4 inline-block trans trans-slow'
           >
             Checkout the Code
           </a>
