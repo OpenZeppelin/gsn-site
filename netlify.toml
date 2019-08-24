@@ -12,8 +12,20 @@
   command = "yarn dist"
 
 [[redirects]]
-  from = "https://gsn.ethereum.org/*"
-  to = "https://gsn.openzeppelin.com/:splat"
+  from = "https://gasstations.network/*"
+  to = "https://gasstation.network/:splat"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "https://www.gasstations.network/*"
+  to = "https://gasstation.network/:splat"
+  status = 301
+  force = true
+  
+[[redirects]]
+  from = "https://www.gasstation.network/*"
+  to = "https://gasstation.network/:splat"
   status = 301
   force = true
 
