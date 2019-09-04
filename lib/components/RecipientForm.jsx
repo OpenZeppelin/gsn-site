@@ -8,10 +8,33 @@ import { EthTextSymbol } from 'lib/components/EthTextSymbol'
 import { ConnectWallet } from 'lib/components/ConnectWallet'
 import { ErrorMsg } from 'lib/components/ErrorMsg'
 import { recipientQuery } from '../queries/recipientQuery'
+import { recipientBalanceQuery } from '../queries/recipientBalanceQuery'
 import { withFormProps } from 'lib/components/hoc/withFormProps'
 import { withNetworkAccountQuery } from './hoc/withNetworkAccountQuery'
 import { relayHubTargetSubscription } from '../subscriptions/relayHubTargetSubscription'
 import { RecipientDepositForm } from './RecipientDepositForm';
+
+const RecipientBalance = withFormProps(
+  withNetworkAccountQuery(
+    graphql(recipientBalanceQuery, {
+      name: 'recipientBalanceQuery',
+      options: (props) => {
+        const { recipientAddress, relayHubAddress } = props;
+        return { recipientAddress, relayHubAddress };
+      }
+    })
+    (class _RecipientBalance extends PureComponent {
+      render() {
+        const { RelayHub } = this.props.recipientBalanceQuery;
+        if (RelayHub === undefined) {
+          return ["..."];
+        } else {
+          return [ethers.utils.formatEther(RelayHub.balance)];
+        }
+      }
+    })
+  )
+);
 
 export const RecipientForm = withFormProps(
   withNetworkAccountQuery(
@@ -107,7 +130,7 @@ export const RecipientForm = withFormProps(
 
           <dl>
             <dt>Ether Balance </dt>
-            <dd>{balance ? ethers.utils.formatEther(balance) : '?'} <EthTextSymbol /></dd>
+            <dd><RecipientBalance relayHubAddress={relayHubAddress} recipientAddress={recipientAddress} /> <EthTextSymbol /></dd>
           </dl>
 
           {!ethereumPermission && (
