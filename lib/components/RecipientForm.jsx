@@ -116,7 +116,7 @@ export const RecipientForm = withFormProps(
       } else if (loading) {
         return '...'
       } else {
-        const { balance, relayHubAddress } = RelayRecipient || {}
+        const { relayHubAddress } = RelayRecipient || {}
         let depositers
         if (this.state.currentTab === 1) {
           depositers = <RecipientDepositers relayHubAddress={relayHubAddress} recipientAddress={recipientAddress} />
