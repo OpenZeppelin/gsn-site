@@ -24,6 +24,35 @@ const RecipientBalance = withFormProps(
       }
     })
     (class _RecipientBalance extends PureComponent {
+      componentDidMount () {
+        this.startSubscription()
+      }
+
+      componentDidUpdate () {
+        this.startSubscription()
+      }
+
+      startSubscription() {
+        if (this.subscription) { return }
+        if (this.props.relayHubAddress)) {
+          this.subscription = this.props.client.subscribe({
+            query: relayHubTargetSubscription,
+            variables: {
+              relayHubAddress: this.props.relayHubAddress,
+              targetAddress: this.props.recipientAddress
+            }
+          }).subscribe(() => {
+            this.props.recipientBalanceQuery.refetch()
+          })
+        }
+      }
+
+      componentWillUnmount () {
+        if (this.subscription) {
+          this.subscription.unsubscribe()
+        }
+      }
+
       render() {
         const { RelayHub } = this.props.recipientBalanceQuery;
         if (RelayHub === undefined) {
