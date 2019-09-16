@@ -28,10 +28,6 @@ const RecipientBalance = withFormProps(
         this.startSubscription()
       }
 
-      componentDidUpdate () {
-        this.startSubscription()
-      }
-
       startSubscription() {
         if (this.subscription) { return }
         if (this.props.relayHubAddress)) {
@@ -88,10 +84,6 @@ export const RecipientForm = withFormProps(
     }
 
     componentDidMount () {
-      this.startSubscription()
-    }
-
-    componentDidUpdate () {
       this.startSubscription()
     }
 
