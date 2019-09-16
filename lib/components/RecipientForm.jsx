@@ -30,7 +30,7 @@ const RecipientBalance = withFormProps(
 
       startSubscription() {
         if (this.subscription) { return }
-        if (this.props.relayHubAddress)) {
+        if (this.props.relayHubAddress) {
           this.subscription = this.props.client.subscribe({
             query: relayHubTargetSubscription,
             variables: {
