@@ -305,11 +305,6 @@ export const RelayForm = withFormProps(withRelay(
               <dd>{stake ? ethers.utils.formatEther(stake) : '0'} <EthTextSymbol /></dd>
             </dl>
 
-            <dl>
-              <dt>Unstake Delay</dt>
-              <dd>{unstakeDelay ? unstakeDelay.toString() : '?'} <span className='light'>seconds</span></dd>
-            </dl>
-
             {!ethereumPermission && (
               <div className='mt-6 mb-12'>
                 {connect}
