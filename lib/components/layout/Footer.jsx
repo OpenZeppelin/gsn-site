@@ -35,7 +35,7 @@ export default () => (
           Website developed by <a href='https://delta.camp' target='_blank' rel='noreferrer'><img src={DeltaCampWhiteLogo} width='110' className='inline-block -my-2' /></a>
         </p>
         <p className='text-xxs text-white'>
-          &copy; {new Date().getFullYear()}. All rights reserved.&nbsp; |&nbsp; Privacy&nbsp; |&nbsp; Terms of Service
+          &copy; 2019. All rights reserved.&nbsp; |&nbsp; <a className="text-white" href="/static/PrivacyPolicy.docx">Privacy</a>&nbsp; |&nbsp; <a className="text-white" href="/static/ToS.docx">Terms of Service</a>
         </p>
       </div>
     </div>

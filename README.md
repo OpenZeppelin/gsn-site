@@ -1,6 +1,6 @@
 # Gas Station Network Site
 
-The official front end for the Gas Station Network.  The staging site is [here](https://gsn-staging.netlify.com).
+The official front end for the [Gas Station Network](https://gasstation.network).  The staging site is [here](https://gsn-staging.netlify.com).
 
 ## GSN Test Environment
 
