@@ -53,6 +53,9 @@ export const Nav = class _Nav extends Component {
               <NavLink href='/relays'>
                 Relayer Tool
               </NavLink>
+              <NavLink target="_blank" href='https://explore.duneanalytics.com/dashboard/gsn-gas-station-network'>
+                Network Stats
+              </NavLink>
             </div>
           </div>
         </nav>
