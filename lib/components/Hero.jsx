@@ -9,7 +9,7 @@ export const Hero = function() {
             GSN is the ultimate onboarding solution for Ethereum applications
           </h1>
           <h2 className='text-sm md:text-md opacity-80 subpixel-antialiased tracking-wide mt-2 mb-4 py-4'>
-            Turn your dapps into apps. Free your users. No more Metamask. No more gas.
+            Turn your dapps into apps. Free your users. No more gas.
           </h2>
           <div className="m-auto justify-center flex flex-wrap sm:justify-between flex-row space-between max-w-md">
             <a
