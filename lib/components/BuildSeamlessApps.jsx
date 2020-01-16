@@ -30,7 +30,7 @@ export const BuildSeamlessApps = function() {
                       <b>OpenZeppelin SDK</b> makes smart contract development easy. Save hours of development time by compiling, upgrading, deploying, and interacting with smart contracts with our CLI. <br/><br/>
                     </p>
                     }
-              url='https://docs.openzeppelin.com/openzeppelin/'
+              url='https://docs.openzeppelin.com/learn/sending-gasless-transactions'
             />
           </div>
 
