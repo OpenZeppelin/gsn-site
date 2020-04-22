@@ -1,3 +1,6 @@
+:warning: This project is in **maintenance mode**. All development on the GSN has been moved to the [OpenGSN](https://github.com/opengsn) organization. Please refer to the [OpenGSN site implementation](https://github.com/opengsn/gsn-site). We will only be releasing fixes for high severity issues for this project until July 2020. Read [here](https://forum.openzeppelin.com/t/doubling-down-in-security/2712) for more info.
+
+
 # Gas Station Network Site
 
 The official front end for the [Gas Station Network](https://gasstation.network).  The staging site is [here](https://gsn-staging.netlify.com).
