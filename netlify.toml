@@ -13,19 +13,31 @@
 
 [[redirects]]
   from = "https://gasstations.network/*"
-  to = "https://gasstation.network/:splat"
+  to = "https://www.opengsn.org/:splat"
   status = 301
   force = true
 
 [[redirects]]
   from = "https://www.gasstations.network/*"
-  to = "https://gasstation.network/:splat"
+  to = "https://www.opengsn.org/:splat"
   status = 301
   force = true
   
 [[redirects]]
   from = "https://www.gasstation.network/*"
-  to = "https://gasstation.network/:splat"
+  to = "https://www.opengsn.org/:splat"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "https://gasstation.network/*"
+  to = "https://www.opengsn.org/:splat"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "https://gsn.openzeppelin.com/*"
+  to = "https://www.opengsn.org/:splat"
   status = 301
   force = true
 
