@@ -30,7 +30,7 @@
     "react-ga": "^2.6.0",
     "react-select": "^3.0.4",
     "truffle-deploy-registry": "^0.5.1",
-    "url-parse": "^1.4.7"
+    "url-parse": "^1.5.9"
   },
   "scripts": {
     "dev": "yarn apply-registry && next",
